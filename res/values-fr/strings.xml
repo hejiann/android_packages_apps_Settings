@@ -260,9 +260,12 @@
     <string name="status_bar_toggle_brightness_summary">Ajustement de la luminosité en glissant dans la barre</string>
     <string name="status_bar_toggle_info">Le rétroéclairage automatique est activé</string>
     <string name="status_bar_signal_text_title">Affichage du signal réseau</string>
-    <string name="status_bar_signal_text_show_bars">Icône (défaut)</string>
+    <string name="status_bar_style_icon">Icône</string>
+    <string name="status_bar_style_hidden">Ne pas afficher</string>
     <string name="status_bar_signal_text_show_text">Texte</string>
-    <string name="status_bar_signal_text_hidden">Ne pas afficher</string>
+    <string name="status_bar_battery_status_percentage">Pourcentage</string>
+    <string name="status_bar_battery_status_circle">Cercle</string>
+    <string name="status_bar_battery_status_circle_percentage">Cercle avec pourcentage</string>
 
     <string name="lock_screen_title">Écran de verrouillage</string>
 
@@ -1930,7 +1933,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Rester activé"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"L\'écran ne se met jamais en veille lors du chargement de la batterie"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Positions fictives"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Autoriser les positions fictives"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Autoriser le débogage USB ?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Le débogage USB est conçu uniquement pour le développement. Utilisez-le pour copier des données entre votre ordinateur et votre appareil, installer des applications sur votre appareil sans notification et lire les données de journal."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Activer les paramètres de développement ?"</string>
