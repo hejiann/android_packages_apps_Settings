@@ -62,12 +62,12 @@
             android:title="@string/sound_category_call_ringtone_vibrate_title"/>
 
     <!-- Do not nest these, or removals in code will break -->
-    <com.android.settings.DefaultRingtonePreference
-            android:key="ringtone"
-            android:title="@string/ringtone_title"
-            android:dialogTitle="@string/ringtone_title"
-            android:persistent="false"
-            android:ringtoneType="ringtone" />
+    <com.shendu.ringtone.SoundPreference 
+    		android:persistent="false" 
+    		android:title="@string/ringtone_title" 
+    		android:key="gsm_ringtone_settings" 
+    		android:summary="@string/ringtone_summary" 
+    		/>
 
     <CheckBoxPreference
          android:key="vibrate_when_ringing"

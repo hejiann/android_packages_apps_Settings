@@ -4969,4 +4969,10 @@
     
     <!-- Storage setting. Title for generic storage settings [CHAR LIMIT=30]-->
     <string name="storage_title_storage">Storage configuration</string>
+     <!-- add ringtone options -->
+    <string name="sound_ringtones">Ringtones</string>
+    <string name="sound_music">Music</string>
+    
+    <string name="file_not_find">This media file not available or not exist...."</string>
+    <string name="sdcard_not_find">"SDCard Unmounted...."</string>
 </resources>

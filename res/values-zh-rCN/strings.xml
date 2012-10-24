@@ -2525,4 +2525,10 @@
     
     <!-- Storage setting. Title for generic storage settings [CHAR LIMIT=30]-->
     <string name="storage_title_storage">存储配置</string>
+    <!-- add ringtone options -->
+    <string name="sound_ringtones">铃声</string>
+    <string name="sound_music">音频</string>
+    
+    <string name="file_not_find">"该媒体文件格式不支持或不存在...."</string>
+    <string name="sdcard_not_find">"SDCard 未安装...."</string>
 </resources>
