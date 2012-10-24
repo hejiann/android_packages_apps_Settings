@@ -4931,8 +4931,8 @@
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 
     <!-- add by shendu -->
-    <string name ="power_widget_order_driver">Below buttons will hidden</string>
-    <string name="title_widget_buttons">Expanded View Widget</string>
+    <!--string name ="power_widget_order_driver">Below buttons will hidden</string>
+    <string name="title_widget_buttons">Expanded View Widget</string-->
     
     <string name="launcher_setting_title">Launcher Setting</string>
     <string name="lockscreen_options">Lockscreen Options</string>

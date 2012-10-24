@@ -2487,8 +2487,8 @@
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 
     <!-- add by shendu -->
-    <string name ="power_widget_order_driver">以下开关不显示</string>
-    <string name="title_widget_buttons">扩展视图控件</string>
+    <!--string name ="power_widget_order_driver">以下开关不显示</string>
+    <string name="title_widget_buttons">扩展视图控件</string-->
 
     <!-- Status bar notification count -->
     <string name="launcher_setting_title">桌面设置</string>
