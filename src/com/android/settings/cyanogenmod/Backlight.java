@@ -54,6 +54,8 @@ public class Backlight extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.backlight_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_display);
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver cr = getActivity().getApplicationContext().getContentResolver();

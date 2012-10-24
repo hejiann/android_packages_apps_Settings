@@ -50,6 +50,8 @@ public class SpellCheckersSettings extends SettingsPreferenceFragment
         super.onCreate(icicle);
         mTsm = (TextServicesManager) getSystemService(Context.TEXT_SERVICES_MANAGER_SERVICE);
         addPreferencesFromResource(R.xml.spellchecker_prefs);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_language);
         updateScreen();
     }
 

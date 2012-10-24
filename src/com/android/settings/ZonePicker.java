@@ -146,6 +146,9 @@ public class ZonePicker extends ListFragment {
         super.onActivityCreated(savedInstanseState);
 
         final Activity activity = getActivity();
+        
+        activity.getActionBar().setIcon(R.drawable.ic_settings_date_time);
+        
         mTimezoneSortedAdapter = constructTimezoneAdapter(activity, false);
         mAlphabeticalAdapter = constructTimezoneAdapter(activity, true);
 

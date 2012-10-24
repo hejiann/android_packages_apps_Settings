@@ -148,6 +148,7 @@ public class TrustedCredentialsSettings extends Fragment {
         addTab(Tab.SYSTEM);
         // TODO add Install button on Tab.USER to go to CertInstaller like KeyChainActivity
         addTab(Tab.USER);
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_security);
         return mTabHost;
     }
 

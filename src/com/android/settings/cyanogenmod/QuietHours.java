@@ -65,6 +65,8 @@ public class QuietHours extends SettingsPreferenceFragment implements
 
         if (getPreferenceManager() != null) {
             addPreferencesFromResource(R.xml.quiet_hours_settings);
+            
+            getActivity().getActionBar().setIcon(R.drawable.ic_settings_sound);
 
             ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
 

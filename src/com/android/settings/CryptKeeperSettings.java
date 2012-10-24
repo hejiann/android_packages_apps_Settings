@@ -137,6 +137,7 @@ public class CryptKeeperSettings extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Activity activity = getActivity();
+        activity.getActionBar().setIcon(R.drawable.ic_settings_security);
         Intent intent = activity.getIntent();
         if (DevicePolicyManager.ACTION_START_ENCRYPTION.equals(intent.getAction())) {
             DevicePolicyManager dpm = (DevicePolicyManager)

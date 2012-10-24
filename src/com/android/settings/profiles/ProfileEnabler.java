@@ -16,6 +16,8 @@
 
 package com.android.settings.profiles;
 
+import com.android.settings.SwitcherBean;
+
 import android.content.Context;
 import android.provider.Settings;
 import android.widget.CompoundButton;
@@ -41,7 +43,6 @@ public class ProfileEnabler implements CompoundButton.OnCheckedChangeListener  {
     public void pause() {
         mSwitch.setOnCheckedChangeListener(null);
     }
-
     public void setSwitch(Switch switch_) {
         if (mSwitch == switch_) return;
         mSwitch.setOnCheckedChangeListener(null);

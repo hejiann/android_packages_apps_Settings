@@ -71,6 +71,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         mActivity = getActivity();
         mResolver = mActivity.getContentResolver();
+        
+        mActivity.getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
 
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
         mWeatherPref = (Preference) findPreference(KEY_WEATHER_PREF);

@@ -39,6 +39,8 @@ public class UserDictionaryList extends SettingsPreferenceFragment {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_language);
         setPreferenceScreen(getPreferenceManager().createPreferenceScreen(getActivity()));
     }
 

@@ -105,6 +105,9 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
         // this method.
         // On/off switch
         Activity activity = getActivity();
+        
+        activity.getActionBar().setIcon(R.drawable.ic_settings_profiles);
+        
         //Switch
         mActionBarSwitch = new Switch(activity);
 

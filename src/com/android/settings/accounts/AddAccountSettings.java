@@ -26,7 +26,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
 import java.io.IOException;
 
 /**
@@ -94,7 +93,7 @@ public class AddAccountSettings extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         if (savedInstanceState != null) {
             mAddAccountCalled = savedInstanceState.getBoolean(KEY_ADD_CALLED);
             if (Log.isLoggable(TAG, Log.VERBOSE)) Log.v(TAG, "restored");

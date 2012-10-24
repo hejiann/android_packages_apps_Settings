@@ -68,6 +68,8 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
         if (getPreferenceManager() != null) {
 
             addPreferencesFromResource(R.xml.memory_management);
+            
+            getActivity().getActionBar().setIcon(R.drawable.ic_settings_performance);
 
             PreferenceScreen prefSet = getPreferenceScreen();
 

@@ -58,6 +58,8 @@ public class PerformanceSettings extends SettingsPreferenceFragment
         if (getPreferenceManager() != null) {
 
             addPreferencesFromResource(R.xml.performance_settings);
+            
+            getActivity().getActionBar().setIcon(R.drawable.ic_settings_performance);
 
             PreferenceScreen prefSet = getPreferenceScreen();
 

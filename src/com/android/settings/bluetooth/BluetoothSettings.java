@@ -102,6 +102,8 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment {
         super.onActivityCreated(savedInstanceState);
         mActivityStarted = (savedInstanceState == null);    // don't auto start scan after rotation
 
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_bluetooth2);
+        
         mEmptyView = (TextView) getView().findViewById(android.R.id.empty);
         getListView().setEmptyView(mEmptyView);
     }

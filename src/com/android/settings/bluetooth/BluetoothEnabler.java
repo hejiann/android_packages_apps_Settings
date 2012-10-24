@@ -27,6 +27,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.android.settings.R;
+import com.android.settings.SwitcherBean;
 import com.android.settings.WirelessSettings;
 
 /**
@@ -41,6 +42,8 @@ public final class BluetoothEnabler implements CompoundButton.OnCheckedChangeLis
     private final LocalBluetoothAdapter mLocalAdapter;
     private final IntentFilter mIntentFilter;
 
+    private SwitcherBean switcherBean;
+    
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -52,6 +55,8 @@ public final class BluetoothEnabler implements CompoundButton.OnCheckedChangeLis
     public BluetoothEnabler(Context context, Switch switch_) {
         mContext = context;
         mSwitch = switch_;
+        
+        switcherBean = SwitcherBean.getInstance();
 
         LocalBluetoothManager manager = LocalBluetoothManager.getInstance(context);
         if (manager == null) {
@@ -84,6 +89,25 @@ public final class BluetoothEnabler implements CompoundButton.OnCheckedChangeLis
 
         mContext.unregisterReceiver(mReceiver);
         mSwitch.setOnCheckedChangeListener(null);
+    }
+    
+    public void setSwitch(Switch switch_,boolean isViewPager) {
+        mSwitch.setOnCheckedChangeListener(null);
+        mSwitch = switch_;
+        mSwitch.setOnCheckedChangeListener(this);
+        
+        int bluetoothState = BluetoothAdapter.STATE_OFF;
+        if (mLocalAdapter != null) bluetoothState = mLocalAdapter.getBluetoothState();
+        boolean isOn = bluetoothState == BluetoothAdapter.STATE_ON;
+        boolean isOff = bluetoothState == BluetoothAdapter.STATE_OFF;
+        mSwitch.setChecked(isOn);
+        mSwitch.setEnabled(isOn || isOff);
+        if(switcherBean.getBluetoothIndex() == 0){
+        	resume();
+        	pause();
+        	resume();
+        	switcherBean.setBluetoothIndex(1);
+        }
     }
 
     public void setSwitch(Switch switch_) {

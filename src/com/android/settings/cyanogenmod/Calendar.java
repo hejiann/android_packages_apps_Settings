@@ -63,6 +63,8 @@ public class Calendar extends SettingsPreferenceFragment implements
         mResolver = getContentResolver();
 
         addPreferencesFromResource(R.xml.calendar_prefs);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
 
         PreferenceScreen prefSet = getPreferenceScreen();
 

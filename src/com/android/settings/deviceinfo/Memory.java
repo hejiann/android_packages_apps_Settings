@@ -80,6 +80,8 @@ public class Memory extends SettingsPreferenceFragment {
         }
 
         addPreferencesFromResource(R.xml.device_info_memory);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_storage);
 
         mResources = getResources();
 

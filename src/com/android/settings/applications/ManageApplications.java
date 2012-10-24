@@ -762,9 +762,9 @@ public class ManageApplications extends Fragment implements
                 holder.entry = entry;
                 if (entry.label != null) {
                     holder.appName.setText(entry.label);
-                    holder.appName.setTextColor(mContext.getResources().getColorStateList(
-                            entry.info.enabled ? android.R.color.primary_text_dark
-                                    : android.R.color.secondary_text_dark));
+//                    holder.appName.setTextColor(mContext.getResources().getColorStateList(
+//                            entry.info.enabled ? android.R.color.primary_text_dark
+//                                    : android.R.color.secondary_text_dark));
                 }
                 mState.ensureIcon(entry);
                 if (entry.icon != null) {
@@ -872,6 +872,8 @@ public class ManageApplications extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // initialize the inflater
         mInflater = inflater;
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_applications);
 
         View rootView = mInflater.inflate(R.layout.manage_applications_content,
                 container, false);

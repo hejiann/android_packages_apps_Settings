@@ -110,8 +110,11 @@ public class TetherSettings extends SettingsPreferenceFragment
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.tether_prefs);
-
+        
         final Activity activity = getActivity();
+        
+        activity.getActionBar().setIcon(R.drawable.ic_settings_network);
+        
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if (adapter != null) {
             adapter.getProfileProxy(activity.getApplicationContext(), mProfileServiceListener,

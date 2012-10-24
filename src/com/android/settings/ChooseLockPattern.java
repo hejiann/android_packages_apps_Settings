@@ -74,6 +74,7 @@ public class ChooseLockPattern extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         CharSequence msg = getText(R.string.lockpassword_choose_your_pattern_header);
         showBreadCrumbs(msg, msg);
+        getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
     }
 
     @Override

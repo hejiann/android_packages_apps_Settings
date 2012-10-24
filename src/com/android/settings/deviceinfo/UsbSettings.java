@@ -84,6 +84,8 @@ public class UsbSettings extends SettingsPreferenceFragment {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_usbconnect);
         mUsbManager = (UsbManager)getSystemService(Context.USB_SERVICE);
         storageManager = (StorageManager) getSystemService(Context.STORAGE_SERVICE);
         storageVolumes = storageManager.getVolumeList();

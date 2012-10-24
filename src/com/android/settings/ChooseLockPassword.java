@@ -44,7 +44,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-
+import com.android.settings.R;
 public class ChooseLockPassword extends PreferenceActivity {
     public static final String PASSWORD_MIN_KEY = "lockscreen.password_min";
     public static final String PASSWORD_MAX_KEY = "lockscreen.password_max";
@@ -72,6 +72,8 @@ public class ChooseLockPassword extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         CharSequence msg = getText(R.string.lockpassword_choose_your_password_header);
         showBreadCrumbs(msg, msg);
+        
+        getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
     }
 
     public static class ChooseLockPasswordFragment extends Fragment

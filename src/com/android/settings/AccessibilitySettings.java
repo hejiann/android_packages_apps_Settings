@@ -174,6 +174,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.accessibility_settings);
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_accessibility);
         initializeAllPreferences();
     }
 

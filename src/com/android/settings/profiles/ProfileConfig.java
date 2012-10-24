@@ -81,6 +81,8 @@ public class ProfileConfig extends SettingsPreferenceFragment
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_profiles);
         mStreams = new StreamItem[] {
                 new StreamItem(AudioManager.STREAM_ALARM, getString(R.string.alarm_volume_title)),
                 new StreamItem(AudioManager.STREAM_MUSIC, getString(R.string.media_volume_title)),

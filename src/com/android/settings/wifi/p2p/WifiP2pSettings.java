@@ -141,6 +141,8 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         addPreferencesFromResource(R.xml.wifi_p2p_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_wifi);
 
         mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION);
         mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION);

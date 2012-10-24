@@ -64,6 +64,7 @@ public class DeviceAdminSettings extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mDPM = (DevicePolicyManager) getActivity().getSystemService(Context.DEVICE_POLICY_SERVICE);
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_security);
         return inflater.inflate(R.layout.device_admin_settings, container, false);
     }
 

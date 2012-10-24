@@ -74,6 +74,8 @@ public class VpnSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedState);
         addPreferencesFromResource(R.xml.vpn_settings2);
         getPreferenceScreen().setOrderingAsAdded(false);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_network);
 
         if (savedState != null) {
             VpnProfile profile = VpnProfile.decode(savedState.getString("VpnKey"),

@@ -33,6 +33,9 @@ public class WallpaperTypeSettings extends SettingsPreferenceFragment {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.wallpaper_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_wallpaper);
+        
         populateWallpaperTypes();
     }
 

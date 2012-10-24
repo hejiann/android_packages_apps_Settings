@@ -56,21 +56,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_TERMS = "terms";
     private static final String KEY_LICENSE = "license";
     private static final String KEY_COPYRIGHT = "copyright";
-    private static final String KEY_SYSTEM_UPDATE_SETTINGS = "system_update_settings";
     private static final String PROPERTY_URL_SAFETYLEGAL = "ro.url.safetylegal";
     private static final String KEY_KERNEL_VERSION = "kernel_version";
-    private static final String KEY_BUILD_NUMBER = "build_number";
     private static final String KEY_DEVICE_MODEL = "device_model";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
-    private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_MOD_VERSION = "mod_version";
-    private static final String KEY_MOD_BUILD_DATE = "build_date";
-    private static final String KEY_DEVICE_CPU = "device_cpu";
-    private static final String KEY_DEVICE_MEMORY = "device_memory";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
-    private static final String KEY_CM_UPDATES = "cm_updates";
 
     long[] mHits = new long[3];
 
@@ -79,6 +72,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.device_info_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_about);
 
         setStringSummary(KEY_FIRMWARE_VERSION, Build.VERSION.RELEASE);
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
@@ -86,28 +81,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL + getMsvSuffix());
         setValueSummary(KEY_EQUIPMENT_ID, PROPERTY_EQUIPMENT_ID);
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
-        setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
-        setValueSummary(KEY_MOD_VERSION, "ro.cm.version");
+        setValueSummary(KEY_MOD_VERSION, "ro.shendu.version");
         findPreference(KEY_MOD_VERSION).setEnabled(true);
-        setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
 
         String cpuInfo = getCPUInfo();
         String memInfo = getMemInfo();
-
-        removePreferenceIfPackageNotInstalled(findPreference(KEY_CM_UPDATES));
-
-        if (cpuInfo != null) {
-            setStringSummary(KEY_DEVICE_CPU, cpuInfo);
-        } else {
-            getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_CPU));
-        }
-
-        if (memInfo != null) {
-            setStringSummary(KEY_DEVICE_MEMORY, memInfo);
-        } else {
-            getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_MEMORY));
-        }
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
         removePreferenceIfPropertyMissing(getPreferenceScreen(), "safetylegal",
@@ -140,18 +119,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
 
         // These are contained by the root preference screen
         parentPreference = getPreferenceScreen();
-        Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
-                KEY_SYSTEM_UPDATE_SETTINGS,
-                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
         Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference, KEY_CONTRIBUTORS,
                 Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
 
-        // Read platform settings for additional system update setting
-        boolean isUpdateSettingAvailable =
-                getResources().getBoolean(R.bool.config_additional_system_update_setting_enable);
-        if (isUpdateSettingAvailable == false) {
-            getPreferenceScreen().removePreference(findPreference(KEY_UPDATE_SETTING));
-        }
     }
 
     @Override
@@ -356,5 +326,39 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
             }
         }
         return false;
+    }
+    
+    public static class LegalInformation extends SettingsPreferenceFragment{
+
+    	private static final String LEGAL_INFO = "legal_info";
+    	private static final String KEY_TERMS = "terms";
+        private static final String KEY_LICENSE = "license";
+        private static final String KEY_COPYRIGHT = "copyright";
+        
+    	public void LegalInformation(){
+    		
+    	}
+    	
+		@Override
+		public void onActivityCreated(Bundle savedInstanceState) {
+			// TODO Auto-generated method stub
+			super.onActivityCreated(savedInstanceState);
+			getActivity().getActionBar().setIcon(R.drawable.ic_settings_about);
+			addPreferencesFromResource(R.xml.legal_information);
+			
+			/*
+	         * Settings is a generic app and should not contain any device-specific
+	         * info.
+	         */
+	        final Activity act = getActivity();
+	        // These are contained in the "container" preference group
+	        PreferenceGroup parentPreference = getPreferenceScreen();
+	        Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference, KEY_TERMS,
+	                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
+	        Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference, KEY_LICENSE,
+	                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
+	        Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference, KEY_COPYRIGHT,
+	                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
+		}
     }
 }

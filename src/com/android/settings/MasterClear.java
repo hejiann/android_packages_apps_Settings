@@ -236,6 +236,7 @@ public class MasterClear extends Fragment {
             Bundle savedInstanceState) {
         mContentView = inflater.inflate(R.layout.master_clear, null);
 
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_backup);
         establishInitialState();
         return mContentView;
     }

@@ -81,6 +81,8 @@ Log.i(TAG, "failure; password mismatch?");
         super.onCreate(icicle);
 
         mBackupManager = IBackupManager.Stub.asInterface(ServiceManager.getService("backup"));
+        
+        getActionBar().setIcon(R.drawable.ic_settings_development);
 
         setContentView(R.layout.set_backup_pw);
 

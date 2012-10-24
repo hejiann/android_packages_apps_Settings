@@ -54,16 +54,6 @@
         android:key="android_beam_settings"
         android:title="@string/android_beam_settings_title" />
 
-    <PreferenceScreen
-        android:key="mobile_network_settings"
-        android:title="@string/network_settings_title"
-        android:dependency="toggle_airplane">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.android.phone"
-            android:targetClass="com.android.phone.MobileNetworkSettings" />
-    </PreferenceScreen>
-
     <CheckBoxPreference
         android:key="toggle_nsd"
         android:title="@string/nsd_quick_toggle_title"

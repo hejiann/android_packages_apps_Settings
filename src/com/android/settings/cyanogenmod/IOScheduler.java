@@ -56,6 +56,8 @@ public class IOScheduler extends SettingsPreferenceFragment implements
         String currentIOScheduler = null;
 
         addPreferencesFromResource(R.xml.ioscheduler_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_performance);
 
         PreferenceScreen prefScreen = getPreferenceScreen();
 

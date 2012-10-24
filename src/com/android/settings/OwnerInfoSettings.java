@@ -42,6 +42,7 @@ public class OwnerInfoSettings extends Fragment {
     }
 
     private void initView(View view) {
+    	getActivity().getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
         final ContentResolver res = getActivity().getContentResolver();
         String info = Settings.Secure.getString(res, Settings.Secure.LOCK_SCREEN_OWNER_INFO);
         int enabled = Settings.Secure.getInt(res,

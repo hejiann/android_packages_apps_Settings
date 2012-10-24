@@ -61,11 +61,125 @@
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
             android:taskAffinity=""
-            android:theme="@android:style/Theme.Holo"
+            android:theme="@style/Theme.Settings"
             android:uiOptions="splitActionBarWhenNarrow"
             android:hardwareAccelerated="true">
+            
+        <activity
+            android:name="MainSetting"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.android.settings"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.SETTINGS" />
 
-        <!-- Settings -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="UsedSettings"
+            android:label="@string/settings_label_launcher"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.android.settings" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="PersonalizedSettings"
+            android:label="@string/settings_label_launcher"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.android.settings" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="SystemSettings"
+            android:label="@string/settings_label_launcher"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.android.settings" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- PowerWidget -->
+        <activity
+            android:name=".cyanogenmod.PowerWidgetOrderActivity" />
+        
+        <activity
+            android:name=".accounts.AccountsManager"
+            android:label="@string/account_settings"
+            android:icon="@drawable/ic_settings_sync"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.android.settings" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- **************  For ShenduPermission ***************** -->
+        <activity
+            android:name="DataUsageSummaryForPermission"
+            android:label="@string/data_usage_summary_title"
+            android:uiOptions="none" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.DataUsageSummary" />
+            <meta-data
+                android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/wireless_settings" />
+        </activity>
+        
+        <activity
+            android:name="Settings$FontsSettingsActivity"
+            android:clearTaskOnLaunch="true"
+            android:label="@string/font_options" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.FontsSettingsActivity" />
+            <meta-data
+                android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/fonts_settings" />
+        </activity>
+
+        <!-- Keep compatibility with old shortcuts. -->
+        <activity-alias
+            android:name="FontsSettingsActivity"
+            android:clearTaskOnLaunch="true"
+            android:exported="true"
+            android:label="@string/font_options"
+            android:targetActivity="Settings$FontsSettingsActivity" >
+            <meta-data
+                android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.FontsSettingsActivity" />
+            <meta-data
+                android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/fonts_settings" />
+        </activity-alias>
+	
+	
+        <activity
+            android:name="WallpaperSettings"
+            android:label="@string/settings_label_launcher" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <!-- *********************************************** -->
 
         <activity android:name="Settings"
                 android:label="@string/settings_label_launcher"
@@ -73,9 +187,7 @@
                 android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
@@ -196,7 +308,7 @@
         </activity>
 
         <activity android:name=".wifi.WifiInfo"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
                 android:parentActivityName="Settings$WifiSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -206,7 +318,7 @@
         </activity>
 
         <activity android:name=".wifi.WifiConfigInfo"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
                 android:parentActivityName="Settings$WifiSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -216,7 +328,7 @@
         </activity>
 
         <activity android:name=".wifi.WifiAPITest"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge">
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE" />
@@ -225,7 +337,7 @@
         </activity>
 
         <activity android:name=".wifi.WifiStatusTest"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge">
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE" />
@@ -287,7 +399,7 @@
         </activity-alias>
 
         <activity android:name=".bluetooth.DevicePickerActivity"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
                 android:label="@string/device_picker"
                 android:clearTaskOnLaunch="true"
                 android:parentActivityName="Settings">
@@ -390,7 +502,7 @@
 
         <activity android:name="DateTimeSettingsSetupWizard"
                   android:label="@string/date_and_time"
-                  android:theme="@android:style/Theme.Holo.NoActionBar"
+                  android:theme="@android:style/Theme.Holo.Light.NoActionBar"
                   android:screenOrientation="behind">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -493,6 +605,7 @@
 
         <activity android:name="Settings$UserDictionarySettingsActivity"
                 android:label="@string/user_dict_settings_titlebar"
+		android:icon="@drawable/ic_settings_language"
                 android:clearTaskOnLaunch="true"
                 android:uiOptions="none"
                 android:parentActivityName="Settings$InputMethodAndLanguageSettingsActivity">
@@ -529,6 +642,7 @@
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name="UserDictionarySettings"
                 android:label="@string/user_dict_settings_titlebar"
+                android:icon="@drawable/ic_settings_language"
                 android:clearTaskOnLaunch="true"
                 android:exported="true"
                 android:targetActivity="Settings$UserDictionarySettingsActivity">
@@ -633,7 +747,7 @@
         </activity-alias>
 
         <activity android:name="Settings$DeviceInfoSettingsActivity"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
                 android:label="@string/device_info_settings"
                 android:parentActivityName="Settings">
             <intent-filter>
@@ -650,7 +764,7 @@
 
         <activity android:name="SettingsLicenseActivity"
                 android:label="@string/settings_license_activity_title"
-                android:theme="@android:style/Theme.Holo.Panel"
+                android:theme="@android:style/Theme.Holo.Light.Panel"
                 android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.settings.LICENSE" />
@@ -660,7 +774,7 @@
 
         <activity android:name="SettingsSafetyLegalActivity"
                 android:label="@string/settings_safetylegal_activity_title"
-                android:theme="@*android:style/Theme.Holo.Dialog.Alert">
+                android:theme="@*android:style/Theme.Holo.Light.Dialog.Alert">
             <intent-filter>
                 <action android:name="android.settings.SAFETY" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -856,7 +970,7 @@
         </activity>
 
         <activity android:name="SetFullBackupPassword"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@style/Theme.Settings"
                 android:exported="false">
         </activity>
 
@@ -909,7 +1023,7 @@
 
         <activity android:name="DeviceAdminAdd"
                 android:label="@string/device_admin_add_title"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
                 android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.app.action.ADD_DEVICE_ADMIN" />
@@ -919,7 +1033,7 @@
 
         <activity android:name="IccLockSettings"
                 android:label="@string/sim_lock_settings"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
                 android:process="com.android.phone"
                 android:parentActivityName="Settings$SecuritySettingsActivity">
             <intent-filter>
@@ -972,6 +1086,7 @@
 
         <activity android:name="ChooseLockGeneric"
             android:label="@string/lockpassword_choose_lock_generic_header"
+            android:icon="@drawable/ic_settings_lockscreen"
             android:excludeFromRecents="true" >
             <intent-filter>
                 <action android:name="android.app.action.SET_NEW_PASSWORD" />
@@ -981,7 +1096,7 @@
 
         <activity android:name="ChooseLockPatternSize" android:exported="false"/>
 
-        <activity android:name="ChooseLockPattern" android:exported="false"/>
+        <activity android:name="ChooseLockPattern" android:exported="false" android:theme="@style/Theme.Settings"/>
 
         <activity android:name="ChooseLockPassword" android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize"/>
@@ -1008,7 +1123,7 @@
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.Status"
                 android:label="@string/device_status_activity_title"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
                 android:process="com.android.phone"
                 android:parentActivityName="Settings$DeviceInfoSettingsActivity">
             <intent-filter>
@@ -1036,7 +1151,7 @@
         </activity>
 
         <activity android:name=".deviceinfo.MiscFilesHandler"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"/>
+                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"/>
 
         <activity android:name="Settings$ApnEditorActivity"
                 android:label="@string/apn_edit"
@@ -1111,7 +1226,7 @@
         </activity-alias>
 
         <activity android:name=".AppPicker" android:label="@string/select_application"
-                android:theme="@android:style/Theme.Holo.Dialog" />
+                android:theme="@android:style/Theme.Holo.Light.Dialog" />
 
         <activity android:name="Settings$UsbSettingsActivity"
                 android:label="@string/storage_title_usb"
@@ -1154,7 +1269,7 @@
         <activity android:name=".bluetooth.BluetoothPairingDialog"
                   android:label="@string/bluetooth_pairing_request"
                   android:excludeFromRecents="true"
-                  android:theme="@*android:style/Theme.Holo.Dialog.Alert">
+                  android:theme="@*android:style/Theme.Holo.Light.Dialog.Alert">
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.PAIRING_REQUEST" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -1191,7 +1306,7 @@
                   android:label="@string/bluetooth_permission_request"
                   android:excludeFromRecents="true"
                   android:permission="android.permission.BLUETOOTH"
-                  android:theme="@*android:style/Theme.Holo.Dialog.Alert">
+                  android:theme="@*android:style/Theme.Holo.Light.Dialog.Alert">
             <intent-filter>
                 <action android:name="android.bluetooth.adapter.action.REQUEST_DISCOVERABLE" />
                 <action android:name="android.bluetooth.adapter.action.REQUEST_ENABLE" />
@@ -1203,7 +1318,7 @@
                   android:label="@string/bluetooth_pairing_request"
                   android:excludeFromRecents="true"
                   android:permission="android.permission.BLUETOOTH"
-                  android:theme="@*android:style/Theme.Holo.Dialog.Alert">
+                  android:theme="@*android:style/Theme.Holo.Light.Dialog.Alert">
         </activity>
 
         <receiver android:name=".bluetooth.BluetoothPairingRequest">
@@ -1225,7 +1340,7 @@
                   android:label="@string/bluetooth_connection_permission_request"
                   android:excludeFromRecents="true"
                   android:permission="android.permission.BLUETOOTH_ADMIN"
-                  android:theme="@*android:style/Theme.Holo.Dialog.Alert">
+                  android:theme="@*android:style/Theme.Holo.Light.Dialog.Alert">
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.CONNECTION_ACCESS_REQUEST" />
                 <action android:name="android.bluetooth.device.action.CONNECTION_ACCESS_CANCEL" />
@@ -1235,7 +1350,7 @@
 
         <activity android:name="ActivityPicker"
                 android:label="@string/activity_picker_label"
-                android:theme="@*android:style/Theme.Holo.Dialog.Alert"
+                android:theme="@*android:style/Theme.Holo.Light.Dialog.Alert"
                 android:finishOnCloseSystemDialogs="true">
             <intent-filter>
                 <action android:name="android.intent.action.PICK_ACTIVITY" />
@@ -1341,7 +1456,7 @@
         <!-- Standard picker for widgets -->
         <activity android:name="AppWidgetPickActivity"
                 android:label="@string/widget_picker_title"
-                android:theme="@*android:style/Theme.Holo.Dialog.Alert"
+                android:theme="@*android:style/Theme.Holo.Light.Dialog.Alert"
                 android:finishOnCloseSystemDialogs="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_PICK" />
@@ -1434,13 +1549,13 @@
         <activity android:name="com.android.settings.accounts.ChooseAccountActivity"
             android:label="@string/header_add_an_account"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@android:style/Theme.Holo.DialogWhenLarge"/>
+            android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"/>
 
         <activity android:name=".CryptKeeper"
                   android:immersive="true"
                   android:launchMode="singleTop"
                   android:excludeFromRecents="true"
-                  android:theme="@android:style/Theme.Holo.NoActionBar"
+                  android:theme="@android:style/Theme.Holo.Light.NoActionBar"
                   android:configChanges="keyboard|keyboardHidden|uiMode"
                   android:windowSoftInputMode="adjustResize">
             <intent-filter android:priority="10">
@@ -1472,6 +1587,10 @@
         <activity android:name=".cyanogenmod.ThemesSettings" />
 
         <activity android:name=".cyanogenmod.SystemSettings" />
+        
+        <activity android:name=".cyanogenmod.FontsSettings" />
+        
+        <activity android:name=".cyanogenmod.UsbConnectSettings" />
 
         <activity android:name=".cyanogenmod.PerformanceSettings" />
 

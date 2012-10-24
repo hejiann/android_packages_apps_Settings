@@ -61,6 +61,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_wifi);
     }
 
     @Override

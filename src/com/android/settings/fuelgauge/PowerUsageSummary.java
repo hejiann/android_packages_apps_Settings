@@ -131,6 +131,7 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
             mStats = sStatsXfer;
         }
 
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_battery);
         addPreferencesFromResource(R.xml.power_usage_summary);
         mBatteryInfo = IBatteryStats.Stub.asInterface(
                 ServiceManager.getService("batteryinfo"));
