@@ -4386,6 +4386,10 @@
     <string name="pref_flash_mode_title">Flash mode</string>
     <string name="expanded_haptic_feedback_title">Haptic feedback</string>
 
+    <!-- add by zhao -->
+    <string name="title_toggle_reboot">Toggle Reboot</string>
+    <string name="title_toggle_shutdown">Toggle Shutdown</string>
+
     <!-- Status bar  -->
     <string name="combined_status_bar_title">@string/status_bar_title</string>
     <string name="status_bar_title">Status bar</string>
@@ -4925,4 +4929,8 @@
     <string name="sms_security_check_limit_default">30 (Default)</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
+
+    <!-- add by shendu -->
+    <string name ="power_widget_order_driver">Below buttons will hidden</string>
+    <string name="title_widget_buttons">Expanded View Widget</string>
 </resources>

@@ -1964,6 +1964,10 @@
     <string name="pref_flash_mode_title">手电筒切换模式</string>
     <string name="expanded_haptic_feedback_title">触动反馈</string>
 
+    <!-- add by zhao -->
+    <string name="title_toggle_reboot">切换 重启</string>
+    <string name="title_toggle_shutdown">切换 关机</string>
+
     <!-- Status bar  -->
     <string name="status_bar_title">状态栏</string>
     <string name="status_bar_clock_title">时钟</string>
@@ -2481,4 +2485,8 @@
     <string name="volume_key_cursor_control_on_reverse">音量上/下将会使光标右/左移动</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
+
+    <!-- add by shendu -->
+    <string name ="power_widget_order_driver">以下开关不显示</string>
+    <string name="title_widget_buttons">扩展视图控件</string>
 </resources>

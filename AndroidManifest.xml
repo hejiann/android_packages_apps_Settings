@@ -1161,6 +1161,10 @@
             </intent-filter>
         </activity>
 
+        <!-- PowerWidget -->
+        <activity
+            android:name=".cyanogenmod.PowerWidgetOrderActivity" />
+
         <receiver
             android:name=".bluetooth.BluetoothDiscoveryReceiver">
             <intent-filter>
