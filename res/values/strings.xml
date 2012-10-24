@@ -4925,4 +4925,10 @@
     <string name="sms_security_check_limit_default">30 (Default)</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
+     <!-- add ringtone options -->
+    <string name="sound_ringtones">Ringtones</string>
+    <string name="sound_music">Music</string>
+    
+    <string name="file_not_find">This media file not available or not exist...."</string>
+    <string name="sdcard_not_find">"SDCard Unmounted...."</string>
 </resources>
