@@ -53,6 +53,9 @@ public class UserDictionaryAddWordFragment extends Fragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_language);
+        
         setHasOptionsMenu(true);
     }
 

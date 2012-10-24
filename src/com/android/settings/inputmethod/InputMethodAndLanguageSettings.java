@@ -101,6 +101,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.language_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_language);
 
         try {
             mDefaultInputMethodSelectorVisibility = Integer.valueOf(

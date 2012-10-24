@@ -18,6 +18,8 @@ package com.android.settings;
 
 import java.util.Locale;
 
+import android.os.Bundle;
+
 public class LocalePicker extends com.android.internal.app.LocalePicker
         implements com.android.internal.app.LocalePicker.LocaleSelectionListener {
     public LocalePicker() {
@@ -29,5 +31,11 @@ public class LocalePicker extends com.android.internal.app.LocalePicker
     public void onLocaleSelected(Locale locale) {
         getActivity().onBackPressed();
         LocalePicker.updateLocale(locale);
+    }
+    
+    @Override
+    public void onActivityCreated(final Bundle savedInstanceState) {
+    	super.onActivityCreated(savedInstanceState);
+    	getActivity().getActionBar().setIcon(R.drawable.ic_settings_language);
     }
 }

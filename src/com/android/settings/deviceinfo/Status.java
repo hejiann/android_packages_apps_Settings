@@ -178,7 +178,11 @@ public class Status extends PreferenceActivity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         Preference removablePref;
-
+        
+        getActionBar().setIcon(R.drawable.ic_settings_about);
+        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+        getListView().setBackgroundColor(0xfff5f5f5);
+        
         mHandler = new MyHandler(this);
 
         mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);

@@ -58,6 +58,7 @@ public class ConfirmLockPassword extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         CharSequence msg = getText(R.string.lockpassword_confirm_your_password_header);
         showBreadCrumbs(msg, msg);
+        getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
     }
 
     public static class ConfirmLockPasswordFragment extends Fragment implements OnClickListener,

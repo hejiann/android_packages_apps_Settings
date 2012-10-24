@@ -145,6 +145,10 @@ public class IccLockSettings extends PreferenceActivity
             finish();
             return;
         }
+        
+        getActionBar().setIcon(R.drawable.ic_settings_security);
+        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+        getListView().setBackgroundColor(R.color.mobile_setting_background);
 
         addPreferencesFromResource(R.xml.sim_lock_settings);
 

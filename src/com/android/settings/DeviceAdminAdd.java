@@ -89,6 +89,8 @@ public class DeviceAdminAdd extends Activity {
 
         mHandler = new Handler(getMainLooper());
         
+        getActionBar().setIcon(R.drawable.ic_settings_security);
+        
         mDPM = (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
 
         if ((getIntent().getFlags()&Intent.FLAG_ACTIVITY_NEW_TASK) != 0) {

@@ -42,6 +42,7 @@ public class ChooseLockPatternSize extends PreferenceActivity {
             super.onCreate(savedInstanceState);
             mChooseLockSettingsHelper = new ChooseLockSettingsHelper(this.getActivity());
             addPreferencesFromResource(R.xml.security_settings_pattern_size);
+            getActivity().getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
         }
 
         @Override

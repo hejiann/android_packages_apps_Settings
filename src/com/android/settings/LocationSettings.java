@@ -97,6 +97,8 @@ public class LocationSettings extends SettingsPreferenceFragment
             root.removeAll();
         }
         addPreferencesFromResource(R.xml.location_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_location);
         root = getPreferenceScreen();
 
         mLocationAccess = (SwitchPreference) root.findPreference(KEY_LOCATION_TOGGLE);

@@ -116,6 +116,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
         super.onCreate(savedInstanceState);
 
         mLockPatternUtils = new LockPatternUtils(getActivity());
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_security);
 
         mDPM = (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
 
@@ -142,31 +144,31 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
         // Add options for lock/unlock screen
         int resid = 0;
-        if (!mLockPatternUtils.isSecure()) {
-            if (mLockPatternUtils.isLockScreenDisabled()) {
-                resid = R.xml.security_settings_lockscreen;
-            } else {
-                resid = R.xml.security_settings_chooser;
-            }
-        } else if (mLockPatternUtils.usingBiometricWeak() &&
-                mLockPatternUtils.isBiometricWeakInstalled()) {
-            resid = R.xml.security_settings_biometric_weak;
-        } else {
-            switch (mLockPatternUtils.getKeyguardStoredPasswordQuality()) {
-                case DevicePolicyManager.PASSWORD_QUALITY_SOMETHING:
-                    resid = R.xml.security_settings_pattern;
-                    break;
-                case DevicePolicyManager.PASSWORD_QUALITY_NUMERIC:
-                    resid = R.xml.security_settings_pin;
-                    break;
-                case DevicePolicyManager.PASSWORD_QUALITY_ALPHABETIC:
-                case DevicePolicyManager.PASSWORD_QUALITY_ALPHANUMERIC:
-                case DevicePolicyManager.PASSWORD_QUALITY_COMPLEX:
-                    resid = R.xml.security_settings_password;
-                    break;
-            }
-        }
-        addPreferencesFromResource(resid);
+//        if (!mLockPatternUtils.isSecure()) {
+//            if (mLockPatternUtils.isLockScreenDisabled()) {
+//                resid = R.xml.security_settings_lockscreen;
+//            } else {
+//                resid = R.xml.security_settings_chooser;
+//            }
+//        } else if (mLockPatternUtils.usingBiometricWeak() &&
+//                mLockPatternUtils.isBiometricWeakInstalled()) {
+//            resid = R.xml.security_settings_biometric_weak;
+//        } else {
+//            switch (mLockPatternUtils.getKeyguardStoredPasswordQuality()) {
+//                case DevicePolicyManager.PASSWORD_QUALITY_SOMETHING:
+//                    resid = R.xml.security_settings_pattern;
+//                    break;
+//                case DevicePolicyManager.PASSWORD_QUALITY_NUMERIC:
+//                    resid = R.xml.security_settings_pin;
+//                    break;
+//                case DevicePolicyManager.PASSWORD_QUALITY_ALPHABETIC:
+//                case DevicePolicyManager.PASSWORD_QUALITY_ALPHANUMERIC:
+//                case DevicePolicyManager.PASSWORD_QUALITY_COMPLEX:
+//                    resid = R.xml.security_settings_password;
+//                    break;
+//            }
+//        }
+//        addPreferencesFromResource(resid);
 
 
         // Add options for device encryption

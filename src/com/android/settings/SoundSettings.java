@@ -138,6 +138,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         addPreferencesFromResource(R.xml.sound_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_sound);
 
         if (TelephonyManager.PHONE_TYPE_CDMA != activePhoneType) {
             // device is not CDMA, do not display CDMA emergency_tone

@@ -112,6 +112,8 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.notification_light_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_display);
 
         Resources resources = getResources();
         mDefaultColor = resources.getColor(

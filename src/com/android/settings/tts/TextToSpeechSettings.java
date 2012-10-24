@@ -124,6 +124,8 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.tts_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_language);
 
         getActivity().setVolumeControlStream(TextToSpeech.Engine.DEFAULT_STREAM);
 

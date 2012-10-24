@@ -91,9 +91,11 @@ public class AppGroupConfig extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         mProfileManager = (ProfileManager) getActivity().getSystemService(PROFILE_SERVICE);
         addPreferencesFromResource(R.xml.application_list);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_profiles);
 
         final Bundle args = getArguments();
         if (args != null) {

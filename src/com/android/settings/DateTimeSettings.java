@@ -76,6 +76,8 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.date_time_prefs);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_date_time);
 
         initUI();
     }

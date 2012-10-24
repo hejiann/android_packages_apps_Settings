@@ -94,6 +94,8 @@ public class UserDictionarySettings extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_language);
 
         final Intent intent = getActivity().getIntent();
         final String localeFromIntent =

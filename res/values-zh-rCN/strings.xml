@@ -299,7 +299,7 @@
     <string name="owner_info_settings_title" msgid="2723190010708381889">"机主信息"</string>
     <string name="owner_info_settings_summary" msgid="3800834657847339570"></string>
     <string name="owner_info_settings_edit_text_hint" msgid="4608681417960923911">"键入要在锁定屏幕上显示的文字"</string>
-    <string name="location_settings_title" msgid="4483843407328665068">"位置信息访问权限"</string>
+    <string name="location_settings_title" msgid="4483843407328665068">"位置服务"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"安全"</string>
     <string name="security_settings_summary" msgid="967393342537986570">"设置我的位置、屏幕解锁、SIM 卡锁定和凭据存储锁定"</string>
     <string name="cdma_security_settings_summary" msgid="6068799952798901542">"设置我的位置、屏幕解锁和凭据存储锁定"</string>
@@ -785,7 +785,7 @@
     <string name="storage_low_summary" msgid="7737465774892563129">"某些系统功能（如同步）可能无法正常使用。请尝试删除或取消在本地保存某些内容（如应用数据或媒体内容），以便释放存储空间。"</string>
     <string name="storage_menu_usb" msgid="5708207885333243384">"USB 计算机连接"</string>
     <string name="storage_title_usb" msgid="679612779321689418">"USB 计算机连接"</string>
-    <string name="usb_connection_category" msgid="7805945595165422882">"连接方式"</string>
+    <string name="usb_connection_category" msgid="7805945595165422882">"USB 连接方式"</string>
     <string name="usb_mtp_title" msgid="3399663424394065964">"媒体设备 (MTP)"</string>
     <string name="usb_mtp_summary" msgid="4617321473211391236">"让您可以在 Windows 上传输媒体文件，或在 Mac 上使用 Android 文件传输应用来传输文件（请参见 www.android.com/filetransfer）"</string>
     <string name="usb_ptp_title" msgid="3852760810622389620">"相机 (PTP)"</string>
@@ -1868,7 +1868,7 @@
     <string name="header_category_interface">界面</string>
 
     <!-- Launcher settings  -->
-    <string name="launcher_settings_title">启动器</string>
+    <string name="launcher_settings_title">桌面设置</string>
 
     <!-- Themes settings  -->
     <string name="themes_settings_title">主题</string>
@@ -2434,7 +2434,7 @@
     <string name="device_hostname">设备网络名</string>
 
     <!-- About phone screen,  setting option name-->
-    <string name="mod_version">CyanogenMod 版本</string>
+    <string name="mod_version">Mod 版本</string>
     <string name="mod_version_default">未知</string>
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">编译日期</string>
@@ -2481,4 +2481,39 @@
     <string name="volume_key_cursor_control_on_reverse">音量上/下将会使光标右/左移动</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
+    <!-- Status bar notification count -->
+    <string name="launcher_setting_title">桌面设置</string>
+    <string name="lockscreen_options">锁屏选项</string>
+    <string name="statusbar_options">状态栏</string>
+    <string name="font_options">字体</string>
+    
+    <string name="used_setting">常用</string>
+    <string name="personal_setting">个性</string>
+    <string name="system_setting">系统</string>	
+    <string name="usb_connect_summary">选择USB连接到PC时的方式</string>	
+    <string name="usb_is_remember">询问我</string>	
+    <string name="usb_is_remember_summary">选择是否记住询问方式</string>	
+    
+    <string name="usb_connect_charging">仅充电</string>
+    <string name="usb_connect_usb">USB大容量存储</string>
+    <string name="usb_connect_share">USB共享网络</string>
+    
+    <!-- Text shown by list fragment when waiting for data to display. -->
+    <string name="loading">加载中</string>
+	<string name="power_widget_style">控制按钮风格</string>
+	<string name="power_widget_style_bottom">下拉</string>
+    <string name="power_widget_style_page">分页</string>
+    
+    <!-- Notification Settings -->
+    <string name="notification_lable">通知设置</string>
+    <string name="notification_current_setting">当前已设置为</string>
+    <string name="notification_enable">允许推送状态栏通知</string>
+    <string name="notification_disable">不允许推送状态栏通知</string>
+    <string name="notification_button_enable">允许</string>
+    <string name="notification_button_disable">禁止</string>
+    <string name ="power_widget_order_driver">以下开关不显示</string>
+    <string name="title_widget_buttons">扩展视图控件</string>
+    
+    <!-- Storage setting. Title for generic storage settings [CHAR LIMIT=30]-->
+    <string name="storage_title_storage">存储配置</string>
 </resources>

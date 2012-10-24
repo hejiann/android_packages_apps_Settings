@@ -140,6 +140,9 @@ public class PowerUsageDetail extends Fragment implements Button.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = mRootView = inflater.inflate(R.layout.power_usage_details, null);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_battery);
+        
         createDetails();
         return view;
     }

@@ -19,4 +19,9 @@
     <style name="Theme.WifiDialog" parent="@*android:style/Theme.Holo.Dialog.Alert">
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
+    
+    
+    <style name="Theme.Settings" parent="@android:style/Theme.Holo.Light">
+    	<item name="android:actionBarStyle">@*android:style/Widget.Holo.Light.ActionBar</item>
+    </style>
 </resources>

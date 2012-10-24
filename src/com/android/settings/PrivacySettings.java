@@ -58,6 +58,7 @@ public class PrivacySettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.privacy_settings);
         final PreferenceScreen screen = getPreferenceScreen();
 
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_backup);
         mBackupManager = IBackupManager.Stub.asInterface(
                 ServiceManager.getService(Context.BACKUP_SERVICE));
 

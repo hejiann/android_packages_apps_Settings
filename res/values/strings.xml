@@ -4868,7 +4868,7 @@
     <string name="device_hostname">Device hostname</string>
 
     <!-- About phone screen,  setting option name-->
-    <string name="mod_version">CyanogenMod version</string>
+    <string name="mod_version">ShenDuMod version</string>
     <string name="mod_version_default">Unknown</string>
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">Build date</string>
@@ -4925,4 +4925,40 @@
     <string name="sms_security_check_limit_default">30 (Default)</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
+    
+    <string name="launcher_setting_title">Launcher Setting</string>
+    <string name="lockscreen_options">Lockscreen Options</string>
+    <string name="statusbar_options">Statusbar Options</string>
+    <string name="font_options">Fonts options</string>
+    
+    <string name="used_setting">Used</string>
+    <string name="personal_setting">Personalized</string>
+    <string name="system_setting">System</string>
+    
+    <string name="usb_connect_summary">Select USB connect function</string>	
+    <string name="usb_is_remember">Ask Me</string>	
+    <string name="usb_is_remember_summary">Ask me what the remeber function</string>
+    <string name="usb_connect_charging">Only Charging</string>
+    <string name="usb_connect_usb">USB Connect</string>
+    <string name="usb_connect_share">Share Net</string>
+    
+	<!-- Text shown by list fragment when waiting for data to display. -->
+    <string name="loading">Loading...</string>
+    
+    <string name="power_widget_style">Power Widget Style</string>
+    <string name="power_widget_style_bottom">Bottom</string>
+    <string name="power_widget_style_page">Page</string>
+    
+    <!-- Notification Settings -->
+    <string name="notification_lable">Notification</string>
+    <string name="notification_current_setting">Current : </string>
+    <string name="notification_enable">Can send notification</string>
+    <string name="notification_disable">Can\'t send notificaion</string>
+    <string name="notification_button_enable">Enable</string>
+    <string name="notification_button_disable">Disable</string>
+    <string name ="power_widget_order_driver">Below buttons will hidden</string>
+    <string name="title_widget_buttons">Expanded View Widget</string>
+    
+    <!-- Storage setting. Title for generic storage settings [CHAR LIMIT=30]-->
+    <string name="storage_title_storage">Storage configuration</string>
 </resources>

@@ -63,6 +63,9 @@ public class Weather extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.weather_prefs);
         mContext = getActivity();
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
+        
         mResolver = getContentResolver();
 
         // Setup the preferences

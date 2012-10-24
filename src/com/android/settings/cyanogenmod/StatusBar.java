@@ -56,6 +56,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.status_bar);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_statubar);
 
         PreferenceScreen prefSet = getPreferenceScreen();
 

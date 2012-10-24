@@ -195,6 +195,8 @@ public class DevelopmentSettings extends PreferenceFragment
         mDpm = (DevicePolicyManager)getActivity().getSystemService(Context.DEVICE_POLICY_SERVICE);
 
         addPreferencesFromResource(R.xml.development_prefs);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_development);
 
         mEnableAdb = findAndInitCheckboxPref(ENABLE_ADB);
         mAdbOverNetwork = findAndInitCheckboxPref(ADB_TCPIP);

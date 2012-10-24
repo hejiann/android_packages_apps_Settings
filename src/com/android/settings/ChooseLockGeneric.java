@@ -16,6 +16,7 @@
 
 package com.android.settings;
 
+import com.android.settings.R;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.app.admin.DevicePolicyManager;
@@ -73,6 +74,8 @@ public class ChooseLockGeneric extends PreferenceActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
+            
+            getActivity().getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
             mDPM = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
             mKeyStore = KeyStore.getInstance();
             mChooseLockSettingsHelper = new ChooseLockSettingsHelper(this.getActivity());

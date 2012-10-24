@@ -65,6 +65,8 @@ public class LightLevelsActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setTitle(R.string.ll_title);
         setContentView(R.layout.lightlevels);
+        
+        getActionBar().setIcon(R.drawable.ic_settings_display);
 
         mSensorRange = (int) ((SensorManager) getSystemService(SENSOR_SERVICE)).getDefaultSensor(
                 Sensor.TYPE_LIGHT).getMaximumRange();

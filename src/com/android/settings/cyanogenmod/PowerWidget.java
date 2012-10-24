@@ -73,6 +73,8 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 
         if (getPreferenceManager() != null) {
             addPreferencesFromResource(R.xml.power_widget_settings);
+            
+            getActivity().getActionBar().setIcon(R.drawable.ic_settings_notification);
 
             PreferenceScreen prefSet = getPreferenceScreen();
 
@@ -175,6 +177,8 @@ public class PowerWidget extends SettingsPreferenceFragment implements
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             addPreferencesFromResource(R.xml.power_widget);
+            
+            getActivity().getActionBar().setIcon(R.drawable.ic_settings_notification);
 
             PreferenceScreen prefSet = getPreferenceScreen();
             PackageManager pm = getPackageManager();
@@ -445,6 +449,8 @@ public class PowerWidget extends SettingsPreferenceFragment implements
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             mContext = getActivity().getApplicationContext();
+            
+            getActivity().getActionBar().setIcon(R.drawable.ic_settings_notification);
 
             mButtonList = getListView();
             ((TouchInterceptor) mButtonList).setDropListener(mDropListener);

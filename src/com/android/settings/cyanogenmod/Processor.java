@@ -103,6 +103,8 @@ public class Processor extends SettingsPreferenceFragment implements
         String temp;
 
         addPreferencesFromResource(R.xml.processor_settings);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_performance);
 
         PreferenceScreen prefScreen = getPreferenceScreen();
 

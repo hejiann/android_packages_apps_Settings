@@ -31,6 +31,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import com.android.settings.R;
 
 public class CryptKeeperConfirm extends Fragment {
 
@@ -105,6 +106,7 @@ public class CryptKeeperConfirm extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mContentView = inflater.inflate(R.layout.crypt_keeper_confirm, null);
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_security);
         establishFinalConfirmationState();
         return mContentView;
     }

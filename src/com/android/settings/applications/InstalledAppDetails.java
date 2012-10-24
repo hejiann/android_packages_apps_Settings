@@ -361,6 +361,8 @@ public class InstalledAppDetails extends Fragment
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_applications);
+        
         mState = ApplicationsState.getInstance(getActivity().getApplication());
         mSession = mState.newSession(this);
         mPm = getActivity().getPackageManager();

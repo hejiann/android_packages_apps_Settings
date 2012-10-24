@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<preference-headers
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        
+    <!-- Profiles -->
+    <header
+        android:id="@+id/profiles_settings"
+        android:icon="@drawable/ic_settings_profiles"
+        android:fragment="com.android.settings.profiles.ProfilesSettings"
+        android:title="@string/profiles_settings_title" />
+    
+   <!-- Launcher -->
+    <header
+        android:id="@+id/launcher_settings"
+        android:title="@string/launcher_settings_title"
+        android:icon="@drawable/ic_settings_desktop" />
+
+    <!-- Lock screen -->
+    <header
+        android:id="@+id/lock_screen_settings"
+        android:fragment="com.android.settings.cyanogenmod.LockscreenInterface"
+        android:title="@string/lock_screen_title"
+        android:icon="@drawable/ic_settings_lockscreen" />  
+        
+    <!-- Status_bar -->
+    <header
+        android:id="@+id/status_bar"
+        android:fragment="com.android.settings.cyanogenmod.StatusBar"
+        android:icon="@drawable/ic_settings_statubar"
+        android:title="@string/combined_status_bar_title" />
+    
+    <!-- Notification_drawer -->
+    <header
+        android:id="@+id/notification_drawer"
+        android:fragment="com.android.settings.cyanogenmod.PowerWidget"
+        android:icon="@drawable/ic_settings_notification"
+        android:title="@string/notification_drawer_title" />
+    
+    <!-- wallpaper -->
+    <header
+        android:id="@+id/wallpaper"
+        android:fragment="com.android.settings.WallpaperTypeSettings"
+        android:icon="@drawable/ic_settings_wallpaper"
+        android:title="@string/wallpaper_settings_title" />
+
+    <!-- Fonts Setting --> 
+    <header
+        android:id="@+id/fonts_settings"
+        android:fragment="com.android.settings.cyanogenmod.FontsSettings"
+        android:icon="@drawable/ic_settings_font"
+        android:title="@string/font_options" />
+    
+    <!-- USB Setting -->
+    <header
+        android:id="@+id/usb_connect_settings"
+        android:fragment="com.android.settings.cyanogenmod.UsbConnectSettings"
+        android:icon="@drawable/ic_settings_usbconnect"
+        android:title="@string/usb_connection_category" />
+
+    <!-- Performance -->
+    <header
+        android:id="@+id/performance_settings"
+        android:fragment="com.android.settings.cyanogenmod.PerformanceSettings"
+        android:icon="@drawable/ic_settings_performance"
+        android:title="@string/performance_settings_title" />
+
+</preference-headers>
