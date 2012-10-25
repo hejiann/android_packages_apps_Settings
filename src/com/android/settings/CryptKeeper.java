@@ -17,6 +17,8 @@
 package com.android.settings;
 
 import com.android.settings.R;
+
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.StatusBarManager;
 import android.content.ComponentName;
@@ -279,7 +281,11 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        getActionBar().setIcon(R.drawable.ic_settings_security);
+        ActionBar ac = getActionBar();
+        
+        if(ac != null){
+        	ac.setIcon(R.drawable.ic_settings_security);
+        }
 
         // If we are not encrypted or encrypting, get out quickly.
         final String state = SystemProperties.get("vold.decrypt");

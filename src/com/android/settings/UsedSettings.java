@@ -431,18 +431,6 @@ public class UsedSettings extends PreferenceActivity implements
 						PackageManager.FEATURE_BLUETOOTH)) {
 					target.remove(header);
 				}
-			} else if (id == R.id.data_usage_settings) {
-				// Remove data usage when kernel module not enabled
-				final INetworkManagementService netManager = INetworkManagementService.Stub
-						.asInterface(ServiceManager
-								.getService(Context.NETWORKMANAGEMENT_SERVICE));
-				try {
-					if (!netManager.isBandwidthControlEnabled()) {
-						target.remove(header);
-					}
-				} catch (RemoteException e) {
-					// ignored
-				}
 			} else if (id == R.id.account_settings) {
 				int headerIndex = i + 1;
 				i = insertAccountsHeaders(target, headerIndex);
