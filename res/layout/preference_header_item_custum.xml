@@ -47,9 +47,7 @@
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:ellipsize="marquee"
-            android:fadingEdge="horizontal" 
-            android:textColor="#3c3d3e"
-            android:textSize="17sp"/>
+            android:fadingEdge="horizontal"/>
 
         <TextView android:id="@+android:id/summary"
             android:layout_width="wrap_content"

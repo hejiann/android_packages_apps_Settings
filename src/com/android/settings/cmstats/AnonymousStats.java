@@ -68,7 +68,6 @@ public class AnonymousStats extends SettingsPreferenceFragment
             boolean firstBoot = mPrefs.getBoolean(ANONYMOUS_FIRST_BOOT, true);
             if (mEnableReporting.isChecked() && firstBoot) {
                 mPrefs.edit().putBoolean(ANONYMOUS_FIRST_BOOT, false).apply();
-                ReportingServiceManager.launchService(getActivity());
             }
             NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             nm.cancel(1);
@@ -126,7 +125,6 @@ public class AnonymousStats extends SettingsPreferenceFragment
         if (which == DialogInterface.BUTTON_POSITIVE) {
             mOkClicked = true;
             mPrefs.edit().putBoolean(ANONYMOUS_OPT_IN, true).apply();
-            ReportingServiceManager.launchService(getActivity());
         } else if (which == DialogInterface.BUTTON_NEGATIVE){
             mEnableReporting.setChecked(false);
         } else {

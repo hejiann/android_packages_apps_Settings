@@ -181,7 +181,7 @@ public class Status extends PreferenceActivity {
         
         getActionBar().setIcon(R.drawable.ic_settings_about);
         getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
-        getListView().setBackgroundColor(0xfff5f5f5);
+        getListView().setBackgroundColor(getResources().getColor(R.color.mobile_setting_background));
         
         mHandler = new MyHandler(this);
 

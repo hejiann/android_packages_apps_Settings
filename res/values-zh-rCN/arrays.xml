@@ -398,6 +398,11 @@
         <item>使用内置 GPS</item>
     </string-array>
 
+    <string-array name="usb_connect_func">
+        <item>USB大容量存储</item>
+        <item>USB共享网络</item>
+        <item>仅充电</item>
+    </string-array>
 
     <!-- **** CYANOGENMOD EDITS END **** -->
 </resources>
