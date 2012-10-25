@@ -142,7 +142,7 @@ public class SoundPreference extends RingtonePreference  implements
     protected void onClick() {
         // TODO Auto-generated method stub
         Builder builder = new AlertDialog.Builder(mContext);
-        builder.setIcon(R.drawable.ic_dialog_sound);
+        //builder.setIcon(R.drawable.ic_dialog_sound);
         builder.setTitle(R.string.ringtone_title);
         builder.setSingleChoiceItems(R.array.ringtone_entries, loadMediaPath, new DialogInterface.OnClickListener() {
             @Override
