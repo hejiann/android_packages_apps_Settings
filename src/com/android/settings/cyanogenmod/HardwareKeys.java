@@ -84,6 +84,8 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
         addPreferencesFromResource(R.xml.hardware_keys);
         PreferenceScreen prefSet = getPreferenceScreen();
 
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_system);
+        
         mEnableCustomBindings = (CheckBoxPreference) prefSet.findPreference(
                 HARDWARE_KEYS_ENABLE_CUSTOM);
         mHomeLongPressAction = (ListPreference) prefSet.findPreference(

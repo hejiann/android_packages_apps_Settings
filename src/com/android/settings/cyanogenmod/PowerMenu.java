@@ -42,6 +42,7 @@ public class PowerMenu extends SettingsPreferenceFragment {
 
         addPreferencesFromResource(R.xml.power_menu_settings);
 
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_system);
         mRebootPref = (CheckBoxPreference) findPreference(KEY_REBOOT);
         mRebootPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_REBOOT_ENABLED, 1) == 1));

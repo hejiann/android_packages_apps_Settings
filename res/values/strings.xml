@@ -4975,4 +4975,5 @@
     
     <string name="file_not_find">This media file not available or not exist...."</string>
     <string name="sdcard_not_find">"SDCard Unmounted...."</string>
+    <string name="dsp_manager">DSP Manager</string>
 </resources>

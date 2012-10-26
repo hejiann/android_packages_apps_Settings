@@ -72,5 +72,12 @@
         android:fragment="com.android.settings.cyanogenmod.PerformanceSettings"
         android:icon="@drawable/ic_settings_performance"
         android:title="@string/performance_settings_title" />
+    
+    <!-- System -->
+    <header
+        android:id="@+id/system_settings"
+        android:icon="@drawable/ic_settings_system"
+        android:fragment="com.android.settings.cyanogenmod.SystemSettings"
+        android:title="@string/system_settings_title" />
 
 </preference-headers>

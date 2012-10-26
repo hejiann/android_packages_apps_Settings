@@ -874,6 +874,8 @@ public class ManageApplications extends Fragment implements
         mInflater = inflater;
         
         getActivity().getActionBar().setIcon(R.drawable.ic_settings_applications);
+        
+        getActivity().getActionBar().setDisplayHomeAsUpEnabled(false);
 
         View rootView = mInflater.inflate(R.layout.manage_applications_content,
                 container, false);

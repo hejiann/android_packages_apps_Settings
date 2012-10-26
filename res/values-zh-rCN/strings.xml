@@ -1874,7 +1874,7 @@
     <string name="themes_settings_title">主题</string>
 
     <!-- System Interface settings  -->
-    <string name="system_settings_title">系统</string>
+    <string name="system_settings_title">系统功能按键</string>
     <string name="system_interface_title">系统界面</string>
 
     <!-- Notification Drawer  -->
@@ -2541,4 +2541,5 @@
     
     <!-- Title for the accessibility preference to home button to answers a call. [CHAR LIMIT=35] -->
     <string name="accessibility_home_button_answers_call_title">Home键接听</string>
+    <string name="dsp_manager">DSP 管理器</string>
 </resources>

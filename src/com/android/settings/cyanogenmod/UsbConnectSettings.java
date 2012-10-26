@@ -66,7 +66,7 @@ public class UsbConnectSettings extends SettingsPreferenceFragment implements On
         mStorageSetting = (PreferenceScreen) prefSet.findPreference(STORAGE_SETTING);
         
         if(!mHasSwitchableStorage){
-        	prefSet.removePreference(mStorageSetting);
+//        	prefSet.removePreference(mStorageSetting);
         }
         
         
