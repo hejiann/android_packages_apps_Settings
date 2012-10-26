@@ -2531,4 +2531,14 @@
     
     <string name="file_not_find">"该媒体文件格式不支持或不存在...."</string>
     <string name="sdcard_not_find">"SDCard 未安装...."</string>
+    
+    
+    <!--- Sms security limit -->
+    <string name="app_security_title">应用程序安全管理</string>
+    <string name="sms_security_check_limit_title">SMS消息限制</string>
+    <string name="sms_security_check_limit_summary">显示一个警告对话框来防止应用程序发送短信过于频繁。电流限制：%d 封邮件在15分钟内</string>
+    <string name="sms_security_check_limit_default">30 (默认)</string>
+    
+    <!-- Title for the accessibility preference to home button to answers a call. [CHAR LIMIT=35] -->
+    <string name="accessibility_home_button_answers_call_title">Home键接听</string>
 </resources>
