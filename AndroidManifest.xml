@@ -1565,6 +1565,8 @@
         <activity android:name=".cyanogenmod.LightLevelsActivity" />
 
         <activity android:name=".cyanogenmod.PowerWidget" />
+        
+        <activity android:name=".cyanogenmod.StatusBar" />
 
         <activity android:name=".cyanogenmod.TabletPowerWidget" />
 
