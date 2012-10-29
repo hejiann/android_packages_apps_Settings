@@ -23,14 +23,16 @@
     <item android:id="@android:id/secondaryProgress">
         <clip>
             <shape>
-                <solid android:color="#c050ade5" />
+                <!-- <solid android:color="#c050ade5" /> -->
+                <solid android:color="@color/data_usage_bar_progress_bg" />
             </shape>
         </clip>
     </item>
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="#c050ade5" />
+                <!-- <solid android:color="#c050ade5" /> -->
+                <solid android:color="@color/data_usage_bar_progress_drawable" />
             </shape>
         </clip>
     </item>

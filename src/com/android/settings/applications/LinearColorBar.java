@@ -3,6 +3,8 @@
  */
 package com.android.settings.applications;
 
+import com.android.settings.R;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
@@ -15,9 +17,12 @@ import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
 
 public class LinearColorBar extends LinearLayout {
-    static final int LEFT_COLOR = 0xff0099cc;
+/*    static final int LEFT_COLOR = 0xff0099cc;
     static final int MIDDLE_COLOR = 0xff0099cc;
-    static final int RIGHT_COLOR = 0xff888888;
+    static final int RIGHT_COLOR = 0xff888888;*/
+	static int LEFT_COLOR = 0xff0099cc;
+	static int MIDDLE_COLOR = 0xff0099cc;
+    static int RIGHT_COLOR = 0xff888888;
 
     private float mRedRatio;
     private float mYellowRatio;
@@ -39,6 +44,11 @@ public class LinearColorBar extends LinearLayout {
     public LinearColorBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         setWillNotDraw(false);
+        
+        LEFT_COLOR = context.getResources().getColor(R.color.app_manager_left_color);
+        MIDDLE_COLOR = context.getResources().getColor(R.color.app_manager_middle_color);
+        RIGHT_COLOR = context.getResources().getColor(R.color.app_manager_right_color);
+        
         mPaint.setStyle(Paint.Style.FILL);
         mColorGradientPaint.setStyle(Paint.Style.FILL);
         mColorGradientPaint.setAntiAlias(true);

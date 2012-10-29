@@ -39,4 +39,13 @@
     <color name="application_item_text_color">#ff3c3d3e</color>
     <color name="viewpager_tab_text_color">#ff353637</color>
     <color name="mobile_setting_background">#fff5f5f5</color>
+    
+    <!-- add theme model color value by lys -->
+    <color name="data_usage_bar_progress_drawable">#c050ade5</color>
+    <color name="data_usage_bar_progress_bg">#ff28262c</color> 
+    
+    <color name="app_manager_left_color">#ff0099cc</color>
+    <color name="app_manager_middle_color">#ff0099cc</color>
+    <color name="app_manager_right_color">#ff888888</color>
+    <!-- add theme model color value by lys -->
 </resources>
