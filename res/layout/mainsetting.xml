@@ -6,8 +6,17 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="48dp">
+        android:layout_height="48dp"
+        android:background="@drawable/setting_top_bg" >
 
+        <ImageView
+            android:id="@+id/cursor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:scaleType="matrix"
+            android:src="@drawable/top_slider" />
+        
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="fill_parent"
@@ -15,7 +24,7 @@
             android:layout_alignParentTop="true"
             android:gravity="center"
             android:orientation="horizontal" 
-            android:background="@drawable/setting_top_bg" >
+            >
 
             <TextView
                 android:id="@+id/used_tab"
@@ -63,13 +72,7 @@
                 android:background="@drawable/tab_click_bg"/>
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/cursor"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:scaleType="matrix"
-            android:src="@drawable/top_slider" />
+        
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager
