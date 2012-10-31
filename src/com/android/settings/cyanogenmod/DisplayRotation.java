@@ -66,6 +66,8 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.display_rotation);
+        
+        getActivity().getActionBar().setIcon(R.drawable.ic_settings_display);
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
