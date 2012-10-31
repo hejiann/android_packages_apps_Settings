@@ -62,6 +62,7 @@ public class MainSetting extends Activity {
 			switcherBean.getmBluetoothEnabler().resume();
 			switcherBean.getmDataEnabler().resume();
 			switcherBean.getmProfileEnabler().resume();
+			switcherBean.getmAirplaneEnabler().resume();
 		} else {
 			resumeFirst = false;
 		}
@@ -75,6 +76,7 @@ public class MainSetting extends Activity {
 			switcherBean.getmBluetoothEnabler().pause();
 			switcherBean.getmDataEnabler().pause();
 			switcherBean.getmProfileEnabler().pause();
+			switcherBean.getmAirplaneEnabler().pause();
 		} else {
 			pauseFirst = false;
 		}
@@ -91,6 +93,7 @@ public class MainSetting extends Activity {
 		switcherBean.setIsBluetooth(0);
 		switcherBean.setIsProfile(0);
 		switcherBean.setBluetoothIndex(0);
+		switcherBean.setIsAirplane(0);
 	}
 
 	/**

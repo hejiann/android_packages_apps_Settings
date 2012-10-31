@@ -24,6 +24,17 @@
         android:fragment="com.android.settings.profiles.ProfilesSettings"
         android:title="@string/profiles_settings_title" />
     
+    <!-- ACCOUNTS section -->
+    <header
+        android:id="@+id/account_manager"
+        android:icon="@drawable/ic_settings_sync"
+        android:title="@string/account_settings" >
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.android.settings.accounts.AccountsManager"
+            android:targetPackage="com.android.settings" />
+    </header>
+    
     <!-- Lock screen -->
     <header
         android:id="@+id/lock_screen_settings"

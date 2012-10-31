@@ -56,7 +56,6 @@ public class WirelessSettings extends SettingsPreferenceFragment {
     public static final int REQUEST_CODE_EXIT_ECM = 1;
 
     private AirplaneModeEnabler mAirplaneModeEnabler;
-    private CheckBoxPreference mAirplaneModePreference;
     private NfcEnabler mNfcEnabler;
     private NfcAdapter mNfcAdapter;
     private NsdEnabler mNsdEnabler;
@@ -68,14 +67,6 @@ public class WirelessSettings extends SettingsPreferenceFragment {
      */
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mAirplaneModePreference && Boolean.parseBoolean(
-                SystemProperties.get(TelephonyProperties.PROPERTY_INECM_MODE))) {
-            // In ECM mode launch ECM app dialog
-            startActivityForResult(
-                new Intent(TelephonyIntents.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS, null),
-                REQUEST_CODE_EXIT_ECM);
-            return true;
-        }
         // Let the intents be launched by the Preference manager
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -101,12 +92,12 @@ public class WirelessSettings extends SettingsPreferenceFragment {
         
         activity.getActionBar().setIcon(R.drawable.ic_settings_network);
         
-        mAirplaneModePreference = (CheckBoxPreference) findPreference(KEY_TOGGLE_AIRPLANE);
+//        mAirplaneModePreference = (CheckBoxPreference) findPreference(KEY_TOGGLE_AIRPLANE);
         CheckBoxPreference nfc = (CheckBoxPreference) findPreference(KEY_TOGGLE_NFC);
         PreferenceScreen androidBeam = (PreferenceScreen) findPreference(KEY_ANDROID_BEAM_SETTINGS);
         CheckBoxPreference nsd = (CheckBoxPreference) findPreference(KEY_TOGGLE_NSD);
 
-        mAirplaneModeEnabler = new AirplaneModeEnabler(activity, mAirplaneModePreference);
+//        mAirplaneModeEnabler = new AirplaneModeEnabler(activity, mAirplaneModePreference);
         mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam);
 
         // Remove NSD checkbox by default
@@ -202,7 +193,7 @@ public class WirelessSettings extends SettingsPreferenceFragment {
     public void onResume() {
         super.onResume();
 
-        mAirplaneModeEnabler.resume();
+//        mAirplaneModeEnabler.resume();
         if (mNfcEnabler != null) {
             mNfcEnabler.resume();
         }
@@ -215,7 +206,7 @@ public class WirelessSettings extends SettingsPreferenceFragment {
     public void onPause() {
         super.onPause();
 
-        mAirplaneModeEnabler.pause();
+//        mAirplaneModeEnabler.pause();
         if (mNfcEnabler != null) {
             mNfcEnabler.pause();
         }
@@ -229,8 +220,8 @@ public class WirelessSettings extends SettingsPreferenceFragment {
         if (requestCode == REQUEST_CODE_EXIT_ECM) {
             Boolean isChoiceYes = data.getBooleanExtra(EXIT_ECM_RESULT, false);
             // Set Airplane mode based on the return value and checkbox state
-            mAirplaneModeEnabler.setAirplaneModeInECM(isChoiceYes,
-                    mAirplaneModePreference.isChecked());
+//            mAirplaneModeEnabler.setAirplaneModeInECM(isChoiceYes,
+//                    mAirplaneModePreference.isChecked());
         }
     }
 

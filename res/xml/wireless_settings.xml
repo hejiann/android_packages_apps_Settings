@@ -17,12 +17,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/wireless_networks_settings_title">
 
-    <CheckBoxPreference
-        android:key="toggle_airplane"
-        android:title="@string/airplane_mode"
-        android:persistent="false"
-        android:disableDependentsState="true" />
-
     <PreferenceScreen
         android:fragment="com.android.settings.vpn2.VpnSettings"
         android:key="vpn_settings"

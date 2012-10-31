@@ -1,5 +1,6 @@
 package com.android.settings;
 
+import com.android.settings.airplane.AirplaneEnabler;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.profiles.ProfileEnabler;
 import com.android.settings.wifi.WifiEnabler;
@@ -10,11 +11,13 @@ public class SwitcherBean {
 	private BluetoothEnabler mBluetoothEnabler;
 	private DataEnabler mDataEnabler;
 	private ProfileEnabler mProfileEnabler;
+	private AirplaneEnabler mAirplaneEnabler;
 	private int isWifi = 0;
 	private int isBluetooth = 0;
 	private int bluetoothIndex = 0;
 	private int isData = 0;
 	private int isProfile = 0;
+	private int isAirplane = 0;
 	private static SwitcherBean mBean = null;
 	
 	private SwitcherBean(){}
@@ -97,8 +100,21 @@ public class SwitcherBean {
 	public void setIsProfile(int isProfile) {
 		this.isProfile = isProfile;
 	}
-	
-	
 
+	public AirplaneEnabler getmAirplaneEnabler() {
+		return mAirplaneEnabler;
+	}
+
+	public void setmAirplaneEnabler(AirplaneEnabler mAirplaneEnabler) {
+		this.mAirplaneEnabler = mAirplaneEnabler;
+	}
+
+	public int getIsAirplane() {
+		return isAirplane;
+	}
+
+	public void setIsAirplane(int isAirplane) {
+		this.isAirplane = isAirplane;
+	}
 	
 }

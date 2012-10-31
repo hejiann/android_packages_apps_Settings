@@ -1356,6 +1356,13 @@
                 android:value="com.android.settings.nfc.AndroidBeam" />
         </activity>
 
+        <!-- WifiConnectionView -->
+        
+        <activity android:name=".wifi.WifiConnectionView" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
 
 
@@ -1519,7 +1526,6 @@
         </activity>
 
         <activity android:name="com.android.settings.accounts.AddAccountSettings"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/header_add_an_account"
             android:parentActivityName="Settings$ManageAccountsSettingsActivity">
@@ -1532,8 +1538,7 @@
 
         <activity android:name="com.android.settings.accounts.ChooseAccountActivity"
             android:label="@string/header_add_an_account"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"/>
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
 
         <activity android:name=".CryptKeeper"
                   android:immersive="true"

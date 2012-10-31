@@ -80,7 +80,6 @@ public class ChooseAccountActivity extends PreferenceActivity {
         super.onCreate(icicle);
         
         getActionBar().setIcon(R.drawable.ic_settings_sync);
-        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
 
         setContentView(R.layout.add_account_screen);
         addPreferencesFromResource(R.xml.add_account_settings);

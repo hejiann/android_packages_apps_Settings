@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/wifi_buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/setting_top_bg"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/wifi_cancel"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/tab_click_bg"
+            android:gravity="center"
+            android:text="@string/wifi_cancel"
+            android:textColor="@color/viewpager_tab_text_color"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/wifi_forget_parent"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0" 
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dividing_line" >
+            </ImageView>
+
+            <TextView
+                android:id="@+id/wifi_forget"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/tab_click_bg"
+                android:gravity="center"
+                android:text="@string/wifi_forget"
+                android:textColor="@color/viewpager_tab_text_color"
+                android:textSize="16sp" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/wifi_connect_parent"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0" 
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dividing_line" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/wifi_connect"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/tab_click_bg"
+            android:gravity="center"
+            android:text="@string/wifi_connect"
+            android:textColor="@color/viewpager_tab_text_color"
+            android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/wifi_buttons"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:id="@+id/wifi_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/security_fields"
+                style="@style/wifi_section"
+                android:visibility="gone" >
+
+                <LinearLayout style="@style/wifi_item" >
+
+                    <TextView
+                        style="@style/wifi_item_label"
+                        android:text="@string/wifi_password" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        style="@style/wifi_item_content"
+                        android:password="true"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/wifi_item" >
+
+                    <!-- Dummy to enable right-justification of checkbox -->
+
+                    <TextView style="@style/wifi_item_label" />
+
+                    <CheckBox
+                        android:id="@+id/show_password"
+                        style="@style/wifi_item_content"
+                        android:text="@string/wifi_show_password"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/wifi_advanced_toggle"
+                style="@style/wifi_item"
+                android:visibility="gone" >
+
+                <CheckBox
+                    android:id="@+id/wifi_advanced_togglebox"
+                    style="@style/wifi_item_content"
+                    android:text="@string/wifi_show_advanced"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/wifi_advanced_fields"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:id="@+id/proxy_settings_fields"
+                    style="@style/wifi_item"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/proxy_settings_title"
+                        style="@style/wifi_item_label"
+                        android:text="@string/proxy_settings_title" />
+
+                    <Spinner
+                        android:id="@+id/proxy_settings"
+                        style="@style/wifi_item_content"
+                        android:entries="@array/wifi_proxy_settings"
+                        android:prompt="@string/proxy_settings_title" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/proxy_warning_limited_support"
+                    style="@style/wifi_item"
+                    android:visibility="gone" >
+
+                    <!-- Dummy to enable right-justification of warning -->
+
+                    <TextView style="@style/wifi_item_label" />
+
+                    <TextView
+                        style="@style/wifi_item_content"
+                        android:text="@string/proxy_warning_limited_support" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/proxy_fields"
+                    style="@style/wifi_section"
+                    android:visibility="gone" >
+
+                    <LinearLayout style="@style/wifi_item" >
+
+                        <TextView
+                            style="@style/wifi_item_label"
+                            android:text="@string/proxy_hostname_label" />
+
+                        <EditText
+                            android:id="@+id/proxy_hostname"
+                            style="@style/wifi_item_content"
+                            android:hint="@string/proxy_hostname_hint"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/wifi_item" >
+
+                        <TextView
+                            style="@style/wifi_item_label"
+                            android:text="@string/proxy_port_label" />
+
+                        <EditText
+                            android:id="@+id/proxy_port"
+                            style="@style/wifi_item_content"
+                            android:hint="@string/proxy_port_hint"
+                            android:inputType="number"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/wifi_item" >
+
+                        <TextView
+                            style="@style/wifi_item_label"
+                            android:text="@string/proxy_exclusionlist_label" />
+
+                        <EditText
+                            android:id="@+id/proxy_exclusionlist"
+                            style="@style/wifi_item_content"
+                            android:hint="@string/proxy_exclusionlist_hint"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ip_fields"
+                    style="@style/wifi_item"
+                    android:visibility="gone" >
+
+                    <TextView
+                        style="@style/wifi_item_label"
+                        android:text="@string/wifi_ip_settings" />
+
+                    <Spinner
+                        android:id="@+id/ip_settings"
+                        style="@style/wifi_item_content"
+                        android:entries="@array/wifi_ip_settings"
+                        android:prompt="@string/wifi_ip_settings" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/staticip"
+                    style="@style/wifi_section"
+                    android:visibility="gone" >
+
+                    <LinearLayout style="@style/wifi_item" >
+
+                        <TextView
+                            style="@style/wifi_item_label"
+                            android:text="@string/wifi_ip_address" />
+
+                        <EditText
+                            android:id="@+id/ipaddress"
+                            style="@style/wifi_item_content"
+                            android:hint="@string/wifi_ip_address_hint"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/wifi_item" >
+
+                        <TextView
+                            style="@style/wifi_item_label"
+                            android:text="@string/wifi_gateway" />
+
+                        <EditText
+                            android:id="@+id/gateway"
+                            style="@style/wifi_item_content"
+                            android:hint="@string/wifi_gateway_hint"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/wifi_item" >
+
+                        <TextView
+                            style="@style/wifi_item_label"
+                            android:text="@string/wifi_network_prefix_length" />
+
+                        <EditText
+                            android:id="@+id/network_prefix_length"
+                            style="@style/wifi_item_content"
+                            android:hint="@string/wifi_network_prefix_length_hint"
+                            android:inputType="number"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/wifi_item" >
+
+                        <TextView
+                            style="@style/wifi_item_label"
+                            android:text="@string/wifi_dns1" />
+
+                        <EditText
+                            android:id="@+id/dns1"
+                            style="@style/wifi_item_content"
+                            android:hint="@string/wifi_dns1_hint"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/wifi_item" >
+
+                        <TextView
+                            style="@style/wifi_item_label"
+                            android:text="@string/wifi_dns2" />
+
+                        <EditText
+                            android:id="@+id/dns2"
+                            style="@style/wifi_item_content"
+                            android:hint="@string/wifi_dns2_hint"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

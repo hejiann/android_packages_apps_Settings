@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="info_label">
         <item name="android:layout_height">wrap_content</item>
@@ -115,7 +115,7 @@
         <item name="android:orientation">vertical</item>
         <item name="android:gravity">left</item>
     </style>
-
+    
     <style name="wifi_item_label">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -126,6 +126,28 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">18sp</item>
+    </style>
+    
+    <style name="wifi_info_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">10dip</item>
+        <item name="android:paddingLeft">25dip</item>
+        <item name="android:paddingRight">25dip</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">left</item>
+    </style>
+    
+    <style name="wifi_info_item_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="wifi_info_item_content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="wifi_section">
