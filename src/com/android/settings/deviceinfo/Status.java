@@ -180,8 +180,8 @@ public class Status extends PreferenceActivity {
         Preference removablePref;
         
         getActionBar().setIcon(R.drawable.ic_settings_about);
-        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
-        getListView().setBackgroundColor(getResources().getColor(R.color.mobile_setting_background));
+        //getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+        //getListView().setBackgroundColor(getResources().getColor(R.color.mobile_setting_background));
         
         mHandler = new MyHandler(this);
 
