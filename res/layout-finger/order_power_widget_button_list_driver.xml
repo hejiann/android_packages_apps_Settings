@@ -37,8 +37,8 @@
 
     <ImageView
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:src="@drawable/top_slider"
+         android:layout_height="2dp"
+         android:src="@color/power_widget_divider_color"
          android:scaleType="fitXY" />
 
 </LinearLayout>

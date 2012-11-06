@@ -35,7 +35,7 @@
     <color name="title_color">@android:color/holo_blue_light</color>
     <color name="setup_divider_color">#333333</color>
     
-    <color name="dragndrop_background">#e0103010</color>
+    <color name="dragndrop_background">#ff9dd0f1</color>
     <color name="application_item_text_color">#ff3c3d3e</color>
     <color name="viewpager_tab_text_color">#ff353637</color>
     <color name="mobile_setting_background">#fff5f5f5</color>
@@ -48,4 +48,6 @@
     <color name="app_manager_middle_color">#ff0099cc</color>
     <color name="app_manager_right_color">#ff888888</color>
     <!-- add theme model color value by lys -->
+    
+    <color name="power_widget_divider_color">#14a2ec</color>
 </resources>
