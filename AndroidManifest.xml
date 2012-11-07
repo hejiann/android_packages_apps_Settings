@@ -399,7 +399,7 @@
         </activity-alias>
 
         <activity android:name=".bluetooth.DevicePickerActivity"
-                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
+                android:theme="@style/Theme.Settings"
                 android:label="@string/device_picker"
                 android:clearTaskOnLaunch="true"
                 android:parentActivityName="Settings">
