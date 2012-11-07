@@ -2566,4 +2566,12 @@
     
     <!-- Title for the accessibility preference to home button to answers a call. [CHAR LIMIT=35] -->
     <string name="dsp_manager">DSP 管理器</string>
+
+    <!-- Storage settings-->
+    <string name="storage_menu_storage">存储配置</string>
+    <string name="storage_layout">存储布局设置</string>
+    <string name="storage_switch_title">使用内部存储</string>
+    <string name="storage_switch_summary_on">程序与媒体文件将使用内置扩展存储</string>
+    <string name="storage_switch_summary_off">程序与媒体文件将使用外置SD卡存储</string>
+    <string name="storage_switch_unavailable">设备没有内置扩展存储</string>
 </resources>
