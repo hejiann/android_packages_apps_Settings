@@ -48,7 +48,7 @@ public class UsbConnectSettings extends SettingsPreferenceFragment implements On
 	private ListPreference mUsbFuncList;
 	private PreferenceScreen mStorageSetting;
 	
-	private final boolean mHasSwitchableStorage = !SystemProperties.get("ro.vold.switchablepair","").isEmpty();
+	private final boolean mHasSwitchableStorage = SystemProperties.get("ro.vold.switchablepair","").isEmpty();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,8 +65,8 @@ public class UsbConnectSettings extends SettingsPreferenceFragment implements On
         mUsbFuncToggle = (CheckBoxPreference) prefSet.findPreference(USB_IS_REMEMBER);
         mStorageSetting = (PreferenceScreen) prefSet.findPreference(STORAGE_SETTING);
         
-        if(!mHasSwitchableStorage){
-//        	prefSet.removePreference(mStorageSetting);
+        if(mHasSwitchableStorage){
+        	prefSet.removePreference(mStorageSetting);
         }
         
         

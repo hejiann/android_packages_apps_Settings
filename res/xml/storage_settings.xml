@@ -18,9 +18,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/location_settings_title">
 
-    <PreferenceCategory
-        android:title="@string/storage_layout" />
-
     <CheckBoxPreference 
         android:key="pref_switch_storage"
         android:title="@string/storage_switch_title"

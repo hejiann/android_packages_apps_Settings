@@ -34,4 +34,9 @@
         android:fragment="com.android.settings.deviceinfo.UsbSettings"
        	android:title="@string/storage_title_usb" />
     
+    <PreferenceScreen
+        android:key="storage_setting"
+        android:fragment="com.android.settings.deviceinfo.StorageSettings"
+       	android:title="@string/storage_title_storage" />
+    
 </PreferenceScreen>
