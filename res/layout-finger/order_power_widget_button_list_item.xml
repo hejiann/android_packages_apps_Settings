@@ -40,6 +40,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -50,7 +51,7 @@
             android:layout_alignParentBottom = "true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dip" />
+            android:layout_marginRight="15dip" />
 
         <!-- The height is set to half the height of the parent, which is 64 dip -->
         <TextView android:id="@+id/name"

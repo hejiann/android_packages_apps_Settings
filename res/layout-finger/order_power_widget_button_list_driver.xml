@@ -20,6 +20,8 @@
     android:layout_width="match_parent"
     android:layout_height="32dp"
     android:baselineAligned="false"
+    android:paddingLeft="5dip"
+    android:paddingRight="5dip"
     android:orientation="vertical" >
 
     <TextView
