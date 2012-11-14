@@ -23,6 +23,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -33,98 +34,146 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-public class FontsSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
-    private static final String TAG = "SystemSettings";
+public class FontsSettings extends SettingsPreferenceFragment {
+	private static final String TAG = "SystemSettings";
 
-    private static final String KEY_FONT_SIZE = "font_size";
-    private static final String KEY_NOTIFICATION_DRAWER = "notification_drawer";
-    private static final String KEY_NOTIFICATION_DRAWER_TABLET = "notification_drawer_tablet";
-    private static final String KEY_NAVIGATION_BAR = "navigation_bar";
+	private static final String SMALL_SIZE = "small_size";
+	private static final String NORMAL_SIZE = "normal_size";
+	private static final String LARGE_SIZE = "big_size";
+	private static final String HUGE_SIZE = "huge_size";
 
-    private ListPreference mFontSizePref;
+	private CheckBoxPreference mSmallSize;
+	private CheckBoxPreference mNormalSize;
+	private CheckBoxPreference mLargeSize;
+	private CheckBoxPreference mHugeSize;
 
-    private final Configuration mCurConfig = new Configuration();
-    
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	private final Configuration mCurConfig = new Configuration();
 
-        addPreferencesFromResource(R.xml.fonts_settings);
-        
-        getActivity().getActionBar().setIcon(R.drawable.ic_settings_font);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        mFontSizePref = (ListPreference) findPreference(KEY_FONT_SIZE);
-        mFontSizePref.setOnPreferenceChangeListener(this);
-    }
+		addPreferencesFromResource(R.xml.fonts_settings);
 
-    int floatToIndex(float val) {
-        String[] indices = getResources().getStringArray(R.array.entryvalues_font_size);
-        float lastVal = Float.parseFloat(indices[0]);
-        for (int i=1; i<indices.length; i++) {
-            float thisVal = Float.parseFloat(indices[i]);
-            if (val < (lastVal + (thisVal-lastVal)*.5f)) {
-                return i-1;
-            }
-            lastVal = thisVal;
-        }
-        return indices.length-1;
-    }
-    
-    public void readFontSizePreference(ListPreference pref) {
-        try {
-            mCurConfig.updateFrom(ActivityManagerNative.getDefault().getConfiguration());
-        } catch (RemoteException e) {
-            Log.w(TAG, "Unable to retrieve font size");
-        }
+		getActivity().getActionBar().setIcon(R.drawable.ic_settings_font);
 
-        // mark the appropriate item in the preferences list
-        int index = floatToIndex(mCurConfig.fontScale);
-        pref.setValueIndex(index);
+		mSmallSize = (CheckBoxPreference) findPreference(SMALL_SIZE);
+		mNormalSize = (CheckBoxPreference) findPreference(NORMAL_SIZE);
+		mLargeSize = (CheckBoxPreference) findPreference(LARGE_SIZE);
+		mHugeSize = (CheckBoxPreference) findPreference(HUGE_SIZE);
 
-        // report the current size in the summary text
-        final Resources res = getResources();
-        String[] fontSizeNames = res.getStringArray(R.array.entries_font_size);
-        pref.setSummary(String.format(res.getString(R.string.summary_font_size),
-                fontSizeNames[index]));
-    }
-    
-    @Override
-    public void onResume() {
-        super.onResume();
+	}
 
-        updateState();
-    }
+	int floatToIndex(float val) {
+		String[] indices = getResources().getStringArray(
+				R.array.entryvalues_font_size);
+		float lastVal = Float.parseFloat(indices[0]);
+		for (int i = 1; i < indices.length; i++) {
+			float thisVal = Float.parseFloat(indices[i]);
+			if (val < (lastVal + (thisVal - lastVal) * .5f)) {
+				return i - 1;
+			}
+			lastVal = thisVal;
+		}
+		return indices.length - 1;
+	}
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
+	public void readFontSizePreference() {
+		try {
+			mCurConfig.updateFrom(ActivityManagerNative.getDefault()
+					.getConfiguration());
+		} catch (RemoteException e) {
+			Log.w(TAG, "Unable to retrieve font size");
+		}
 
-    private void updateState() {
-        readFontSizePreference(mFontSizePref);
-    }
+		// mark the appropriate item in the preferences list
+		int index = floatToIndex(mCurConfig.fontScale);
+		switch (index) {
+		case 0:
+			mSmallSize.setChecked(true);
+			mNormalSize.setChecked(false);
+			mLargeSize.setChecked(false);
+			mHugeSize.setChecked(false);
+			break;
+		case 1:
+			mSmallSize.setChecked(false);
+			mNormalSize.setChecked(true);
+			mLargeSize.setChecked(false);
+			mHugeSize.setChecked(false);
+			break;
+		case 2:
+			mSmallSize.setChecked(false);
+			mNormalSize.setChecked(false);
+			mLargeSize.setChecked(true);
+			mHugeSize.setChecked(false);
+			break;
+		case 3:
+			mSmallSize.setChecked(false);
+			mNormalSize.setChecked(false);
+			mLargeSize.setChecked(false);
+			mHugeSize.setChecked(true);
+			break;
+		}
+	}
 
-    public void writeFontSizePreference(Object objValue) {
-        try {
-            mCurConfig.fontScale = Float.parseFloat(objValue.toString());
-            ActivityManagerNative.getDefault().updatePersistentConfiguration(mCurConfig);
-        } catch (RemoteException e) {
-            Log.w(TAG, "Unable to save font size");
-        }
-    }
+	@Override
+	public void onResume() {
+		super.onResume();
 
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
-    }
+		updateState();
+	}
 
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
-        if (KEY_FONT_SIZE.equals(key)) {
-            writeFontSizePreference(objValue);
-        }
+	@Override
+	public void onPause() {
+		super.onPause();
+	}
 
-        return true;
-    }
+	private void updateState() {
+		readFontSizePreference();
+	}
+
+	public void writeFontSizePreference(String objValue) {
+		try {
+			mCurConfig.fontScale = Float.parseFloat(objValue.toString());
+			ActivityManagerNative.getDefault().updatePersistentConfiguration(
+					mCurConfig);
+		} catch (RemoteException e) {
+			Log.w(TAG, "Unable to save font size");
+		}
+	}
+
+	@Override
+	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
+			Preference preference) {
+		String objValue = "";
+		if (preference == mSmallSize) {
+			objValue = "0.85";
+			mSmallSize.setChecked(true);
+			mNormalSize.setChecked(false);
+			mLargeSize.setChecked(false);
+			mHugeSize.setChecked(false);
+		} else if (preference == mNormalSize) {
+			objValue = "1.0";
+			mSmallSize.setChecked(false);
+			mNormalSize.setChecked(true);
+			mLargeSize.setChecked(false);
+			mHugeSize.setChecked(false);
+		} else if (preference == mLargeSize) {
+			objValue = "1.15";
+			mSmallSize.setChecked(false);
+			mNormalSize.setChecked(false);
+			mLargeSize.setChecked(true);
+			mHugeSize.setChecked(false);
+		} else if (preference == mHugeSize) {
+			objValue = "1.35";
+			mSmallSize.setChecked(false);
+			mNormalSize.setChecked(false);
+			mLargeSize.setChecked(false);
+			mHugeSize.setChecked(true);
+		}
+		writeFontSizePreference(objValue);
+
+		return super.onPreferenceTreeClick(preferenceScreen, preference);
+	}
+
 }

@@ -4988,4 +4988,11 @@
     <string name="file_not_find">This media file not available or not exist...."</string>
     <string name="sdcard_not_find">"SDCard Unmounted...."</string>
     <string name="dsp_manager">DSP Manager</string>
+    
+    <string name="font_small">Small</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_big">Large</string>
+    <string name="font_big_more">Huge</string>
+    
+    
 </resources>

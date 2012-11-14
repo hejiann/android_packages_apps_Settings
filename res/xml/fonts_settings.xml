@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012 The CyanogenMod Project
+<!--
+     Copyright (C) 2012 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,19 +15,23 @@
      limitations under the License.
 -->
 
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/system_interface_title"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/system_interface_title" >
 
-
-    <ListPreference
-        android:key="font_size"
-        android:title="@string/title_font_size"
-        android:summary="@string/summary_font_size"
-        android:entries="@array/entries_font_size"
-        android:entryValues="@array/entryvalues_font_size"
-        android:dialogTitle="@string/dialog_title_font_size" />
-
-
+    <PreferenceCategory android:title="@string/title_font_size" >
+        <CheckBoxPreference android:key="small_size"
+            android:title="@string/font_small"
+            android:defaultValue="false" />
+        <CheckBoxPreference android:key="normal_size"
+            android:title="@string/font_normal"
+            android:defaultValue="true" />
+        <CheckBoxPreference android:key="big_size"
+            android:title="@string/font_big"
+            android:defaultValue="false" />
+        <CheckBoxPreference android:key="huge_size"
+            android:title="@string/font_big_more"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+    
 </PreferenceScreen>

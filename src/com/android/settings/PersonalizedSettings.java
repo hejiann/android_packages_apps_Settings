@@ -43,6 +43,7 @@ import android.os.INetworkManagementService;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserId;
+import android.provider.Settings;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceActivity.Header;
@@ -389,57 +390,17 @@ public class PersonalizedSettings extends PreferenceActivity implements
 			Header header = target.get(i);
 			// Ids are integers, so downcasting
 			int id = (int) header.id;
-			if (id == R.id.dock_settings) {
-				if (!needsDockSettings())
-					target.remove(header);
-			} else if (id == R.id.operator_settings
-					|| id == R.id.manufacturer_settings
-					|| id == R.id.advanced_settings) {
-				Utils.updateHeaderToSpecificActivityFromMetaDataOrRemove(this,
-						target, header);
-			} else if (id == R.id.wifi_settings) {
-				// Remove WiFi Settings if WiFi service is not available.
-				if (!getPackageManager().hasSystemFeature(
-						PackageManager.FEATURE_WIFI)) {
+			if(id == R.id.performance_settings){
+				if(Settings.System.getInt(getContentResolver(),
+		                Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0){
 					target.remove(header);
 				}
-			} else if (id == R.id.bluetooth_settings) {
-				// Remove Bluetooth Settings if Bluetooth service is not
-				// available.
-				if (!getPackageManager().hasSystemFeature(
-						PackageManager.FEATURE_BLUETOOTH)) {
+			} else if(id == R.id.system_settings){
+				if(Settings.System.getInt(getContentResolver(),
+		                Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0){
 					target.remove(header);
 				}
-			} else if (id == R.id.data_usage_settings) {
-				// Remove data usage when kernel module not enabled
-				final INetworkManagementService netManager = INetworkManagementService.Stub
-						.asInterface(ServiceManager
-								.getService(Context.NETWORKMANAGEMENT_SERVICE));
-				try {
-					if (!netManager.isBandwidthControlEnabled()) {
-						target.remove(header);
-					}
-				} catch (RemoteException e) {
-					// ignored
-				}
-			} else if (id == R.id.account_settings) {
-				int headerIndex = i + 1;
-				i = insertAccountsHeaders(target, headerIndex);
-			} else if (id == R.id.user_settings) {
-				if (!mEnableUserManagement
-						|| !UserId.MU_ENABLED
-						|| UserId.myUserId() != 0
-						|| !getResources().getBoolean(
-								R.bool.enable_user_management)
-						|| Utils.isMonkeyRunning()) {
-					target.remove(header);
-				}
-			}
-			if (UserId.MU_ENABLED && UserId.myUserId() != 0
-					&& !ArrayUtils.contains(SETTINGS_FOR_RESTRICTED, id)) {
-				target.remove(header);
-			}
-
+			} 
 			// Increment if the current one wasn't removed by the Utils code.
 			if (target.get(i) == header) {
 				// Hold on to the first header, when we need to reset to the

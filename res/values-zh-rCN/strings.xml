@@ -796,7 +796,7 @@
     <string name="storage_low_summary" msgid="7737465774892563129">"某些系统功能（如同步）可能无法正常使用。请尝试删除或取消在本地保存某些内容（如应用数据或媒体内容），以便释放存储空间。"</string>
     <string name="storage_menu_usb" msgid="5708207885333243384">"USB 计算机连接"</string>
     <string name="storage_title_usb" msgid="679612779321689418">"USB 计算机连接"</string>
-    <string name="usb_connection_category" msgid="7805945595165422882">"USB 连接方式"</string>
+    <string name="usb_connection_category" msgid="7805945595165422882">"USB 设置"</string>
     <string name="usb_mtp_title" msgid="3399663424394065964">"媒体设备 (MTP)"</string>
     <string name="usb_mtp_summary" msgid="4617321473211391236">"让您可以在 Windows 上传输媒体文件，或在 Mac 上使用 Android 文件传输应用来传输文件（请参见 www.android.com/filetransfer）"</string>
     <string name="usb_ptp_title" msgid="3852760810622389620">"相机 (PTP)"</string>
@@ -2549,7 +2549,7 @@
     <string name="title_widget_buttons">扩展视图控件</string>
     
     <!-- Storage setting. Title for generic storage settings [CHAR LIMIT=30]-->
-    <string name="storage_title_storage">存储配置</string>
+    <string name="storage_title_storage">内外置存储切换</string>
     <!-- add ringtone options -->
     <string name="sound_ringtones">铃声</string>
     <string name="sound_music">本地音乐</string>
@@ -2574,4 +2574,9 @@
     <string name="storage_switch_summary_on">程序与媒体文件将使用内置扩展存储</string>
     <string name="storage_switch_summary_off">程序与媒体文件将使用外置SD卡存储</string>
     <string name="storage_switch_unavailable">设备没有内置扩展存储</string>
+    
+    <string name="font_small">小</string>
+    <string name="font_normal">正常</string>
+    <string name="font_big">大</string>
+    <string name="font_big_more">超大</string>
 </resources>

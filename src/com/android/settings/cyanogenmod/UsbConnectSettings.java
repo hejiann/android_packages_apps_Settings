@@ -61,62 +61,62 @@ public class UsbConnectSettings extends SettingsPreferenceFragment implements On
         bar.setIcon(R.drawable.ic_settings_usbconnect);
         
         PreferenceScreen prefSet = getPreferenceScreen();
-        mUsbFuncList = (ListPreference) prefSet.findPreference(USB_CONNECT_FUNC);
-        mUsbFuncToggle = (CheckBoxPreference) prefSet.findPreference(USB_IS_REMEMBER);
+//        mUsbFuncList = (ListPreference) prefSet.findPreference(USB_CONNECT_FUNC);
+//        mUsbFuncToggle = (CheckBoxPreference) prefSet.findPreference(USB_IS_REMEMBER);
         mStorageSetting = (PreferenceScreen) prefSet.findPreference(STORAGE_SETTING);
         
-        if(mHasSwitchableStorage){
-        	prefSet.removePreference(mStorageSetting);
-        }
+//        if(mHasSwitchableStorage){
+//        	prefSet.removePreference(mStorageSetting);
+//        }
         
         
-        mUsbFuncToggle.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                USB_ASK_USER, 1) == 1));
-        
-        int mUsbFuncListValue = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                USB_DEFALUT_VALUE, 2);
-        mUsbFuncList.setValue(String.valueOf(mUsbFuncListValue));
-        switch (mUsbFuncListValue) {
-			case 0:
-				mUsbFuncList.setSummary(R.string.usb_connect_usb);
-				break;
-			case 1:
-				mUsbFuncList.setSummary(R.string.usb_connect_share);
-				break;
-			case 2:
-				mUsbFuncList.setSummary(R.string.usb_connect_charging);
-				break;
-		}
-        mUsbFuncList.setOnPreferenceChangeListener(this);
+//        mUsbFuncToggle.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+//                USB_ASK_USER, 1) == 1));
+//        
+//        int mUsbFuncListValue = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+//                USB_DEFALUT_VALUE, 2);
+//        mUsbFuncList.setValue(String.valueOf(mUsbFuncListValue));
+//        switch (mUsbFuncListValue) {
+//			case 0:
+//				mUsbFuncList.setSummary(R.string.usb_connect_usb);
+//				break;
+//			case 1:
+//				mUsbFuncList.setSummary(R.string.usb_connect_share);
+//				break;
+//			case 2:
+//				mUsbFuncList.setSummary(R.string.usb_connect_charging);
+//				break;
+//		}
+//        mUsbFuncList.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-    	if(preference == mUsbFuncList){
-    		int mUsbFuncListValue = Integer.valueOf((String) newValue);
-    		switch (mUsbFuncListValue) {
-				case 0:
-					mUsbFuncList.setSummary(R.string.usb_connect_usb);
-					break;
-				case 1:
-					mUsbFuncList.setSummary(R.string.usb_connect_share);
-					break;
-				case 2:
-					mUsbFuncList.setSummary(R.string.usb_connect_charging);
-					break;
-    		}
-    		Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    USB_DEFALUT_VALUE, mUsbFuncListValue);
-    		return true;
-    	}
+//    	if(preference == mUsbFuncList){
+//    		int mUsbFuncListValue = Integer.valueOf((String) newValue);
+//    		switch (mUsbFuncListValue) {
+//				case 0:
+//					mUsbFuncList.setSummary(R.string.usb_connect_usb);
+//					break;
+//				case 1:
+//					mUsbFuncList.setSummary(R.string.usb_connect_share);
+//					break;
+//				case 2:
+//					mUsbFuncList.setSummary(R.string.usb_connect_charging);
+//					break;
+//    		}
+//    		Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+//                    USB_DEFALUT_VALUE, mUsbFuncListValue);
+//    		return true;
+//    	}
         return false;
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-    	if(preference == mUsbFuncToggle){
-    		boolean isChecked = mUsbFuncToggle.isChecked();
-    		Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    USB_ASK_USER, isChecked ? 1 : 0);
-    	}
+//    	if(preference == mUsbFuncToggle){
+//    		boolean isChecked = mUsbFuncToggle.isChecked();
+//    		Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+//                    USB_ASK_USER, isChecked ? 1 : 0);
+//    	}
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 }

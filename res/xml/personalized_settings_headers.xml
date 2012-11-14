@@ -42,13 +42,6 @@
         android:title="@string/lock_screen_title"
         android:icon="@drawable/ic_settings_lockscreen" />  
         
-    <!-- Status_bar -->
-    <header
-        android:id="@+id/status_bar"
-        android:fragment="com.android.settings.cyanogenmod.StatusBar"
-        android:icon="@drawable/ic_settings_statubar"
-        android:title="@string/combined_status_bar_title" />
-    
     <!-- Notification_drawer -->
     <header
         android:id="@+id/notification_drawer"
@@ -70,12 +63,6 @@
         android:icon="@drawable/ic_settings_font"
         android:title="@string/font_options" />
     
-    <!-- USB Setting -->
-    <header
-        android:id="@+id/usb_connect_settings"
-        android:fragment="com.android.settings.cyanogenmod.UsbConnectSettings"
-        android:icon="@drawable/ic_settings_usbconnect"
-        android:title="@string/usb_connection_category" />
 
     <!-- Performance -->
     <header
@@ -90,5 +77,12 @@
         android:icon="@drawable/ic_settings_system"
         android:fragment="com.android.settings.cyanogenmod.SystemSettings"
         android:title="@string/system_settings_title" />
+    
+    <!-- USB Setting -->
+    <header
+        android:id="@+id/usb_connect_settings"
+        android:fragment="com.android.settings.cyanogenmod.UsbConnectSettings"
+        android:icon="@drawable/ic_settings_usbconnect"
+        android:title="@string/usb_connection_category" />
 
 </preference-headers>
