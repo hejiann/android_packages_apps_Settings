@@ -233,7 +233,7 @@ public final class CredentialStorage extends Activity {
         private boolean mResetConfirmed;
 
         private ResetDialog() {
-            AlertDialog dialog = new AlertDialog.Builder(CredentialStorage.this)
+            AlertDialog dialog = new AlertDialog.Builder(CredentialStorage.this,3)
                     .setTitle(android.R.string.dialog_alert_title)
                     .setIconAttribute(android.R.attr.alertDialogIcon)
                     .setMessage(R.string.credentials_reset_hint)
@@ -303,7 +303,7 @@ public final class CredentialStorage extends Activity {
         private boolean mConfigureConfirmed;
 
         private ConfigureKeyGuardDialog() {
-            AlertDialog dialog = new AlertDialog.Builder(CredentialStorage.this)
+            AlertDialog dialog = new AlertDialog.Builder(CredentialStorage.this,3)
                     .setTitle(android.R.string.dialog_alert_title)
                     .setIconAttribute(android.R.attr.alertDialogIcon)
                     .setMessage(R.string.credentials_configure_lock_screen_hint)
@@ -400,7 +400,7 @@ public final class CredentialStorage extends Activity {
             mOldPassword.addTextChangedListener(this);
             mError = (TextView) view.findViewById(R.id.error);
 
-            AlertDialog dialog = new AlertDialog.Builder(CredentialStorage.this)
+            AlertDialog dialog = new AlertDialog.Builder(CredentialStorage.this,3)
                     .setView(view)
                     .setTitle(R.string.credentials_unlock)
                     .setPositiveButton(android.R.string.ok, this)
