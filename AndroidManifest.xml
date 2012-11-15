@@ -1517,7 +1517,7 @@
 
         <activity android:name=".accounts.SyncSettingsActivity"
             android:label="@string/account_sync_settings_title"
-            android:theme="@android:style/Theme.Holo.Dialog">
+            android:theme="@android:style/Theme.Holo.Light.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.settings.SYNC_SETTINGS" />
