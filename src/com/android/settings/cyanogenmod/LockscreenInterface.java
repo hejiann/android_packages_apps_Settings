@@ -53,6 +53,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     public static final String KEY_BACKGROUND_PREF = "lockscreen_background";
     private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
     private static final String KEY_CLOCK_ALIGN = "lockscreen_clock_align";
+    private static final String KEY_CLOCK_TARGETS = "lockscreen_targets";
+    
 
     private ListPreference mCustomBackground;
     private Preference mWeatherPref;
@@ -61,6 +63,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private ListPreference mClockAlign;
     private Activity mActivity;
     ContentResolver mResolver;
+    
+    private Preference mLockscreenTargets;
 
     private File wallpaperImage;
     private File wallpaperTemporary;
@@ -90,6 +94,14 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mClockAlign.setOnPreferenceChangeListener(this);
 
         mIsScreenLarge = Utils.isTablet(getActivity());
+        
+        mLockscreenTargets = (Preference) findPreference(KEY_CLOCK_TARGETS);
+        
+        if(Settings.System.getInt(
+				getActivity().getApplicationContext().getContentResolver(),
+				Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0){
+        	getPreferenceScreen().removePreference(mLockscreenTargets);
+        }
 
         updateCustomBackgroundSummary();
     }
