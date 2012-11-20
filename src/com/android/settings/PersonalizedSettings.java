@@ -390,17 +390,22 @@ public class PersonalizedSettings extends PreferenceActivity implements
 			Header header = target.get(i);
 			// Ids are integers, so downcasting
 			int id = (int) header.id;
-			if(id == R.id.performance_settings){
-				if(Settings.System.getInt(getContentResolver(),
-		                Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0){
+			if (id == R.id.performance_settings) {
+				// if(Settings.System.getInt(getContentResolver(),
+				// Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0){
+				target.remove(header);
+				// }
+			} else if (id == R.id.system_settings) {
+				// if(Settings.System.getInt(getContentResolver(),
+				// Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0){
+				target.remove(header);
+				// }
+			} else if (id == R.id.advanced_settings) {
+				if (Settings.System.getInt(getContentResolver(),
+						Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0) {
 					target.remove(header);
 				}
-			} else if(id == R.id.system_settings){
-				if(Settings.System.getInt(getContentResolver(),
-		                Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0){
-					target.remove(header);
-				}
-			} 
+			}
 			// Increment if the current one wasn't removed by the Utils code.
 			if (target.get(i) == header) {
 				// Hold on to the first header, when we need to reset to the
