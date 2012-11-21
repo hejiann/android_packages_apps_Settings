@@ -24,6 +24,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemProperties;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
@@ -36,99 +37,80 @@ import android.widget.Toast;
 import com.android.settings.R;
 
 public class CIDLogoActivity extends Activity {
-    Toast mToast;
-    ImageView mContent;
-    int mCount;
-    final Handler mHandler = new Handler();
+	Toast mToast;
+	ImageView mContent;
+	int mCount;
+	final Handler mHandler = new Handler();
 
-    private View makeView() {
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+	private View makeView() {
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        LinearLayout view = new LinearLayout(this);
-        view.setOrientation(LinearLayout.VERTICAL);
-        view.setLayoutParams(
-                new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                ));
-        final int p = (int)(8 * metrics.density);
-        view.setPadding(p, p, p, p);
+		LinearLayout view = new LinearLayout(this);
+		view.setOrientation(LinearLayout.VERTICAL);
+		view.setLayoutParams(new ViewGroup.LayoutParams(
+				ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT));
+		final int p = (int) (8 * metrics.density);
+		view.setPadding(p, p, p, p);
 
-        Typeface light = Typeface.create("sans-serif-light", Typeface.NORMAL);
-        Typeface normal = Typeface.create("sans-serif", Typeface.BOLD);
+		Typeface light = Typeface.create("sans-serif-light", Typeface.NORMAL);
+		Typeface normal = Typeface.create("sans-serif", Typeface.BOLD);
 
-        String cmversion = SystemProperties.get("ro.cm.version");
+		String cmversion = SystemProperties.get("ro.cm.version");
 
-        final float size = 14 * metrics.density;
-        final LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        lp.gravity = Gravity.CENTER_HORIZONTAL;
-        lp.bottomMargin = (int) (-4*metrics.density);
+		final float size = 14 * metrics.density;
+		final LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.WRAP_CONTENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		lp.gravity = Gravity.CENTER_HORIZONTAL;
+		lp.bottomMargin = (int) (-4 * metrics.density);
 
-        TextView tv = new TextView(this);
-        if (normal != null) tv.setTypeface(normal);
-        tv.setTextSize(1.25f*size);
-        tv.setTextColor(0xFFFFFFFF);
-        tv.setShadowLayer(4*metrics.density, 0, 2*metrics.density, 0x66000000);
-        tv.setText("CyanogenMod");
-        view.addView(tv, lp);
-   
-        tv = new TextView(this);
-        if (light != null) tv.setTypeface(light);
-        tv.setTextSize(size);
-        tv.setTextColor(0xFFFFFFFF);
-        tv.setShadowLayer(4*metrics.density, 0, 2*metrics.density, 0x66000000);
-        tv.setText(cmversion.replaceAll("(.+?)-.*","$1"));
-        view.addView(tv, lp);
+		TextView tv = new TextView(this);
+		if (normal != null)
+			tv.setTypeface(normal);
+		tv.setTextSize(1.25f * size);
+		tv.setTextColor(0xFFFFFFFF);
+		tv.setShadowLayer(4 * metrics.density, 0, 2 * metrics.density,
+				0x66000000);
+		tv.setText("CyanogenMod");
+		view.addView(tv, lp);
 
-        return view;
-    }
+		tv = new TextView(this);
+		if (light != null)
+			tv.setTypeface(light);
+		tv.setTextSize(size);
+		tv.setTextColor(0xFFFFFFFF);
+		tv.setShadowLayer(4 * metrics.density, 0, 2 * metrics.density,
+				0x66000000);
+		tv.setText(cmversion.replaceAll("(.+?)-.*", "$1"));
+		view.addView(tv, lp);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+		return view;
+	}
 
-        mToast = Toast.makeText(this, "", Toast.LENGTH_LONG);
-        mToast.setView(makeView());
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		Settings.System.putInt(getApplicationContext().getContentResolver(),
+				Settings.System.ADVANCE_SETTINGS_ENABLED,
+				(Settings.System.getInt(getApplicationContext()
+						.getContentResolver(),
+						Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0) ? 1
+						: 0);
 
-        mContent = new ImageView(this);
-        mContent.setImageResource(R.drawable.cidlogo_alt);
-        mContent.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        
-        final int p = (int)(32 * metrics.density);
-        mContent.setPadding(p, p, p, p);
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        mContent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mToast.show();
-                mContent.setImageResource(R.drawable.cidlogo);
-            }
-        });
+		mContent = new ImageView(this);
+		mContent.setImageResource(R.drawable.advanced_settings);
+		mContent.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
-        mContent.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                try {
-                    startActivity(new Intent(Intent.ACTION_MAIN)
-                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                            | Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-                        //.addCategory("com.android.internal.category.CIDLOGO"))
-                        .setClassName("com.android.settings","com.android.settings.cyanogenmod.CIDCircus"));
-                } catch (ActivityNotFoundException ex) {
-                    android.util.Log.e("CIDLogoActivity", "Couldn't find a circus of CID's.");
-                }
-                finish();
-                return true;
-            }
-        });
-        
-        setContentView(mContent);
-    }
+		final int p = (int) (32 * metrics.density);
+		mContent.setPadding(p, p, p, p);
+
+		setContentView(mContent);
+	}
+
 }

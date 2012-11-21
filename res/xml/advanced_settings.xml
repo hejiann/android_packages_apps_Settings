@@ -19,45 +19,21 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/system_interface_title" >
 
-    <PreferenceCategory android:title="@string/performance_settings_title" >
-        <PreferenceScreen
-            android:fragment="com.android.settings.cyanogenmod.Processor"
-            android:key="processor"
-            android:summary="@string/processor_summary"
-            android:title="@string/processor_title" />
-        <PreferenceScreen
-            android:fragment="com.android.settings.cyanogenmod.IOScheduler"
-            android:key="ioscheduler"
-            android:summary="@string/io_scheds_summary"
-            android:title="@string/io_scheds_title" />
-        <PreferenceScreen
-            android:fragment="com.android.settings.cyanogenmod.MemoryManagement"
-            android:key="memory_management"
-            android:summary="@string/memory_management_summary"
-            android:title="@string/memory_management_title" />
-
-        <CheckBoxPreference
-            android:key="pref_use_16bpp_alpha"
-            android:summary="@string/pref_use_16bpp_alpha_summary"
-            android:title="@string/pref_use_16bpp_alpha_title" />
-
-        <ListPreference
-            android:dialogTitle="@string/pref_use_dithering_title"
-            android:entries="@array/dithering_entries"
-            android:entryValues="@array/dithering_values"
-            android:key="pref_use_dithering"
-            android:persistent="false"
-            android:title="@string/pref_use_dithering_title" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/system_interface_title" >
-        <PreferenceScreen
-            android:fragment="com.android.settings.cyanogenmod.PowerMenu"
-            android:key="power_menu"
-            android:title="@string/power_menu_title" />
-        <PreferenceScreen
-            android:fragment="com.android.settings.cyanogenmod.HardwareKeys"
-            android:key="hardware_keys"
-            android:title="@string/hardware_keys_title" />
-    </PreferenceCategory>
+    <PreferenceScreen
+        android:key="performance_settings"
+        android:fragment="com.android.settings.cyanogenmod.PerformanceSettings"
+        android:icon="@drawable/ic_settings_performance"
+        android:title="@string/performance_settings_title" />
+    <PreferenceScreen
+        android:key="system_settings"
+        android:icon="@drawable/ic_settings_system"
+        android:fragment="com.android.settings.cyanogenmod.SystemSettings"
+        android:title="@string/system_settings_title" />
+    <PreferenceScreen
+        android:key="advanced_power_widget_settings"
+        android:icon="@drawable/ic_settings_notification"
+        android:fragment="com.android.settings.cyanogenmod.AdvancedPowerWidget"
+        android:title="@string/notification_drawer_title" />
+    
 
 </PreferenceScreen>

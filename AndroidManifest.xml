@@ -1581,6 +1581,8 @@
         
         <activity android:name=".cyanogenmod.FontsSettings" />
         
+        <activity android:name=".cyanogenmod.AdvancedPowerWidget" />
+        
         <activity android:name=".cyanogenmod.AdvancedSettings" />
         
         <activity android:name=".cyanogenmod.UsbConnectSettings" />

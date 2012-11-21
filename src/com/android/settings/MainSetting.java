@@ -37,7 +37,7 @@ public class MainSetting extends Activity {
 	private SwitcherBean switcherBean;
 	private boolean resumeFirst;
 	private boolean pauseFirst;
-
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,6 +57,7 @@ public class MainSetting extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		((PersonalizedSettings)switcherBean.getPersonalSettings()).resume();
 		if (!resumeFirst) {
 			switcherBean.getmWifiEnabler().resume();
 			switcherBean.getmBluetoothEnabler().resume();

@@ -55,7 +55,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-public class PowerWidget extends SettingsPreferenceFragment implements
+public class AdvancedPowerWidget extends SettingsPreferenceFragment implements
 		Preference.OnPreferenceChangeListener {
 	private static final String TAG = "PowerWidget";
 	private static final String SEPARATOR = "OV=I=XseparatorX=I=VO";
@@ -96,7 +96,7 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 		super.onCreate(savedInstanceState);
 
 		if (getPreferenceManager() != null) {
-			addPreferencesFromResource(R.xml.power_widget_settings);
+			addPreferencesFromResource(R.xml.advanced_power_widget_settings);
 
 			getActivity().getActionBar().setIcon(
 					R.drawable.ic_settings_notification);
@@ -117,34 +117,31 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 			mPowerWidgetHapticFeedback = (ListPreference) prefSet
 					.findPreference(UI_EXP_WIDGET_HAPTIC_FEEDBACK);
 
-			/***********************************************************/
-			mStatusBarClock = (CheckBoxPreference) prefSet
-					.findPreference(STATUS_BAR_CLOCK);
+			mPowerWidget.setChecked((Settings.System.getInt(getActivity()
+					.getApplicationContext().getContentResolver(),
+					Settings.System.EXPANDED_VIEW_WIDGET, 1) == 1));
+
+			mPowerWidgetHideOnChange.setChecked((Settings.System.getInt(
+					getActivity().getApplicationContext().getContentResolver(),
+					Settings.System.EXPANDED_HIDE_ONCHANGE, 0) == 1));
+
+			mPowerWidgetHapticFeedback.setOnPreferenceChangeListener(this);
+			mPowerWidgetHapticFeedback.setSummary(mPowerWidgetHapticFeedback
+					.getEntry());
+
+			mPowerWidgetHideScrollBar.setChecked((Settings.System.getInt(
+					getActivity().getApplicationContext().getContentResolver(),
+					Settings.System.EXPANDED_HIDE_SCROLLBAR, 0) == 1));
+			mPowerWidgetHapticFeedback.setValue(Integer
+					.toString(Settings.System.getInt(getActivity()
+							.getApplicationContext().getContentResolver(),
+							Settings.System.EXPANDED_HAPTIC_FEEDBACK, 2)));
+
 			mStatusBarBrightnessControl = (CheckBoxPreference) prefSet
 					.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
-			mStatusBarAmPm = (ListPreference) prefSet
-					.findPreference(STATUS_BAR_AM_PM);
-			mStatusBarBattery = (ListPreference) prefSet
-					.findPreference(STATUS_BAR_BATTERY);
-			mCombinedBarAutoHide = (CheckBoxPreference) prefSet
-					.findPreference(COMBINED_BAR_AUTO_HIDE);
-			mStatusBarCmSignal = (ListPreference) prefSet
-					.findPreference(STATUS_BAR_SIGNAL);
-
-			mStatusBarNotifCount = (CheckBoxPreference) prefSet
-					.findPreference(STATUS_BAR_NOTIF_COUNT);
-
-			/***********************************************************/
-			mPrefCategoryPowerWidget.removePreference(mPowerWidget);
-			prefSet.removePreference(mPrefCategoryPowerWidgetBehavior);
-			mPrefCategoryGeneral.removePreference(mStatusBarBrightnessControl);
-			mPrefCategoryGeneral.removePreference(mStatusBarNotifCount);
-
-			/***********************************************************/
-			mStatusBarClock.setChecked((Settings.System.getInt(getActivity()
-					.getApplicationContext().getContentResolver(),
-					Settings.System.STATUS_BAR_CLOCK, 1) == 1));
-
+			mStatusBarBrightnessControl.setChecked((Settings.System.getInt(
+					getActivity().getApplicationContext().getContentResolver(),
+					Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
 			try {
 				if (Settings.System.getInt(getActivity()
 						.getApplicationContext().getContentResolver(),
@@ -155,50 +152,10 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 				}
 			} catch (SettingNotFoundException e) {
 			}
-
-			try {
-				if (Settings.System.getInt(getActivity()
-						.getApplicationContext().getContentResolver(),
-						Settings.System.TIME_12_24) == 24) {
-					mStatusBarAmPm.setEnabled(false);
-					mStatusBarAmPm.setSummary(R.string.status_bar_am_pm_info);
-				}
-			} catch (SettingNotFoundException e) {
-			}
-
-			int statusBarAmPm = Settings.System.getInt(getActivity()
-					.getApplicationContext().getContentResolver(),
-					Settings.System.STATUS_BAR_AM_PM, 2);
-			mStatusBarAmPm.setValue(String.valueOf(statusBarAmPm));
-			mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntry());
-			mStatusBarAmPm.setOnPreferenceChangeListener(this);
-
-			int statusBarBattery = Settings.System.getInt(getActivity()
-					.getApplicationContext().getContentResolver(),
-					Settings.System.STATUS_BAR_BATTERY, 0);
-			mStatusBarBattery.setValue(String.valueOf(statusBarBattery));
-			mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
-			mStatusBarBattery.setOnPreferenceChangeListener(this);
-
-			int signalStyle = Settings.System.getInt(getActivity()
-					.getApplicationContext().getContentResolver(),
-					Settings.System.STATUS_BAR_SIGNAL_TEXT, 0);
-			mStatusBarCmSignal.setValue(String.valueOf(signalStyle));
-			mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntry());
-			mStatusBarCmSignal.setOnPreferenceChangeListener(this);
-
-			mCombinedBarAutoHide.setChecked((Settings.System.getInt(
-					getActivity().getApplicationContext().getContentResolver(),
-					Settings.System.COMBINED_BAR_AUTO_HIDE, 0) == 1));
-
-			if (Utils.isTablet(getActivity())) {
-				mPrefCategoryGeneral
-						.removePreference(mStatusBarBrightnessControl);
-				mPrefCategoryGeneral.removePreference(mStatusBarCmSignal);
-			} else {
-				mPrefCategoryGeneral.removePreference(mCombinedBarAutoHide);
-			}
-
+			
+			mStatusBarNotifCount = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_NOTIF_COUNT);
+	        mStatusBarNotifCount.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+	                Settings.System.STATUS_BAR_NOTIF_COUNT, 0) == 1));
 		}
 	}
 
@@ -213,31 +170,6 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 			mPowerWidgetHapticFeedback.setSummary(mPowerWidgetHapticFeedback
 					.getEntries()[index]);
 			return true;
-		} else if (preference == mStatusBarAmPm) {
-			int statusBarAmPm = Integer.valueOf((String) newValue);
-			int index = mStatusBarAmPm.findIndexOfValue((String) newValue);
-			Settings.System.putInt(getActivity().getApplicationContext()
-					.getContentResolver(), Settings.System.STATUS_BAR_AM_PM,
-					statusBarAmPm);
-			mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntries()[index]);
-			return true;
-		} else if (preference == mStatusBarBattery) {
-			int statusBarBattery = Integer.valueOf((String) newValue);
-			int index = mStatusBarBattery.findIndexOfValue((String) newValue);
-			Settings.System.putInt(getActivity().getApplicationContext()
-					.getContentResolver(), Settings.System.STATUS_BAR_BATTERY,
-					statusBarBattery);
-			mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
-			return true;
-		} else if (preference == mStatusBarCmSignal) {
-			int signalStyle = Integer.valueOf((String) newValue);
-			int index = mStatusBarCmSignal.findIndexOfValue((String) newValue);
-			Settings.System.putInt(getActivity().getApplicationContext()
-					.getContentResolver(),
-					Settings.System.STATUS_BAR_SIGNAL_TEXT, signalStyle);
-			mStatusBarCmSignal
-					.setSummary(mStatusBarCmSignal.getEntries()[index]);
-			return true;
 		}
 		return false;
 	}
@@ -246,32 +178,7 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 			Preference preference) {
 		boolean value;
 
-		if (preference == mStatusBarClock) {
-			value = mStatusBarClock.isChecked();
-			Settings.System.putInt(getActivity().getApplicationContext()
-					.getContentResolver(), Settings.System.STATUS_BAR_CLOCK,
-					value ? 1 : 0);
-			return true;
-		} else if (preference == mStatusBarBrightnessControl) {
-			value = mStatusBarBrightnessControl.isChecked();
-			Settings.System.putInt(getActivity().getApplicationContext()
-					.getContentResolver(),
-					Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1
-							: 0);
-			return true;
-		} else if (preference == mCombinedBarAutoHide) {
-			value = mCombinedBarAutoHide.isChecked();
-			Settings.System.putInt(getActivity().getApplicationContext()
-					.getContentResolver(),
-					Settings.System.COMBINED_BAR_AUTO_HIDE, value ? 1 : 0);
-			return true;
-		} else if (preference == mStatusBarNotifCount) {
-			value = mStatusBarNotifCount.isChecked();
-			Settings.System.putInt(getActivity().getApplicationContext()
-					.getContentResolver(),
-					Settings.System.STATUS_BAR_NOTIF_COUNT, value ? 1 : 0);
-			return true;
-		} else if (preference == mPowerWidget) {
+		if (preference == mPowerWidget) {
 			value = mPowerWidget.isChecked();
 			Settings.System.putInt(getActivity().getApplicationContext()
 					.getContentResolver(),
@@ -281,7 +188,17 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 			Settings.System.putInt(getActivity().getApplicationContext()
 					.getContentResolver(),
 					Settings.System.EXPANDED_HIDE_ONCHANGE, value ? 1 : 0);
-		} else if (preference == mPowerWidgetHideScrollBar) {
+		} else if (preference == mStatusBarNotifCount) {
+            value = mStatusBarNotifCount.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_NOTIF_COUNT, value ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarBrightnessControl) {
+            value = mStatusBarBrightnessControl.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1 : 0);
+            return true;
+        } else if (preference == mPowerWidgetHideScrollBar) {
 			value = mPowerWidgetHideScrollBar.isChecked();
 			Settings.System.putInt(getActivity().getApplicationContext()
 					.getContentResolver(),

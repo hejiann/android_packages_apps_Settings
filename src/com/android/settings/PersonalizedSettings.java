@@ -92,6 +92,8 @@ public class PersonalizedSettings extends PreferenceActivity implements
 	private Header mCurrentHeader;
 	private Header mParentHeader;
 	private boolean mInLocalHeaderSwitch;
+	
+	private SwitcherBean switcherBean;
 
 	// Show only these settings for restricted users
 	private int[] SETTINGS_FOR_RESTRICTED = { R.id.wifi_settings,
@@ -114,6 +116,9 @@ public class PersonalizedSettings extends PreferenceActivity implements
 		if (getIntent().getBooleanExtra(EXTRA_CLEAR_UI_OPTIONS, false)) {
 			getWindow().setUiOptions(0);
 		}
+		
+		switcherBean = SwitcherBean.getInstance();
+		switcherBean.setPersonalSettings(this);
 
 		if (android.provider.Settings.Secure.getInt(getContentResolver(),
 				"multiuser_enabled", -1) > 0) {
@@ -178,6 +183,10 @@ public class PersonalizedSettings extends PreferenceActivity implements
 		if (mParentHeader != null) {
 			outState.putParcelable(SAVE_KEY_PARENT_HEADER, mParentHeader);
 		}
+	}
+	
+	public void resume(){
+		onResume();
 	}
 
 	@Override
@@ -390,20 +399,11 @@ public class PersonalizedSettings extends PreferenceActivity implements
 			Header header = target.get(i);
 			// Ids are integers, so downcasting
 			int id = (int) header.id;
-			if (id == R.id.performance_settings) {
-				// if(Settings.System.getInt(getContentResolver(),
-				// Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0){
-				target.remove(header);
-				// }
-			} else if (id == R.id.system_settings) {
-				// if(Settings.System.getInt(getContentResolver(),
-				// Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0){
-				target.remove(header);
-				// }
-			} else if (id == R.id.advanced_settings) {
+			if (id == R.id.advanced_settings) {
 				if (Settings.System.getInt(getContentResolver(),
 						Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0) {
 					target.remove(header);
+					i--;
 				}
 			}
 			// Increment if the current one wasn't removed by the Utils code.
