@@ -104,6 +104,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         }
 
         updateCustomBackgroundSummary();
+        
+        getPreferenceScreen().removePreference(mLockscreenTargets);
     }
 
     private void updateCustomBackgroundSummary() {
