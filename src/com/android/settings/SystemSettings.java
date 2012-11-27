@@ -654,7 +654,7 @@ public class SystemSettings extends PreferenceActivity
 
                     case HEADER_TYPE_NORMAL:
                         view = mInflater.inflate(
-                                R.layout.preference_header_item, parent,
+                                R.layout.preference_header_item_custum, parent,
                                 false);
                         holder.icon = (ImageView) view.findViewById(R.id.icon);
                         holder.title = (TextView)
