@@ -33,6 +33,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
@@ -78,6 +79,9 @@ public class SecuritySettings extends SettingsPreferenceFragment implements
 	private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
 	private static final String KEY_LOCK_BEFORE_UNLOCK = "lock_before_unlock";
 	private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
+	private static final String UNLOCK_FUNCTION = "unlock_function";
+	private static final String LOCKSCREEN_TARGETS = "lockscreen_targets";
+	private static final String SLIDING_CATEGORY = "sliding_category";
 	public static final String KEY_VIBRATE_PREF = "lockscreen_vibrate";
 
 	DevicePolicyManager mDPM;
@@ -87,6 +91,9 @@ public class SecuritySettings extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mSlideLockDelayToggle;
 	private ListPreference mSlideLockTimeoutDelay;
 	private ListPreference mSlideLockScreenOffDelay;
+	private ListPreference mUnlockFunction;
+	private Preference mLockscreenTargets;
+	private PreferenceCategory slidingCategory;
 	private CheckBoxPreference mVibratePref;
 
 	private ListPreference mLockAfter;
@@ -194,6 +201,26 @@ public class SecuritySettings extends SettingsPreferenceFragment implements
 			setupLockAfterPreference();
 			updateLockAfterPreferenceSummary();
 		} else if (!mLockPatternUtils.isLockScreenDisabled() && isCmSecurity) {
+
+			addPreferencesFromResource(R.xml.security_settings_lockscreen_sliding);
+
+			slidingCategory = (PreferenceCategory) root
+					.findPreference(SLIDING_CATEGORY);
+
+			mUnlockFunction = (ListPreference) root
+					.findPreference(UNLOCK_FUNCTION);
+			mLockscreenTargets = (Preference) root
+					.findPreference(LOCKSCREEN_TARGETS);
+			int unlockStyle = Settings.System.getInt(getActivity()
+					.getApplicationContext().getContentResolver(),
+					Settings.System.UNLOCK_STYLE, 1);
+			mUnlockFunction.setValue(String.valueOf(unlockStyle));
+			mUnlockFunction.setSummary(mUnlockFunction.getEntry());
+			mUnlockFunction.setOnPreferenceChangeListener(this);
+			if (unlockStyle == 2) {
+				slidingCategory.removePreference(mLockscreenTargets);
+			}
+
 			addPreferencesFromResource(R.xml.security_settings_slide_delay_cyanogenmod);
 
 			mSlideLockDelayToggle = (CheckBoxPreference) root
@@ -746,6 +773,23 @@ public class SecuritySettings extends SettingsPreferenceFragment implements
 					Settings.Secure.SMS_OUTGOING_CHECK_MAX_COUNT,
 					smsSecurityCheck);
 			updateSmsSecuritySummary(smsSecurityCheck);
+		} else if (preference == mUnlockFunction) {
+			int unlockStyle = Settings.System.getInt(getActivity()
+					.getApplicationContext().getContentResolver(),
+					Settings.System.UNLOCK_STYLE, 1);
+			int unlock_style = Integer.valueOf((String) value);
+			if (unlockStyle != unlock_style) {
+				int index = mUnlockFunction.findIndexOfValue((String) value);
+				Settings.System.putInt(getActivity().getApplicationContext()
+						.getContentResolver(), Settings.System.UNLOCK_STYLE,
+						unlock_style);
+				mUnlockFunction.setSummary(mUnlockFunction.getEntries()[index]);
+				if(unlock_style == 1){
+					slidingCategory.addPreference(mLockscreenTargets);
+				}else if(unlock_style == 2){
+					slidingCategory.removePreference(mLockscreenTargets);
+				}
+			}
 		}
 		return true;
 	}

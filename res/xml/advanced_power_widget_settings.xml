@@ -30,6 +30,13 @@
             android:key="status_bar_notif_count"
             android:summary="@string/status_bar_notif_count_summary"
             android:title="@string/status_bar_notif_count_title" />
+        
+        <ListPreference
+            android:key="status_bar_transparent"
+            android:dialogTitle="@string/status_bar_transparent_text_title"
+            android:title="@string/status_bar_transparent_text_title"
+            android:entries="@array/staus_bar_transparent_key"
+            android:entryValues="@array/staus_bar_transparent_value" />
     </PreferenceCategory>
 
     <!-- Notification drawer Power Widget -->

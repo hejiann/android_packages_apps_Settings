@@ -1997,6 +1997,7 @@
     <string name="status_bar_toggle_brightness_summary">在状态栏上左右滑动以调整亮度</string>
     <string name="status_bar_toggle_info">亮度自动调整已启用</string>
     <string name="status_bar_signal_text_title">信号状态样式</string>
+    <string name="status_bar_transparent_text_title">状态栏透明度</string>
     <string name="status_bar_style_icon">图标</string>
     <string name="status_bar_style_hidden">隐藏</string>
     <string name="status_bar_signal_text_show_text">文字</string>
@@ -2579,4 +2580,10 @@
     <string name="font_normal">正常</string>
     <string name="font_big">大</string>
     <string name="font_big_more">超大</string>
+    
+    <string name="sliding_category">滑动解锁</string>
+    <string name="sliding_function">滑动解锁方式</string>
+    <string name="sliding_ring">圆环</string>
+    <string name="sliding_down">下拉</string>
+    
 </resources>

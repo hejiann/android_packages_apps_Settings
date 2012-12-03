@@ -238,7 +238,7 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 			mStatusBarCmSignal
 					.setSummary(mStatusBarCmSignal.getEntries()[index]);
 			return true;
-		}
+		} 
 		return false;
 	}
 

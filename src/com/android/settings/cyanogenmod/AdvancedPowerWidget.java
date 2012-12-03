@@ -74,6 +74,7 @@ public class AdvancedPowerWidget extends SettingsPreferenceFragment implements
 	private static final String STATUS_BAR_CLOCK = "status_bar_show_clock";
 	private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 	private static final String STATUS_BAR_SIGNAL = "status_bar_signal";
+	private static final String STATUS_BAR_TRANSPARENT = "status_bar_transparent";
 	private static final String COMBINED_BAR_AUTO_HIDE = "combined_bar_auto_hide";
 	private static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
 	private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
@@ -82,6 +83,7 @@ public class AdvancedPowerWidget extends SettingsPreferenceFragment implements
 
 	private ListPreference mStatusBarAmPm;
 	private ListPreference mStatusBarBattery;
+	private ListPreference mStatusBarTransparent;
 	private ListPreference mStatusBarCmSignal;
 	private CheckBoxPreference mStatusBarClock;
 	private CheckBoxPreference mStatusBarBrightnessControl;
@@ -107,6 +109,8 @@ public class AdvancedPowerWidget extends SettingsPreferenceFragment implements
 			mPrefCategoryPowerWidget = (PreferenceCategory) findPreference(POWER_WIDGET_CATEGORY);
 			mPrefCategoryPowerWidgetBehavior = (PreferenceCategory) findPreference(POWER_WIDGET_BEHAVIOR_CATEGORY);
 
+			mStatusBarTransparent = (ListPreference) prefSet	.findPreference(STATUS_BAR_TRANSPARENT);
+			
 			mPowerWidget = (CheckBoxPreference) prefSet
 					.findPreference(UI_EXP_WIDGET);
 			mPowerWidgetHideOnChange = (CheckBoxPreference) prefSet
@@ -156,6 +160,13 @@ public class AdvancedPowerWidget extends SettingsPreferenceFragment implements
 			mStatusBarNotifCount = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_NOTIF_COUNT);
 	        mStatusBarNotifCount.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
 	                Settings.System.STATUS_BAR_NOTIF_COUNT, 0) == 1));
+	        
+	        int transparentStyle = Settings.System.getInt(getActivity()
+					.getApplicationContext().getContentResolver(),
+					Settings.System.STATUS_BAR_BACKGROUND, 1);
+			mStatusBarTransparent.setValue(String.valueOf(transparentStyle));
+			mStatusBarTransparent.setSummary(mStatusBarTransparent.getEntry());
+			mStatusBarTransparent.setOnPreferenceChangeListener(this);
 		}
 	}
 
@@ -170,6 +181,15 @@ public class AdvancedPowerWidget extends SettingsPreferenceFragment implements
 			mPowerWidgetHapticFeedback.setSummary(mPowerWidgetHapticFeedback
 					.getEntries()[index]);
 			return true;
+		} else if (preference == mStatusBarTransparent) {
+			int transparentStyle = Integer.valueOf((String) newValue);
+			int index = mStatusBarTransparent.findIndexOfValue((String) newValue);
+			Settings.System.putInt(getActivity().getApplicationContext()
+					.getContentResolver(),
+					Settings.System.STATUS_BAR_BACKGROUND, transparentStyle);
+			mStatusBarTransparent
+					.setSummary(mStatusBarTransparent.getEntries()[index]);
+
 		}
 		return false;
 	}

@@ -4994,5 +4994,8 @@
     <string name="font_big">Large</string>
     <string name="font_big_more">Huge</string>
     
-    
+    <string name="sliding_category">Sliding Unlock</string>
+    <string name="sliding_function">Sliding Unlock Function</string>
+    <string name="sliding_ring">Ring</string>
+    <string name="sliding_down">Drop Down</string>
 </resources>
