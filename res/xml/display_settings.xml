@@ -60,6 +60,13 @@
             android:key="battery_light"
             android:title="@string/battery_light_title"
             android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
+        
+        <ListPreference
+            android:key="backlight_switch"
+            android:title="@string/backlight_switch"
+            android:persistent="false"
+            android:entries="@array/backlight_switch_key"
+            android:entryValues="@array/backlight_switch_value" />
 
 <!-- Remove until merged from CM9
         <PreferenceCategory

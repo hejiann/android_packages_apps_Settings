@@ -2586,4 +2586,6 @@
     <string name="sliding_ring">圆环</string>
     <string name="sliding_down">下拉</string>
     
+    <string name="backlight_switch">键盘灯开关</string>
+    
 </resources>

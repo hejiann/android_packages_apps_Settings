@@ -64,6 +64,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_ELECTRON_BEAM_CATEGORY_ANIMATION = "category_animation_options";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
+    private static final String BACKLIGHT_SWTICH = "backlight_switch";
+    
 
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
@@ -81,6 +83,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private CheckBoxPreference mAccelerometer;
     private ListPreference mFontSizePref;
+    private ListPreference mBacklightSwitch;
 
     private final Configuration mCurConfig = new Configuration();
 
@@ -165,6 +168,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 updateBatteryPulseDescription();
             }
         }
+        
+        mBacklightSwitch = (ListPreference) findPreference(BACKLIGHT_SWTICH);
+        int backlightStatus = Settings.System.getInt(getActivity()
+				.getApplicationContext().getContentResolver(),
+				Settings.System.BUTTON_BACKLIGHT_SWITCH, 0);
+        mBacklightSwitch.setValue(String.valueOf(backlightStatus));
+        mBacklightSwitch.setSummary(mBacklightSwitch.getEntry());
+        mBacklightSwitch.setOnPreferenceChangeListener(this);
 
 /**
         mElectronBeamAnimationOn = (CheckBoxPreference) findPreference(KEY_ELECTRON_BEAM_ANIMATION_ON);
@@ -430,6 +441,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
+        }
+        if(BACKLIGHT_SWTICH.equals(key)){
+        	int backlightStatus = Integer.valueOf((String) objValue);
+			int index = mBacklightSwitch.findIndexOfValue((String) objValue);
+			Settings.System.putInt(getActivity().getApplicationContext()
+					.getContentResolver(),
+					Settings.System.BUTTON_BACKLIGHT_SWITCH, backlightStatus);
+			mBacklightSwitch
+					.setSummary(mBacklightSwitch.getEntries()[index]);
         }
 
         return true;
