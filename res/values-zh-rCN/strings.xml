@@ -2445,7 +2445,7 @@
     <string name="pref_volume_wake_title">音量键唤醒</string>
     <string name="pref_volume_wake_summary">使用音量键唤醒设备</string>
 
-    <string name="ok">OK</string>
+    <string name="ok">确定</string>
 
     <!-- Development settings: title for the field that shows the "App ID" development identifier
          for this device. [CHAR LIMIT=40] -->
