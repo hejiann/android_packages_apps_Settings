@@ -139,7 +139,7 @@ public class ApplicationsState {
         boolean ensureIconLocked(Context context, PackageManager pm) {
             if (this.icon == null) {
                 if (this.apkFile.exists()) {
-                    this.icon = this.info.loadIcon(pm);
+                    this.icon = this.info.loadShenduIcon(pm);
                     return true;
                 } else {
                     this.mounted = false;
@@ -151,7 +151,7 @@ public class ApplicationsState {
                 // its icon.
                 if (this.apkFile.exists()) {
                     this.mounted = true;
-                    this.icon = this.info.loadIcon(pm);
+                    this.icon = this.info.loadShenduIcon(pm);
                     return true;
                 }
             }

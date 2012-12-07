@@ -184,7 +184,7 @@ public class RunningProcessesView extends FrameLayout
                 }
                 item.mCurSizeStr = null;
                 if (item.mPackageInfo != null) {
-                    icon.setImageDrawable(item.mPackageInfo.loadIcon(pm));
+                    icon.setImageDrawable(item.mPackageInfo.loadShenduIcon(pm));
                 }
                 icon.setVisibility(View.VISIBLE);
                 ai.updateTime(rootView.getContext(), builder);
