@@ -57,16 +57,6 @@
             android:fragment="com.android.settings.cyanogenmod.PowerWidget$PowerWidgetChooser">
         </PreferenceScreen
         -->
-
-        <PreferenceScreen
-            android:key="widget_order"
-            android:summary="@string/summary_widget_order"
-            android:title="@string/title_widget_order" >
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="com.android.settings.cyanogenmod.PowerWidgetOrderActivity"
-                android:targetPackage="com.android.settings" />
-        </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory
         android:key="power_widget_behavior_category"
