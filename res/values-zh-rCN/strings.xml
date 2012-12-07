@@ -2587,5 +2587,8 @@
     <string name="sliding_down">下拉</string>
     
     <string name="backlight_switch">键盘灯开关</string>
-    
+   
+    <string name="turn_on_ums">打开USB存储设备</string>
+    <string name="turn_off_ums">关闭USB存储设备</string>
+    <string name="unshare_failed">关闭USB存储设备可能不成功，请先在电脑上安全移除设备。</string>
 </resources>

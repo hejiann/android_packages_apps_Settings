@@ -4998,4 +4998,8 @@
     <string name="sliding_function">Sliding Unlock Function</string>
     <string name="sliding_ring">Ring</string>
     <string name="sliding_down">Drop Down</string>
+
+	<string name="turn_on_ums">Turn on USB storage</string>
+	<string name="turn_off_ums">Turn off USB storage</string>
+	<string name="unshare_failed">Turn off USB storage mayby failed.Please remove the device on your computer.</string>
 </resources>
