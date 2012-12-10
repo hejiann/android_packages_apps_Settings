@@ -63,7 +63,7 @@ public class UsbPopUp extends SettingsPreferenceFragment {
     private CheckBoxPreference mUms;
     private Preference mSwitch;
 
-    private boolean mMounting;
+    private static boolean mMounting;
     private String mCurrentState = Environment.MEDIA_REMOVED;
 
     // thread for working with the storage services, which can be slow
@@ -97,7 +97,6 @@ public class UsbPopUp extends SettingsPreferenceFragment {
         mSwitch = (Preference) root.findPreference(KEY_SWITCH_UMS);
         if (!storageVolumes[0].allowMassStorage()) {
             root.removePreference(mUms);
-            root.removePreference(mSwitch);
         }
 
         return root;
@@ -129,7 +128,10 @@ public class UsbPopUp extends SettingsPreferenceFragment {
 
     @Override
     public void onResume() {
+
         super.onResume();
+
+        mCurrentState = Environment.getExternalStorageState();
 
         // Make sure we reload the preference hierarchy since some of these
         // settings
@@ -232,7 +234,6 @@ public class UsbPopUp extends SettingsPreferenceFragment {
              * Modify the mSwitch text for turn off storage.
              */
             mSwitch.setTitle(R.string.turn_off_ums);
-            mMounting = true;
             return true;
         } else if (currentState.equals(Environment.MEDIA_MOUNTED)){
             /*
@@ -240,11 +241,9 @@ public class UsbPopUp extends SettingsPreferenceFragment {
              * Modify the mSwitch text for turn on storage.
              */
             mSwitch.setTitle(R.string.turn_on_ums);
-            mMounting = false;
             return true;
         } else {
             mSwitch.setTitle(R.string.turn_on_ums);
-            mMounting = false;
             return false;
         }
     }
@@ -252,9 +251,9 @@ public class UsbPopUp extends SettingsPreferenceFragment {
     private class onStorageStateChangedListener extends StorageEventListener {
         @Override
         public void onStorageStateChanged(String path, String oldState, String newState) {
-            Log.i("zhao", "old = " + oldState + " new = " + newState);
             mCurrentState = newState;
             mSwitch.setEnabled(canShared(mCurrentState));
+            mMounting = mCurrentState.equals(Environment.MEDIA_SHARED);
         }
     }
 }

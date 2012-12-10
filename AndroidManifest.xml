@@ -110,7 +110,8 @@
             android:name=".cyanogenmod.PowerWidgetOrderActivity" />
         <!-- USB PopUp -->
         <activity
-            android:name="UsbPopUp" />
+            android:name="UsbPopUp"
+            android:launchMode="singleInstance" />
         <activity
             android:name=".accounts.AccountsManager"
             android:label="@string/account_settings"
