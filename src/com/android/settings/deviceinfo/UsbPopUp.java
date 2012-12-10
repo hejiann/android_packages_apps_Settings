@@ -233,17 +233,17 @@ public class UsbPopUp extends SettingsPreferenceFragment {
              * Storage is now shared.
              * Modify the mSwitch text for turn off storage.
              */
-            mSwitch.setTitle(R.string.turn_off_ums);
+            if (mSwitch != null) mSwitch.setTitle(R.string.turn_off_ums);
             return true;
         } else if (currentState.equals(Environment.MEDIA_MOUNTED)){
             /*
              * Storage is now mounted.
              * Modify the mSwitch text for turn on storage.
              */
-            mSwitch.setTitle(R.string.turn_on_ums);
+            if (mSwitch != null) mSwitch.setTitle(R.string.turn_on_ums);
             return true;
         } else {
-            mSwitch.setTitle(R.string.turn_on_ums);
+            if (mSwitch != null) mSwitch.setTitle(R.string.turn_on_ums);
             return false;
         }
     }
