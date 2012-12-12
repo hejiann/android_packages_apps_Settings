@@ -30,13 +30,13 @@
         prvandroid:targetDrawables="@*android:array/lockscreen_targets_with_camera"
         prvandroid:targetDescriptions="@*android:array/lockscreen_target_descriptions_with_camera"
         prvandroid:directionDescriptions="@*android:array/lockscreen_direction_descriptions"
-        prvandroid:handleDrawable="@*android:drawable/ic_lockscreen_handle"
-        prvandroid:outerRingDrawable="@*android:drawable/ic_lockscreen_outerring"
+        prvandroid:handleDrawable="@drawable/ic_lockscreen_handle"
+        prvandroid:outerRingDrawable="@drawable/ic_lockscreen_outerring"
         prvandroid:outerRadius="@*android:dimen/glowpadview_target_placement_radius"
         prvandroid:innerRadius="@*android:dimen/glowpadview_inner_radius"
         prvandroid:snapMargin="@*android:dimen/glowpadview_snap_margin"
         prvandroid:glowRadius="@*android:dimen/glowpadview_glow_radius"
-        prvandroid:pointDrawable="@*android:drawable/ic_lockscreen_glowdot"
+        prvandroid:pointDrawable="@drawable/ic_lockscreen_glowdot"
         prvandroid:feedbackCount="1"
         prvandroid:vibrationDuration="20" />
 

@@ -166,7 +166,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
         mTargetStore.clear();
         final int maxTargets = mIsScreenLarge ? GlowPadView.MAX_TABLET_TARGETS : GlowPadView.MAX_PHONE_TARGETS;
         final PackageManager packMan = mActivity.getPackageManager();
-        final Drawable activeBack = mResources.getDrawable(com.android.internal.R.drawable.ic_lockscreen_target_activated);
+        final Drawable activeBack = mResources.getDrawable(R.drawable.ic_lockscreen_target_activated);
         final String[] targetStore = input.split("\\|");
         //Shift by 2 targets for phones in landscape
         if (mIsLandscape && !mIsScreenLarge) {
@@ -174,8 +174,8 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
             mTargetStore.add(new TargetInfo(null));
         }
         //Add the unlock icon
-        Drawable unlockFront = mResources.getDrawable(com.android.internal.R.drawable.ic_lockscreen_unlock_normal);
-        Drawable unlockBack = mResources.getDrawable(com.android.internal.R.drawable.ic_lockscreen_unlock_activated);
+        Drawable unlockFront = mResources.getDrawable(R.drawable.ic_lockscreen_unlock_normal);
+        Drawable unlockBack = mResources.getDrawable(R.drawable.ic_lockscreen_unlock_activated);
         mTargetStore.add(new TargetInfo(getLayeredDrawable(unlockBack, unlockFront, 0, true)));
         for (int cc = 0; cc < 8 - mTargetOffset - 1; cc++) {
             String uri = GlowPadView.EMPTY_TARGET;
@@ -218,9 +218,9 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
                                         e.printStackTrace();
                                     }
                                 } else {
-                                    front = mResources.getDrawable(mResources.getIdentifier(rSource, "drawable", "android"));
+                                    front = mResources.getDrawable(mResources.getIdentifier(rSource, "drawable", "com.android.settings"));
                                     back = mResources.getDrawable(mResources.getIdentifier(
-                                            rSource.replaceAll("_normal", "_activated"), "drawable", "android"));
+                                            rSource.replaceAll("_normal", "_activated"), "drawable", "com.android.settings"));
                                     tmpInset = 0;
                                     frontBlank = true;
                                 }
@@ -367,19 +367,19 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
         inActiveLayer.setDrawableByLayerId(1, draw);
         boolean isSystem = iconType != null && iconType.equals(GlowPadView.ICON_RESOURCE);
         if (!isSystem) {
-            final Drawable activeBack = mResources.getDrawable(com.android.internal.R.drawable.ic_lockscreen_target_activated);
+            final Drawable activeBack = mResources.getDrawable(R.drawable.ic_lockscreen_target_activated);
             activeLayer.setDrawableByLayerId(0, new InsetDrawable(activeBack, 0, 0, 0, 0));
             activeLayer.setDrawableByLayerId(1, draw);
         } else {
             InsetDrawable empty = new InsetDrawable(mResources.getDrawable(android.R.color.transparent), 0, 0, 0, 0);
             activeLayer.setDrawableByLayerId(1, empty);
-            int activeId = mResources.getIdentifier(iconSource.replaceAll("_normal", "_activated"), "drawable", "android");
+            int activeId = mResources.getIdentifier(iconSource.replaceAll("_normal", "_activated"), "drawable", "com.android.settings");
             Drawable back = null;
             if (activeId != 0) {
                 back = mResources.getDrawable(activeId);
                 activeLayer.setDrawableByLayerId(0, back);
             } else {
-                final Drawable activeBack = mResources.getDrawable(com.android.internal.R.drawable.ic_lockscreen_target_activated);
+                final Drawable activeBack = mResources.getDrawable(R.drawable.ic_lockscreen_target_activated);
                 activeLayer.setDrawableByLayerId(0, new InsetDrawable(activeBack, 0, 0, 0, 0));
             }
         }
@@ -543,7 +543,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
             }
         } else if (requestCode == IconPicker.REQUEST_PICK_SYSTEM) {
             String resourceName = in.getStringExtra(IconPicker.RESOURCE_NAME);
-            ic = mResources.getDrawable(mResources.getIdentifier(resourceName, "drawable", "android")).mutate();
+            ic = mResources.getDrawable(mResources.getIdentifier(resourceName, "drawable", "com.android.settings")).mutate();
             iconType = GlowPadView.ICON_RESOURCE;
             iconSource = resourceName;
         } else if (requestCode == IconPicker.REQUEST_PICK_ICON_PACK && resultCode == Activity.RESULT_OK) {

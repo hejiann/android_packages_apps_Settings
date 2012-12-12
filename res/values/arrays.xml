@@ -18,29 +18,35 @@
 */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Choices for timezone picker first level.
+
+    <!--
+         Choices for timezone picker first level.
          These values will be used as search terms for TimeZone displayName
-         strings. --> <skip />
+         strings.
+    -->
+    <skip />
     <!-- The time zone picker screen has two levels.  The first level allows the user to choose a region. -->
     <string-array name="timezone_filters">
-    <!-- The next level of the time zoner picker should show time zones from the Americas. -->
+
+        <!-- The next level of the time zoner picker should show time zones from the Americas. -->
         <item>America</item>
-    <!-- The next level of the time zoner picker should show time zones from Europe. -->
+        <!-- The next level of the time zoner picker should show time zones from Europe. -->
         <item>Europe</item>
-    <!-- The next level of the time zoner picker should show time zones from Africa. -->
+        <!-- The next level of the time zoner picker should show time zones from Africa. -->
         <item>Africa</item>
-    <!-- The next level of the time zoner picker should show time zones from Asia. -->
+        <!-- The next level of the time zoner picker should show time zones from Asia. -->
         <item>Asia</item>
-    <!-- The next level of the time zoner picker should show time zones from Australia. -->
+        <!-- The next level of the time zoner picker should show time zones from Australia. -->
         <item>Australia</item>
-    <!-- The next level of the time zoner picker should show time zones from Pacific. -->
+        <!-- The next level of the time zoner picker should show time zones from Pacific. -->
         <item>Pacific</item>
-    <!-- The next level of the time zoner picker should show time zones from ALL regions. -->
+        <!-- The next level of the time zoner picker should show time zones from ALL regions. -->
         <item>All</item>
     </string-array>
 
     <!-- There is a setting to control the format of dates displayed throughout the system.  This is in the Date & Time Settings screen.  These will be adjusted to use punctuation appropriate to the user's locale. -->
     <string-array name="date_format_values" translatable="false">
+
         <!-- The blank item means to use whatever the locale calls for. -->
         <item></item>
         <item>MM-dd-yyyy</item>
@@ -61,6 +67,7 @@
 
     <!-- Do not translate. -->
     <string-array name="screen_timeout_values" translatable="false">
+
         <!-- Do not translate. -->
         <item>15000</item>
         <!-- Do not translate. -->
@@ -91,6 +98,7 @@
 
     <!-- Do not translate. -->
     <string-array name="dream_timeout_values" translatable="false">
+
         <!-- Do not translate. -->
         <item>0</item>
         <!-- Do not translate. -->
@@ -108,9 +116,11 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
-    
-    <!-- Security settings.  The delay after screen is turned off until device locks. 
-         These are shown in a list dialog. -->
+
+    <!--
+         Security settings.  The delay after screen is turned off until device locks. 
+         These are shown in a list dialog.
+    -->
     <string-array name="lock_after_timeout_entries">
         <item>Immediately</item>
         <item>5 seconds</item>
@@ -125,6 +135,7 @@
 
     <!-- Do not translate. -->
     <string-array name="lock_after_timeout_values" translatable="false">
+
         <!-- Do not translate. -->
         <item>0</item>
         <!-- Do not translate. -->
@@ -144,22 +155,21 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
-    
     <string-array name="entries_font_size">
         <item msgid="6490061470416867723">Small</item>
         <item msgid="3579015730662088893">Normal</item>
         <item msgid="1678068858001018666">Large</item>
         <item msgid="490158884605093126">Huge</item>
     </string-array>
-    
     <string-array name="entryvalues_font_size" translatable="false">
         <item>0.85</item>
         <item>1.0</item>
         <item>1.15</item>
         <item>1.30</item>
     </string-array>
-    
+
     <!-- TTS settings -->
+
 
     <!-- Default speech rate choices -->
     <string-array name="tts_rate_entries">
@@ -211,12 +221,14 @@
         <item>spa</item>
     </string-array>
 
-
     <!-- Wi-Fi settings -->
 
-    <!-- Match this with the order of NetworkInfo.DetailedState. --> <skip />
+
+    <!-- Match this with the order of NetworkInfo.DetailedState. -->
+    <skip />
     <!-- Wi-Fi settings. The status messages when the network is unknown. -->
     <string-array name="wifi_status">
+
         <!-- Status message of Wi-Fi when it is idle. -->
         <item></item>
         <!-- Status message of Wi-Fi when it is scanning. -->
@@ -243,9 +255,11 @@
         <item>Temporarily avoiding poor connection</item>
     </string-array>
 
-    <!-- Match this with the order of NetworkInfo.DetailedState. --> <skip />
+    <!-- Match this with the order of NetworkInfo.DetailedState. -->
+    <skip />
     <!-- Wi-Fi settings. The status messages when the network is known. -->
     <string-array name="wifi_status_with_ssid">
+
         <!-- Status message of Wi-Fi when it is idle. -->
         <item></item>
         <!-- Status message of Wi-Fi when it is scanning. -->
@@ -272,9 +286,11 @@
         <item>Temporarily avoiding poor connection</item>
     </string-array>
 
-    <!-- Match this with the constants in AccessPoint. --> <skip />
+    <!-- Match this with the constants in AccessPoint. -->
+    <skip />
     <!-- Wi-Fi security choices used when manually added a Wi-Fi network -->
     <string-array name="wifi_security" translatable="false">
+
         <!-- The Wi-Fi network does not have any security. -->
         <item>@string/wifi_security_none</item>
         <!-- Do not translate. -->
@@ -285,9 +301,11 @@
         <item>@string/wifi_security_eap</item>
     </string-array>
 
-    <!-- Match this with the constants in AccessPoint. --> <skip />
+    <!-- Match this with the constants in AccessPoint. -->
+    <skip />
     <!-- Wi-Fi security types for New User Dialog. EAP is not configurable. -->
     <string-array name="wifi_security_no_eap" translatable="false">
+
         <!-- The Wi-Fi network does not have any security. -->
         <item>@string/wifi_security_none</item>
         <!-- Do not translate. -->
@@ -296,8 +314,8 @@
         <item>@string/wifi_security_psk_generic</item>
     </string-array>
 
-   <!-- Wi-Fi AP settings.  The type of security a Wi-Fi AP supports. -->
-   <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
+    <!-- Wi-Fi AP settings.  The type of security a Wi-Fi AP supports. -->
+    <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
     <string-array name="wifi_ap_security" translatable="false">
         <item>Open</item>
         <!-- Do not translate. -->
@@ -306,9 +324,11 @@
         <item>WPA2 PSK</item>
     </string-array>
 
-    <!-- Match this with the constants in WifiDialog. --> <skip />
+    <!-- Match this with the constants in WifiDialog. -->
+    <skip />
     <!-- Wi-Fi settings.  The type of EAP method a Wi-Fi network has. -->
     <string-array name="wifi_eap_method" translatable="false">
+
         <!-- Do not translate. -->
         <item>PEAP</item>
         <!-- Do not translate. -->
@@ -319,10 +339,11 @@
         <item>PWD</item>
     </string-array>
 
-   <!-- Wi-Fi WPS setup for p2p connections.  -->
-   <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
+    <!-- Wi-Fi WPS setup for p2p connections. -->
+    <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
     <string-array name="wifi_p2p_wps_setup">
-        <!-- Push button based configuration involves pushing a button on two connecting devices [CHAR LIMIT=30]-->
+
+        <!-- Push button based configuration involves pushing a button on two connecting devices [CHAR LIMIT=30] -->
         <item>Push button</item>
         <!-- This involves entering a pin obtained from a peer device [CHAR LIMIT=30] -->
         <item>PIN from peer device</item>
@@ -338,10 +359,10 @@
         <item>Unsuccessful</item>
         <item>Available</item>
         <item>Out-of-range</item>
-   </string-array>
-
+    </string-array>
 
     <!-- Bluetooth Settings -->
+
 
     <!-- Discoverable mode timeout options -->
     <string-array name="bluetooth_visibility_timeout_entries">
@@ -351,7 +372,8 @@
         <item>Never time out</item>
     </string-array>
 
-    <!-- Match this with drawable.wifi_signal. --> <skip />
+    <!-- Match this with drawable.wifi_signal. -->
+    <skip />
     <!-- Wi-Fi settings. The signal strength a Wi-Fi network has. -->
     <string-array name="wifi_signal">
         <item>Poor</item>
@@ -362,6 +384,7 @@
 
     <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi sleep policy. -->
     <string-array name="wifi_sleep_policy_entries">
+
         <!-- Always keep Wi-Fi on when screen turns off. -->
         <item>Always</item>
         <!-- Keep Wi-Fi on when screen turns off and plugged in.  When on battery, go to sleep when screen turns off. -->
@@ -370,9 +393,12 @@
         <item>Never (increases data usage)</item>
     </string-array>
 
-    <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi sleep policy. Used when
-         the device is Wi-Fi-only. [CHAR LIMIT=30] -->
+    <!--
+         Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi sleep policy. Used when
+         the device is Wi-Fi-only. [CHAR LIMIT=30]
+    -->
     <string-array name="wifi_sleep_policy_entries_wifi_only">
+
         <!-- Always keep Wi-Fi on when screen turns off. -->
         <item>Always</item>
         <!-- Keep Wi-Fi on when screen turns off and plugged in.  When on battery, go to sleep when screen turns off. -->
@@ -381,9 +407,11 @@
         <item>Never</item>
     </string-array>
 
-    <!-- Match with wifi_sleep_policy_entries and the values of the settings in Settings class. --> <skip />
+    <!-- Match with wifi_sleep_policy_entries and the values of the settings in Settings class. -->
+    <skip />
     <!-- Do not translate. -->
     <string-array name="wifi_sleep_policy_values" translatable="false">
+
         <!-- Do not translate. -->
         <item>2</item>
         <!-- Do not translate. -->
@@ -394,17 +422,19 @@
 
     <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi frequency band. -->
     <string-array name="wifi_frequency_band_entries">
-        <!-- Operation on both 2.4 GHz and 5 GHz [CHAR LIMIT=25]-->
+
+        <!-- Operation on both 2.4 GHz and 5 GHz [CHAR LIMIT=25] -->
         <item>Auto</item>
-        <!-- Operation on 5 GHz alone [CHAR LIMIT=25]-->
+        <!-- Operation on 5 GHz alone [CHAR LIMIT=25] -->
         <item>5 GHz only</item>
-        <!-- Operation on 2.4 GHz alone [CHAR LIMIT=25]-->
+        <!-- Operation on 2.4 GHz alone [CHAR LIMIT=25] -->
         <item>2.4 GHz only</item>
     </string-array>
 
     <!-- Match with wifi_frequency_band_entries and the values of the settings in WifiManager. -->
     <!-- Do not translate. -->
     <string-array name="wifi_frequency_band_values" translatable="false">
+
         <!-- Do not translate. -->
         <item>0</item>
         <!-- Do not translate. -->
@@ -426,7 +456,6 @@
         <item>Turkey</item>
         <item>Singapore</item>
     </string-array>
-
     <string-array name="wifi_countrycode_values" translatable="false">
         <item>US</item>
         <item>CA</item>
@@ -465,17 +494,19 @@
     </string-array>
 
     <!-- Wi-Fi IP settings. -->
-   <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
+    <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
     <string-array name="wifi_ip_settings">
+
         <!-- Use DHCP (Dynamic Host Configuration Protocol) for obtaining IP settings [CHAR LIMIT=25] -->
         <item>DHCP</item>
-        <!-- Use statically defined IP settings [CHAR LIMIT=25]-->
+        <!-- Use statically defined IP settings [CHAR LIMIT=25] -->
         <item>Static</item>
     </string-array>
 
     <!-- Wi-Fi proxy settings. -->
     <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
     <string-array name="wifi_proxy_settings">
+
         <!-- No HTTP proxy is used for the current wifi network [CHAR LIMIT=25] -->
         <item>None</item>
         <!-- Manual HTTP proxy settings are used for the current wifi network [CHAR LIMIT=25] -->
@@ -496,15 +527,16 @@
         <item>2</item>
     </string-array>
 
-    <!-- Locales in this list are displayed with the corresponding
+    <!--
+         Locales in this list are displayed with the corresponding
          name from special_locale_names instead of using the name
-         from Locale.getDisplayName(). -->
-    <string-array translatable="false" name="special_locale_codes">
+         from Locale.getDisplayName().
+    -->
+    <string-array name="special_locale_codes" translatable="false">
         <item>zh_CN</item>
         <item>zh_TW</item>
     </string-array>
-
-    <string-array translatable="false" name="special_locale_names">
+    <string-array name="special_locale_names" translatable="false">
         <item>中文 (简体)</item>
         <item>中文 (繁體)</item>
     </string-array>
@@ -516,8 +548,8 @@
         <item>CHAP</item>
         <item>PAP or CHAP</item>
     </string-array>
-
     <string-array name="apn_auth_values" translatable="false">
+
         <!-- Do not translate. -->
         <item>0</item>
         <!-- Do not translate. -->
@@ -534,8 +566,8 @@
         <item>IPv6</item>
         <item>IPv4/IPv6</item>
     </string-array>
-
     <string-array name="apn_protocol_values" translatable="false">
+
         <!-- Do not translate. -->
         <item>IP</item>
         <!-- Do not translate. -->
@@ -550,8 +582,8 @@
         <item>eHRPD</item>
         <item>Unspecified</item>
     </string-array>
-
     <string-array name="bearer_values" translatable="false">
+
         <!-- Do not translate. -->
         <item>14</item>
         <!-- Do not translate. -->
@@ -576,9 +608,10 @@
 
     <!-- Titles for the list of long press timeout options. -->
     <string-array name="long_press_timeout_selector_titles">
+
         <!-- A title for the option for short long-press timeout [CHAR LIMIT=25] -->
         <item>Short</item>
-        <!-- A title for the option for medium long-press timeout [CHAR LIMIT=25] -->        
+        <!-- A title for the option for medium long-press timeout [CHAR LIMIT=25] -->
         <item>Medium</item>
         <!-- A title for the option for long long-press timeout [CHAR LIMIT=25] -->
         <item>Long</item>
@@ -599,14 +632,14 @@
     </string-array>
 
     <!-- Values for HDCP checking preference. -->
-    <string-array name="hdcp_checking_values" translatable="false" >
+    <string-array name="hdcp_checking_values" translatable="false">
         <item>never</item>
         <item>drm-only</item>
         <item>always</item>
     </string-array>
 
-    <!-- Summaries for HDCP checking preference. [CHAR LIMIT=100]-->
-    <string-array name="hdcp_checking_summaries" >
+    <!-- Summaries for HDCP checking preference. [CHAR LIMIT=100] -->
+    <string-array name="hdcp_checking_summaries">
         <item>Never use HDCP checking</item>
         <item>Use HDCP checking for DRM content only</item>
         <item>Always use HDCP checking</item>
@@ -624,7 +657,7 @@
     </string-array>
 
     <!-- Values for window animation scale preference. -->
-    <string-array name="window_animation_scale_values" translatable="false" >
+    <string-array name="window_animation_scale_values" translatable="false">
         <item>0</item>
         <item>.5</item>
         <item>1</item>
@@ -646,7 +679,7 @@
     </string-array>
 
     <!-- Values for transition animation scale preference. -->
-    <string-array name="transition_animation_scale_values" translatable="false" >
+    <string-array name="transition_animation_scale_values" translatable="false">
         <item>0</item>
         <item>.5</item>
         <item>1</item>
@@ -668,7 +701,7 @@
     </string-array>
 
     <!-- Values for animator duration scale preference. -->
-    <string-array name="animator_duration_scale_values" translatable="false" >
+    <string-array name="animator_duration_scale_values" translatable="false">
         <item>0</item>
         <item>.5</item>
         <item>1</item>
@@ -689,7 +722,7 @@
     </string-array>
 
     <!-- Values for app process limit preference. -->
-    <string-array name="app_process_limit_values" translatable="false" >
+    <string-array name="app_process_limit_values" translatable="false">
         <item>-1</item>
         <item>0</item>
         <item>1</item>
@@ -698,7 +731,8 @@
         <item>4</item>
     </string-array>
 
-    <!-- Match this with the constants in VpnProfile. --> <skip />
+    <!-- Match this with the constants in VpnProfile. -->
+    <skip />
     <!-- Short names for each VPN type, not really translatable. [CHAR LIMIT=20] -->
     <string-array name="vpn_types" translatable="false">
         <item>PPTP</item>
@@ -709,7 +743,8 @@
         <item>IPSec Hybrid RSA</item>
     </string-array>
 
-    <!-- Match this with the constants in VpnProfile. --> <skip />
+    <!-- Match this with the constants in VpnProfile. -->
+    <skip />
     <!-- Longer descriptions for each VPN type. [CHAR LIMIT=100] -->
     <string-array name="vpn_types_long">
         <item>PPTP VPN</item>
@@ -720,9 +755,11 @@
         <item>IPSec VPN with certificates and hybrid authentication</item>
     </string-array>
 
-    <!-- Match this with the constants in LegacyVpnInfo. --> <skip />
+    <!-- Match this with the constants in LegacyVpnInfo. -->
+    <skip />
     <!-- Status for a VPN network. [CHAR LIMIT=100] -->
     <string-array name="vpn_states">
+
         <!-- Status message when VPN is disconnected. -->
         <item>Disconnected</item>
         <!-- Status message when VPN is initializing. -->
@@ -756,6 +793,7 @@
     </string-array>
 
     <!-- **** CYANOGENMOD EDITS START **** -->
+
 
     <!-- Volume Overlay options. -->
     <string-array name="volume_overlay_entries">
@@ -796,7 +834,6 @@
         <item>30 s</item>
         <item>60 s</item>
     </string-array>
-
     <string-array name="values_light_filter_window" translatable="false">
         <item>2000</item>
         <item>5000</item>
@@ -805,7 +842,6 @@
         <item>30000</item>
         <item>60000</item>
     </string-array>
-
     <string-array name="entries_light_filter_reset">
         <item>Disabled</item>
         <item>400 lux</item>
@@ -819,7 +855,6 @@
         <item>2000 lux</item>
         <item>2500 lux</item>
     </string-array>
-
     <string-array name="values_light_filter_reset" translatable="false">
         <item>-1</item>
         <item>400</item>
@@ -833,7 +868,6 @@
         <item>2000</item>
         <item>2500</item>
     </string-array>
-
     <string-array name="entries_light_filter_interval">
         <item>0.5 s</item>
         <item>1 s</item>
@@ -841,7 +875,6 @@
         <item>5 s</item>
         <item>10 s</item>
     </string-array>
-
     <string-array name="values_light_filter_interval" translatable="false">
         <item>500</item>
         <item>1000</item>
@@ -849,7 +882,6 @@
         <item>5000</item>
         <item>10000</item>
     </string-array>
-
     <string-array name="entries_light_levels_dim">
         <item>1</item>
         <item>2</item>
@@ -868,7 +900,6 @@
         <item>24</item>
         <item>26</item>
     </string-array>
-
     <string-array name="values_light_levels_dim" translatable="false">
         <item>1</item>
         <item>2</item>
@@ -887,7 +918,6 @@
         <item>24</item>
         <item>26</item>
     </string-array>
-
     <string-array name="entries_light_decrease_hysteresis">
         <item>0 %</item>
         <item>10 %</item>
@@ -900,7 +930,6 @@
         <item>80 %</item>
         <item>90 %</item>
     </string-array>
-
     <string-array name="values_light_decrease_hysteresis" translatable="false">
         <item>0</item>
         <item>10</item>
@@ -913,7 +942,7 @@
         <item>80</item>
         <item>90</item>
     </string-array>
-    
+
     <!-- Arrays required by Notification Widgets. -->
     <string-array name="entries_brightness_widget" formatted="false" translatable="false">
         <item>@string/cm_brightness_mode_auto</item>
@@ -923,8 +952,7 @@
         <item>75%</item>
         <item>100%</item>
     </string-array>
-
-   <string-array name="values_brightness_widget" translatable="false">
+    <string-array name="values_brightness_widget" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -932,91 +960,76 @@
         <item>4</item>
         <item>5</item>
     </string-array>
-
     <string-array name="entries_network_widget">
-        <item>2G/3G+2G</item>  
-        <item>2G/3G Only</item>   
+        <item>2G/3G+2G</item>
+        <item>2G/3G Only</item>
         <item>2G/3G Only/3G+2G</item>
     </string-array>
-
     <string-array name="values_network_widget" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-
     <string-array name="entries_screentimeout_widget">
         <item>15s/1m/5m</item>
         <item>30s/2m/5m</item>
     </string-array>
-
     <string-array name="values_screentimeout_widget" translatable="false">
         <item>0</item>
         <item>1</item>
     </string-array>
-
     <string-array name="entries_ring_widget" translatable="false">
         <item>@string/cm_sound_mode_silent</item>
         <item>@string/cm_sound_mode_vibrate</item>
         <item>@string/cm_sound_mode_sound</item>
         <item>@string/cm_sound_mode_soundVibrate</item>
     </string-array>
-
     <string-array name="values_ring_widget" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </string-array>
-
     <string-array name="entries_flash_widget">
         <item>Normal</item>
         <item>High</item>
     </string-array>
-
     <string-array name="values_flash_widget" translatable="false">
         <item>0</item>
         <item>1</item>
     </string-array>
-  
     <string-array name="haptic_feedback_entries">
         <item>Use global setting</item>
         <item>On</item>
         <item>Off</item>
     </string-array>
-
     <string-array name="haptic_feedback_values" translatable="false">
         <item>2</item>
         <item>1</item>
         <item>0</item>
     </string-array>
-
     <string-array name="pref_zram_size_entries">
         <item>Disabled</item>
         <item>10%</item>
         <item>18% (default)</item>
         <item>26%</item>
     </string-array>
-
     <string-array name="pref_zram_size_values" translatable="false">
         <item>0</item>
         <item>10</item>
         <item>18</item>
         <item>26</item>
     </string-array>
-
     <string-array name="entries_status_bar_am_pm">
         <item>Normal</item>
         <item>Small</item>
         <item>None (default)</item>
     </string-array>
-
     <string-array name="values_status_bar_am_pm" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-
     <string-array name="entries_status_bar_battery" translatable="false">
         <item>@string/status_bar_style_icon</item>
         <item>@string/status_bar_battery_status_percentage</item>
@@ -1024,7 +1037,6 @@
         <item>@string/status_bar_battery_status_circle_percentage</item>
         <item>@string/status_bar_style_hidden</item>
     </string-array>
-
     <string-array name="values_status_bar_battery" translatable="false">
         <item>0</item>
         <item>1</item>
@@ -1032,19 +1044,16 @@
         <item>3</item>
         <item>4</item>
     </string-array>
-
-     <string-array name="entries_status_bar_signal" translatable="false">
+    <string-array name="entries_status_bar_signal" translatable="false">
         <item>@string/status_bar_style_icon</item>
         <item>@string/status_bar_signal_text_show_text</item>
         <item>@string/status_bar_style_hidden</item>
-     </string-array>
-
-     <string-array name="values_status_bar_signal" translatable="false">
+    </string-array>
+    <string-array name="values_status_bar_signal" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-
     <string-array name="lockscreen_delay_entries" translatable="false">
         <item>@string/slide_lock_delay_none</item>
         <item>@string/slide_lock_delay_1s</item>
@@ -1057,7 +1066,6 @@
         <item>@string/slide_lock_delay_10m</item>
         <item>@string/slide_lock_delay_30m</item>
     </string-array>
-
     <string-array name="lockscreen_delay_values" translatable="false">
         <item>0</item>
         <item>1000</item>
@@ -1070,7 +1078,6 @@
         <item>600000</item>
         <item>1800000</item>
     </string-array>
-
     <string-array name="lockscreen_icon_picker_labels" translatable="false">
         <item>@string/icon_picker_alarm</item>
         <item>@string/icon_picker_browser</item>
@@ -1095,30 +1102,29 @@
         <item>@string/icon_picker_search</item>
         <item>@string/icon_picker_twitter</item>
     </string-array>
-
     <string-array name="lockscreen_icon_picker_icons" translatable="false">
-        <item>@*android:drawable/ic_lockscreen_alarm_normal</item>
-        <item>@*android:drawable/ic_lockscreen_browser_normal</item>
-        <item>@*android:drawable/ic_lockscreen_calendar_normal</item>
-        <item>@*android:drawable/ic_lockscreen_camera_normal</item>
-        <item>@*android:drawable/ic_lockscreen_chrome_normal</item>
-        <item>@*android:drawable/ic_lockscreen_email_normal</item>
-        <item>@*android:drawable/ic_lockscreen_email2_normal</item>
-        <item>@*android:drawable/ic_lockscreen_facebook_normal</item>
-        <item>@*android:drawable/ic_lockscreen_gallery_normal</item>
-        <item>@*android:drawable/ic_lockscreen_google_small_normal</item>
-        <item>@*android:drawable/ic_lockscreen_gplus_normal</item>
-        <item>@*android:drawable/ic_lockscreen_gtalk_normal</item>
-        <item>@*android:drawable/ic_lockscreen_maps_normal</item>
-        <item>@*android:drawable/ic_lockscreen_sms_normal</item>
-        <item>@*android:drawable/ic_lockscreen_movie_normal</item>
-        <item>@*android:drawable/ic_lockscreen_music_normal</item>
-        <item>@*android:drawable/ic_lockscreen_nav_normal</item>
-        <item>@*android:drawable/ic_lockscreen_phone_normal</item>
-        <item>@*android:drawable/ic_lockscreen_podcast_normal</item>
-        <item>@*android:drawable/ic_lockscreen_rss_normal</item>
-        <item>@*android:drawable/ic_lockscreen_google_normal</item>
-        <item>@*android:drawable/ic_lockscreen_twitter_normal</item>
+        <item>@drawable/ic_lockscreen_alarm_normal</item>
+        <item>@drawable/ic_lockscreen_browser_normal</item>
+        <item>@drawable/ic_lockscreen_calendar_normal</item>
+        <item>@drawable/ic_lockscreen_camera_normal</item>
+        <item>@drawable/ic_lockscreen_chrome_normal</item>
+        <item>@drawable/ic_lockscreen_email_normal</item>
+        <item>@drawable/ic_lockscreen_email2_normal</item>
+        <item>@drawable/ic_lockscreen_facebook_normal</item>
+        <item>@drawable/ic_lockscreen_gallery_normal</item>
+        <item>@drawable/ic_lockscreen_google_small_normal</item>
+        <item>@drawable/ic_lockscreen_gplus_normal</item>
+        <item>@drawable/ic_lockscreen_gtalk_normal</item>
+        <item>@drawable/ic_lockscreen_maps_normal</item>
+        <item>@drawable/ic_lockscreen_sms_normal</item>
+        <item>@drawable/ic_lockscreen_movie_normal</item>
+        <item>@drawable/ic_lockscreen_music_normal</item>
+        <item>@drawable/ic_lockscreen_nav_normal</item>
+        <item>@drawable/ic_lockscreen_phone_normal</item>
+        <item>@drawable/ic_lockscreen_podcast_normal</item>
+        <item>@drawable/ic_lockscreen_rss_normal</item>
+        <item>@drawable/ic_lockscreen_google_normal</item>
+        <item>@drawable/ic_lockscreen_twitter_normal</item>
     </string-array>
 
     <!-- Profile mode options. -->
@@ -1202,11 +1208,9 @@
         <item>1</item>
         <item>2</item>
     </string-array>
-
     <string-array name="location_entries_gps_source">
         <item>Use Internal GPS</item>
     </string-array>
-
     <string-array name="location_values_gps_source" translatable="false">
         <item>0</item>
     </string-array>
@@ -1218,7 +1222,6 @@
         <item>@string/root_access_adb</item>
         <item>@string/root_access_all</item>
     </string-array>
-
     <string-array name="root_access_values" translatable="false">
         <item>0</item>
         <item>1</item>
@@ -1235,7 +1238,6 @@
         <item>@string/pulse_length_long</item>
         <item>@string/pulse_length_very_long</item>
     </string-array>
-
     <string-array name="notification_pulse_length_values" translatable="false">
         <item>1</item>
         <item>250</item>
@@ -1244,7 +1246,6 @@
         <item>2500</item>
         <item>5000</item>
     </string-array>
-
     <string-array name="notification_pulse_speed_entries" translatable="false">
         <item>@string/pulse_speed_very_fast</item>
         <item>@string/pulse_speed_fast</item>
@@ -1252,7 +1253,6 @@
         <item>@string/pulse_speed_slow</item>
         <item>@string/pulse_speed_very_slow</item>
     </string-array>
-
     <string-array name="notification_pulse_speed_values" translatable="false">
         <item>250</item>
         <item>500</item>
@@ -1260,7 +1260,6 @@
         <item>2500</item>
         <item>5000</item>
     </string-array>
-
     <string-array name="weather_interval_entries" translatable="false">
         <item>@string/weather_refresh_manual</item>
         <item>@string/weather_refresh_30min</item>
@@ -1270,7 +1269,6 @@
         <item>@string/weather_refresh_6hrs</item>
         <item>@string/weather_refresh_8hrs</item>
     </string-array>
-
     <string-array name="weather_interval_values" translatable="false">
         <item>0</item>
         <item>30</item>
@@ -1280,7 +1278,6 @@
         <item>360</item>
         <item>480</item>
     </string-array>
-
     <string-array name="calendar_lookahead_entries" translatable="false">
         <item>@string/calendar_lookahead_3hrs</item>
         <item>@string/calendar_lookahead_6hrs</item>
@@ -1289,7 +1286,6 @@
         <item>@string/calendar_lookahead_3days</item>
         <item>@string/calendar_lookahead_1wk</item>
     </string-array>
-
     <string-array name="calendar_lookahead_values" translatable="false">
         <item>10800000</item>
         <item>21600000</item>
@@ -1298,25 +1294,21 @@
         <item>259200000</item>
         <item>604800000</item>
     </string-array>
-
     <string-array name="calendar_show_event_metadata_entries" translatable="false">
         <item>@string/calendar_metadata_none</item>
         <item>@string/calendar_metadata_first_line</item>
         <item>@string/calendar_metadata_all</item>
     </string-array>
-
     <string-array name="calendar_show_event_metadata_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-
     <string-array name="lockscreen_background_entries" translatable="false">
         <item>@string/lockscreen_background_color_fill</item>
         <item>@string/lockscreen_background_custom_image</item>
         <item>@string/lockscreen_background_default_wallpaper</item>
     </string-array>
-
     <string-array name="lockscreen_background_values" translatable="false">
         <item>0</item>
         <item>1</item>
@@ -1361,7 +1353,6 @@
         <item>43200</item>
         <item>86400</item>
     </string-array>
-
     <string-array name="increasing_ring_interval_entries" translatable="false">
         <item>@string/increasing_ring_interval_eachring</item>
         <item>@string/increasing_ring_interval_half_second</item>
@@ -1387,35 +1378,29 @@
         <item>@string/dithering_color_banding</item>
         <item>@string/dithering_blur_effect</item>
     </string-array>
-
     <string-array name="dithering_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-
     <string-array name="lockscreen_battery_status_entries" translatable="false">
         <item>@string/lockscreen_battery_status_charging</item>
         <item>@string/lockscreen_battery_status_alwayson</item>
     </string-array>
-
     <string-array name="lockscreen_battery_status_values" translatable="false">
         <item>0</item>
         <item>1</item>
     </string-array>
-
     <string-array name="lockscreen_clock_align_entries" translatable="false">
         <item>@string/lockscreen_clock_align_left</item>
         <item>@string/lockscreen_clock_align_center</item>
         <item>@string/lockscreen_clock_align_right</item>
     </string-array>
-
     <string-array name="lockscreen_clock_align_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-
     <string-array name="hardware_keys_action_entries" translatable="false">
         <item>@string/hardware_keys_action_nothing</item>
         <item>@string/hardware_keys_action_menu</item>
@@ -1424,7 +1409,6 @@
         <item>@string/hardware_keys_action_voice_search</item>
         <item>@string/hardware_keys_action_in_app_search</item>
     </string-array>
-
     <string-array name="hardware_keys_action_values" translatable="false">
         <item>0</item>
         <item>1</item>
@@ -1434,20 +1418,19 @@
         <item>5</item>
     </string-array>
 
-    <!--- Volume key cursor control -->
+    <!-- - Volume key cursor control -->
     <string-array name="volume_key_cursor_control_entries" translatable="false">
         <item>@string/volume_key_cursor_control_off</item>
         <item>@string/volume_key_cursor_control_on</item>
         <item>@string/volume_key_cursor_control_on_reverse</item>
     </string-array>
-
     <string-array name="volume_key_cursor_control_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
 
-    <!--- Sms security limit -->
+    <!-- - Sms security limit -->
     <string-array name="sms_security_check_limit_entries" translatable="false">
         <item>15</item>
         <item>@string/sms_security_check_limit_default</item>
@@ -1457,7 +1440,6 @@
         <item>500</item>
         <item>1000</item>
     </string-array>
-
     <string-array name="sms_security_check_limit_values" translatable="false">
         <item>15</item>
         <item>30</item>
@@ -1470,60 +1452,58 @@
 
     <!-- **** CYANOGENMOD EDITS END **** -->
 
-    <!--add phone Ringtone-->
-    <string-array name="ringtone_entries">  
+
+    <!-- add phone Ringtone -->
+    <string-array name="ringtone_entries">
         <item>@string/sound_ringtones</item>
         <item>@string/sound_music</item>
     </string-array>
-    <!--add phone Ringtone-->
+    <!-- add phone Ringtone -->
     <string-array name="ringtone_values">
         <item>0</item>
         <item>1</item>
     </string-array>
-    
-    
     <string-array name="usb_connect_func">
         <item>USB Connect</item>
         <item>Share Net</item>
         <item>Only Charging</item>
     </string-array>
-    
     <string-array name="usb_connect_func_value" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-    
     <string-array name="sliding_unlock_func">
         <item>Ring</item>
         <item>Drop Down</item>
     </string-array>
-    
     <string-array name="sliding_unlock_func_value" translatable="false">
         <item>1</item>
         <item>2</item>
     </string-array>
-    
     <string-array name="staus_bar_transparent_key">
         <item>Opaque</item>
         <item>Translucent</item>
         <item>Transparent</item>
     </string-array>
-    
     <string-array name="staus_bar_transparent_value" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-    
     <string-array name="backlight_switch_key">
         <item>Open</item>
         <item>Closed</item>
     </string-array>
-    
     <string-array name="backlight_switch_value" translatable="false">
         <item>0</item>
         <item>1</item>
     </string-array>
-    
+
+    <array name="lockscreen_targets_with_camera" translatable="false">
+        <item>@drawable/ic_lockscreen_unlock</item>
+        <item>@drawable/ic_action_assist_generic</item>
+        <item>@drawable/ic_lockscreen_camera</item>
+        <item>@null</item>
+    </array>
 </resources>
