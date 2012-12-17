@@ -113,14 +113,14 @@ public class PowerWidgetUtil {
             + BUTTON_DELIMITER + BUTTON_SOUND
             + BUTTON_DELIMITER + BUTTON_BRIGHTNESS
             + BUTTON_DELIMITER + BUTTON_MOBILEDATA
-            + BUTTON_DELIMITER + BUTTON_DRIVER
             + BUTTON_DELIMITER + BUTTON_NETWORKMODE
             + BUTTON_DELIMITER + BUTTON_SHUTDOWN
             + BUTTON_DELIMITER + BUTTON_REBOOT
             + BUTTON_DELIMITER + BUTTON_SYNC
             + BUTTON_DELIMITER + BUTTON_SCREENTIMEOUT
             + BUTTON_DELIMITER + BUTTON_WIFIAP
-            + BUTTON_DELIMITER + BUTTON_SLEEP;
+            + BUTTON_DELIMITER + BUTTON_SLEEP
+            + BUTTON_DELIMITER + BUTTON_DRIVER;
 
     public static String getCurrentButtons(Context context) {
         String buttons = Settings.System.getString(context.getContentResolver(), Settings.System.WIDGET_BUTTONS);
