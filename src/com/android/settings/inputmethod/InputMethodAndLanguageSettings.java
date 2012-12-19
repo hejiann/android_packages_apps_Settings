@@ -44,6 +44,9 @@ import android.provider.Settings;
 import android.provider.Settings.System;
 import android.text.TextUtils;
 import android.view.InputDevice;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 
@@ -103,6 +106,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.language_settings);
         
         getActivity().getActionBar().setIcon(R.drawable.ic_settings_language);
+        
+        getActivity().getActionBar().setDisplayHomeAsUpEnabled(false);
 
         try {
             mDefaultInputMethodSelectorVisibility = Integer.valueOf(
@@ -207,7 +212,17 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
     }
 
-    private void updateInputMethodSelectorSummary(int value) {
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		return super.onCreateView(inflater, container, savedInstanceState);
+	}
+
+
+
+	private void updateInputMethodSelectorSummary(int value) {
         String[] inputMethodSelectorTitles = getResources().getStringArray(
                 R.array.input_method_selector_titles);
         if (inputMethodSelectorTitles.length > value) {
