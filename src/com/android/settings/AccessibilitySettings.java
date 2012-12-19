@@ -519,12 +519,12 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                                 // the dialog removal occurs after onSaveInstanceState which
                                 // triggers an exception
                                 removeDialog(DIALOG_ID_NO_ACCESSIBILITY_SERVICES);
-                                String screenreaderMarketLink = SystemProperties.get(
-                                        SYSTEM_PROPERTY_MARKET_URL,
-                                        DEFAULT_SCREENREADER_MARKET_LINK);
-                                Uri marketUri = Uri.parse(screenreaderMarketLink);
-                                Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
-                                startActivity(marketIntent);
+//                                String screenreaderMarketLink = SystemProperties.get(
+//                                        SYSTEM_PROPERTY_MARKET_URL,
+//                                        DEFAULT_SCREENREADER_MARKET_LINK);
+//                                Uri marketUri = Uri.parse(screenreaderMarketLink);
+//                                Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+//                                startActivity(marketIntent);
                             }
                     })
                     .setNegativeButton(android.R.string.cancel, null)
