@@ -252,7 +252,9 @@ public class UsbPopUp extends SettingsPreferenceFragment {
         @Override
         public void onStorageStateChanged(String path, String oldState, String newState) {
             mCurrentState = newState;
-            mSwitch.setEnabled(canShared(mCurrentState));
+            if (mSwitch != null ) {
+                mSwitch.setEnabled(canShared(mCurrentState));
+            }
             mMounting = mCurrentState.equals(Environment.MEDIA_SHARED);
         }
     }
