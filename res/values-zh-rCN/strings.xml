@@ -2591,4 +2591,13 @@
     <string name="turn_on_ums">打开USB存储设备</string>
     <string name="turn_off_ums">关闭USB存储设备</string>
     <string name="unshare_failed">关闭USB存储设备可能不成功，请先在电脑上安全移除设备。</string>
+    
+    <string name="app_limit_list_category">隐私</string>
+    <string name="app_limit_list">隐私设置</string>
+    <string name="app_limit_list_summary">设置禁止访问的应用程序，可通过输入密码来访问</string>
+    <string name="app_limit_enabled">限制访问模式开关</string>
+    <string name="app_limit_enabled_on">开启</string>
+    <string name="app_limit_enabled_off">关闭</string>
+    <string name="limit_list">应用程序访问控制</string>
+    <string name="set_limit_password">设置解除禁止方式</string>
 </resources>

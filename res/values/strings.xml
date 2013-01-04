@@ -5002,4 +5002,14 @@
 	<string name="turn_on_ums">Turn on USB storage</string>
 	<string name="turn_off_ums">Turn off USB storage</string>
 	<string name="unshare_failed">Turn off USB storage mayby failed.Please remove the device on your computer.</string>
+	
+	<string name="app_limit_list_category">Security</string>
+    <string name="app_limit_list">Security Setting</string>
+    <string name="app_limit_list_summary">To set disable access to the application, enter a password to access</string>
+    
+    <string name="app_limit_enabled">App Limit Enabled</string>
+    <string name="app_limit_enabled_on">On</string>
+    <string name="app_limit_enabled_off">Off</string>
+    <string name="limit_list">Application Control</string>
+    <string name="set_limit_password">Set unban function</string>
 </resources>

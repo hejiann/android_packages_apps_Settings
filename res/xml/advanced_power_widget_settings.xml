@@ -49,13 +49,13 @@
             android:title="@string/title_expanded_widget" />
 
         <!--
-        PreferenceScreen
+        <PreferenceScreen
             android:key="widget_picker"
             android:title="@string/title_widget_picker"
             android:summary="@string/summary_widget_picker"
             android:dependency="expanded_widget"
             android:fragment="com.android.settings.cyanogenmod.PowerWidget$PowerWidgetChooser">
-        </PreferenceScreen
+        </PreferenceScreen>
         -->
     </PreferenceCategory>
     <PreferenceCategory

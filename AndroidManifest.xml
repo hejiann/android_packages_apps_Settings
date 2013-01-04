@@ -1079,7 +1079,14 @@
         </activity>
 
         <!-- Second and third-level settings -->
-
+        
+        <!-- App Limit -->
+        <activity android:name=".cyanogenmod.AppLimitPassword" android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:name=".cyanogenmod.ConfirmLimitPassword" android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:name=".cyanogenmod.ChooseLimitPattern"/>
+        <activity android:name=".cyanogenmod.ConfirmLimitPattern"/>
 
         <!-- Lock screen settings -->
         <activity android:name="ConfirmLockPattern"/>
