@@ -1087,6 +1087,14 @@
             android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity android:name=".cyanogenmod.ChooseLimitPattern"/>
         <activity android:name=".cyanogenmod.ConfirmLimitPattern"/>
+        <!-- App Limit Unlock-->
+        <activity android:name=".cyanogenmod.UnlockWithLimitPassword" android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".cyanogenmod.UnlockWithLimitPattern"
+            android:launchMode="singleInstance"
+             android:excludeFromRecents="true"/>
 
         <!-- Lock screen settings -->
         <activity android:name="ConfirmLockPattern"/>

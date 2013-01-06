@@ -5012,4 +5012,5 @@
     <string name="app_limit_enabled_off">Off</string>
     <string name="limit_list">Application Control</string>
     <string name="set_limit_password">Set unban function</string>
+    <string name="launcing">Launching</string>
 </resources>
