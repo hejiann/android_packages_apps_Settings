@@ -76,13 +76,24 @@ public class AppLimitListSetting extends SettingsPreferenceFragment {
 		String limitList = Settings.System.getString(getActivity()
 				.getApplicationContext().getContentResolver(),
 				Settings.System.APP_LIMIT_LIST);
+		Intent launcherIntent = new Intent(Intent.ACTION_MAIN, null);
+		launcherIntent.addCategory(Intent.CATEGORY_HOME);
+		List<ResolveInfo> launcherResolveInfos = pm.queryIntentActivities(
+				launcherIntent, 0);
+		StringBuilder launcherPkg = new StringBuilder();
+		for (ResolveInfo launcher : launcherResolveInfos) {
+			ApplicationInfo launcherInfo = launcher.activityInfo.applicationInfo;
+			launcherPkg.append(launcherInfo.packageName + "|");
+		}
+		String LAUNCHER_PKG = launcherPkg.toString();
 		if (limitList != null) {
 			Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
 			mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 			resolveInfos = pm.queryIntentActivities(mainIntent, 0);
 			for (ResolveInfo info : resolveInfos) {
 				ApplicationInfo applicationInfo = info.activityInfo.applicationInfo;
-				if (!APP_LIST.contains(applicationInfo.packageName)) {
+				if (!APP_LIST.contains(applicationInfo.packageName)
+						&& !LAUNCHER_PKG.contains(applicationInfo.packageName)) {
 					CheckBoxPreference item = new CheckBoxPreference(
 							getActivity());
 					item.setTitle(applicationInfo.loadLabel(pm).toString());
