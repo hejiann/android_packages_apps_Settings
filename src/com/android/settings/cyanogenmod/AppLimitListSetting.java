@@ -47,6 +47,7 @@ public class AppLimitListSetting extends SettingsPreferenceFragment {
 	private List<PackageInfo> apkInfos;
 	private PreferenceScreen prefset;
 	private List<ResolveInfo> resolveInfos;
+	private List<String> resultData;
 	private final String APP_LIST = "com.android.settings|com.shendu.launcher";
 
 	@Override
@@ -98,6 +99,7 @@ public class AppLimitListSetting extends SettingsPreferenceFragment {
 							getActivity());
 					item.setTitle(applicationInfo.loadLabel(pm).toString());
 					item.setIcon(pm.getApplicationIcon(applicationInfo));
+					resultData.add(applicationInfo.packageName);
 					if (limitList.contains(applicationInfo.packageName)) {
 						item.setChecked(true);
 					} else {
@@ -116,8 +118,7 @@ public class AppLimitListSetting extends SettingsPreferenceFragment {
 					.getPreference(i);
 			boolean isChecked = item.isChecked();
 			if (isChecked) {
-				ApplicationInfo applicationInfo = resolveInfos.get(i).activityInfo.applicationInfo;
-				sb.append(applicationInfo.packageName + "|");
+				sb.append(resultData.get(i) + "|");
 			}
 		}
 		Settings.System.putString(getActivity().getApplicationContext()
