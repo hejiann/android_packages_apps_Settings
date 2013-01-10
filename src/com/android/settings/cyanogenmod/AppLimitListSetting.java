@@ -22,41 +22,27 @@ import java.util.List;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
-import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceScreen;
-import android.provider.ContactsContract.Contacts.Data;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.os.SystemProperties;
 
 import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
 
 public class AppLimitListSetting extends Fragment {
 
@@ -90,14 +76,20 @@ public class AppLimitListSetting extends Fragment {
 				R.layout.app_limit_listview, container, false);
 
 		mLimitList = (ListView) view.findViewById(R.id.app_limit_list);
-
-		intiView();
-
-		mLimitListAdapter = new LimitListAdapter();
-		mLimitList.setAdapter(mLimitListAdapter);
+		
+		mThread.start();
 
 		return view;
 	}
+	
+	private Thread mThread = new Thread(){
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			super.run();
+			initView();
+		}
+	};
 
 	@Override
 	public void onPause() {
@@ -105,8 +97,20 @@ public class AppLimitListSetting extends Fragment {
 		super.onPause();
 		saveData();
 	}
+	
+	private Handler mHandler = new Handler(){
 
-	private void intiView() {
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			mLimitListAdapter = new LimitListAdapter();
+			mLimitList.setAdapter(mLimitListAdapter);
+		}
+		
+	}; 
+
+	private void initView() {
 		String limitList = Settings.System.getString(getActivity()
 				.getApplicationContext().getContentResolver(),
 				Settings.System.APP_LIMIT_LIST);
@@ -139,6 +143,8 @@ public class AppLimitListSetting extends Fragment {
 					resultData.add(item);
 			}
 		}
+		
+		mHandler.sendEmptyMessage(0);
 	}
 
 	private void saveData() {

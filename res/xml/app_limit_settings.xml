@@ -30,6 +30,7 @@
     <PreferenceScreen
         android:fragment="com.android.settings.cyanogenmod.AppLimitListSetting"
         android:key="app_limit_list"
-        android:title="@string/limit_list" />
+        android:title="@string/limit_list"
+        android:summary="@string/limit_list_summary" />
 
 </PreferenceScreen>

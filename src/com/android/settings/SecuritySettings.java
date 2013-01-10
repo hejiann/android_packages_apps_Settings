@@ -179,7 +179,7 @@ public class SecuritySettings extends SettingsPreferenceFragment implements
 		}
 		
 		//Add app limit list setting
-		addPreferencesFromResource(R.xml.security_settings_app_limit_list);
+		//addPreferencesFromResource(R.xml.security_settings_app_limit_list);
 		
 		// Add options for device encryption
 		DevicePolicyManager dpm = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
