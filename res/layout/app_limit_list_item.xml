@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="53dp"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="false" 
+        android:layout_marginTop="4dip"
+        android:layout_marginBottom="4dip">
+
+        <ImageView
+            android:id="@+id/appicon"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_alignParentLeft="true">
+        </ImageView>
+
+        <LinearLayout
+            android:id="@+id/checkbox_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/toggle"
+                android:layout_width="36dip"
+                android:layout_height="36dip"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/appname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@id/checkbox_layout"
+            android:layout_toRightOf="@id/appicon"
+            android:textColor="#4c4c4c"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/listview_fragment_listitem_line" />
+    <!--
+         <View
+        android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shendu_setting_divider" />
+    -->
+
+</LinearLayout>

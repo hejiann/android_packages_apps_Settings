@@ -50,4 +50,6 @@
     <!-- add theme model color value by lys -->
     
     <color name="power_widget_divider_color">#14a2ec</color>
+    
+    <color name="listview_fragment_listitem_line">#d3d4d5</color>
 </resources>
