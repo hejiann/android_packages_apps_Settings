@@ -109,10 +109,10 @@ public class AppLimitSettings extends SettingsPreferenceFragment {
 					mAppLimitEnabled
 							.setSummary(value ? R.string.app_limit_enabled_on
 									: R.string.app_limit_enabled_off);
+					Settings.System.putInt(getActivity().getApplicationContext()
+							.getContentResolver(),
+							Settings.System.APP_LIMIT_ENABLE, 1);
 				}
-				Settings.System.putInt(getActivity().getApplicationContext()
-						.getContentResolver(),
-						Settings.System.APP_LIMIT_ENABLE, 1);
 			} else {
 				boolean passwordSytle = (Settings.System.getInt(getActivity()
 						.getApplicationContext().getContentResolver(),
