@@ -76,13 +76,13 @@ public class AppLimitListSetting extends Fragment {
 				R.layout.app_limit_listview, container, false);
 
 		mLimitList = (ListView) view.findViewById(R.id.app_limit_list);
-		
+
 		mThread.start();
 
 		return view;
 	}
-	
-	private Thread mThread = new Thread(){
+
+	private Thread mThread = new Thread() {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
@@ -97,8 +97,8 @@ public class AppLimitListSetting extends Fragment {
 		super.onPause();
 		saveData();
 	}
-	
-	private Handler mHandler = new Handler(){
+
+	private Handler mHandler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
@@ -107,8 +107,8 @@ public class AppLimitListSetting extends Fragment {
 			mLimitListAdapter = new LimitListAdapter();
 			mLimitList.setAdapter(mLimitListAdapter);
 		}
-		
-	}; 
+
+	};
 
 	private void initView() {
 		String limitList = Settings.System.getString(getActivity()
@@ -135,15 +135,19 @@ public class AppLimitListSetting extends Fragment {
 				item.mAppName = applicationInfo.loadLabel(pm).toString();
 				item.mAppIcon = pm.getApplicationIcon(applicationInfo);
 				item.mPkgName = applicationInfo.packageName;
+				if (limitList == null) {
+					item.isCheck = false;
+				} else {
 					if (limitList.contains(applicationInfo.packageName)) {
 						item.isCheck = true;
 					} else {
 						item.isCheck = false;
 					}
-					resultData.add(item);
+				}
+				resultData.add(item);
 			}
 		}
-		
+
 		mHandler.sendEmptyMessage(0);
 	}
 
@@ -156,7 +160,8 @@ public class AppLimitListSetting extends Fragment {
 			}
 		}
 		Settings.System.putString(getActivity().getApplicationContext()
-				.getContentResolver(), Settings.System.APP_LIMIT_LIST, sb.toString());
+				.getContentResolver(), Settings.System.APP_LIMIT_LIST, sb
+				.toString());
 	}
 
 	class LimitListAdapter extends BaseAdapter {
@@ -217,9 +222,9 @@ public class AppLimitListSetting extends Fragment {
 			DataItem itemInfo = resultData.get(position);
 
 			holder.toggle.setChecked(itemInfo.isCheck);
-			
+
 			holder.toggle.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
