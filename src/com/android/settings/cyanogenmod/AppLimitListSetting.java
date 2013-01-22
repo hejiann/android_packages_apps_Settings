@@ -52,6 +52,7 @@ public class AppLimitListSetting extends Fragment {
 	private List<ResolveInfo> resolveInfos;
 	private List<DataItem> resultData = new ArrayList<DataItem>();;
 	private final String APP_LIST = "com.android.settings";
+	private final String OTHERWISE_LIST = "com.android.gallery3d|com.android.Contacts";
 
 	private ListView mLimitList;
 	private LimitListAdapter mLimitListAdapter;
@@ -127,6 +128,8 @@ public class AppLimitListSetting extends Fragment {
 		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
 		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 		resolveInfos = pm.queryIntentActivities(mainIntent, 0);
+		boolean contactsFirst = true;
+		boolean galleryFirst = true;
 		for (ResolveInfo info : resolveInfos) {
 			ApplicationInfo applicationInfo = info.activityInfo.applicationInfo;
 			if (!APP_LIST.contains(applicationInfo.packageName)
@@ -144,7 +147,25 @@ public class AppLimitListSetting extends Fragment {
 						item.isCheck = false;
 					}
 				}
-				resultData.add(item);
+				if ("com.android.gallery3d"
+						.contains(applicationInfo.packageName)) {
+					if (galleryFirst) {
+						item.mAppName = getActivity().getResources().getString(
+								R.string.gallery_and_camera);
+						resultData.add(item);
+						galleryFirst = false;
+					}
+				} else if ("com.android.contacts"
+						.contains(applicationInfo.packageName)) {
+					if (contactsFirst) {
+						item.mAppName = getActivity().getResources().getString(
+								R.string.call_and_contacts);
+						resultData.add(item);
+						contactsFirst = false;
+					}
+				} else {
+					resultData.add(item);
+				}
 			}
 		}
 
