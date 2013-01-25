@@ -20,6 +20,24 @@
 
     <!-- WIRELESS and NETWORKS -->
     <header android:title="@string/header_category_wireless_networks" />
+    
+    <!-- Flying balabalabal~~~~ -->
+    <header
+        android:id="@+id/airplane_mode"
+        android:icon="@drawable/airplane_mode_off"
+        android:fragment="com.android.settings.Settings"
+        android:title="@string/profile_airplanemode_title" />
+    
+    <!-- Data Usage -->
+    <header
+        android:id="@+id/data_usage_settings"
+        android:icon="@drawable/ic_settings_data_usage"
+        android:title="@string/toggleData" >
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.android.phone.Settings"
+            android:targetPackage="com.android.phone" />
+    </header>
 
     <!-- Wifi -->
     <header
@@ -35,12 +53,6 @@
         android:title="@string/bluetooth_settings_title"
         android:icon="@drawable/ic_settings_bluetooth2" />
 
-    <!-- Data Usage -->
-    <header
-        android:id="@+id/data_usage_settings"
-        android:fragment="com.android.settings.DataUsageSummary"
-        android:title="@string/data_usage_summary_title"
-        android:icon="@drawable/ic_settings_data_usage" />
 
     <!-- Operator hook -->
     <header

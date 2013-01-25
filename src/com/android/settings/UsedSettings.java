@@ -20,7 +20,6 @@ import com.android.internal.util.ArrayUtils;
 import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.AuthenticatorHelper;
 import com.android.settings.accounts.ManageAccountsSettings;
-import com.android.settings.airplane.AirplaneEnabler;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.deviceinfo.Memory;
@@ -583,7 +582,6 @@ public class UsedSettings extends PreferenceActivity implements
 		private final WifiEnabler mWifiEnabler;
 		private final BluetoothEnabler mBluetoothEnabler;
 		private final DataEnabler mDataEnabler;
-		private final AirplaneEnabler mAirplaneEnabler;
 
 		private SwitcherBean switcherBean;
 
@@ -603,8 +601,7 @@ public class UsedSettings extends PreferenceActivity implements
 				return HEADER_TYPE_CATEGORY;
 			} else if (header.id == R.id.wifi_settings
 					|| header.id == R.id.bluetooth_settings
-					|| header.id == R.id.data_usage_settings
-					|| header.id == R.id.airplane_mode) {
+					|| header.id == R.id.data_usage_settings) {
 				return HEADER_TYPE_SWITCH;
 			} else {
 				return HEADER_TYPE_NORMAL;
@@ -658,9 +655,6 @@ public class UsedSettings extends PreferenceActivity implements
 			switcherBean.setmBluetoothEnabler(mBluetoothEnabler);
 			mDataEnabler = new DataEnabler(context, new Switch(context));
 			switcherBean.setmDataEnabler(mDataEnabler);
-
-			mAirplaneEnabler = new AirplaneEnabler(context, new Switch(context));
-			switcherBean.setmAirplaneEnabler(mAirplaneEnabler);
 		}
 
 		@Override
@@ -735,11 +729,6 @@ public class UsedSettings extends PreferenceActivity implements
 						mDataEnabler.setSwitch(holder.switch_);
 						switcherBean.setIsData(1);
 					}
-				} else if (header.id == R.id.airplane_mode) {
-					if (switcherBean.getIsAirplane() == 0) {
-						mAirplaneEnabler.setSwitch(holder.switch_);
-						switcherBean.setIsAirplane(1);
-					}
 				}
 				// No break, fall through on purpose to update common fields
 
@@ -790,19 +779,17 @@ public class UsedSettings extends PreferenceActivity implements
 
 	@Override
 	public void onHeaderClick(Header header, int position) {
-		if (header.id != R.id.airplane_mode) {
-			boolean revert = false;
-			if (header.id == R.id.account_add) {
-				revert = true;
-			}
-			header4Fragment = header;
-			super.onHeaderClick(header, position);
+		boolean revert = false;
+		if (header.id == R.id.account_add) {
+			revert = true;
+		}
+		header4Fragment = header;
+		super.onHeaderClick(header, position);
 
-			if (revert && mLastHeader != null) {
-				highlightHeader((int) mLastHeader.id);
-			} else {
-				mLastHeader = header;
-			}
+		if (revert && mLastHeader != null) {
+			highlightHeader((int) mLastHeader.id);
+		} else {
+			mLastHeader = header;
 		}
 	}
 

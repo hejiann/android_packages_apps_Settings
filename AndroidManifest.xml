@@ -1080,6 +1080,12 @@
 
         <!-- Second and third-level settings -->
         
+        <!-- Volume Settings -->
+        <activity android:name=".shendu.VolumeSettings" />
+        
+        <!-- Brightness Settings -->
+        <activity android:name=".shendu.BrightnessSettings" />
+        
         <!-- App Limit -->
         <activity android:name=".cyanogenmod.AppLimitPassword" android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize"/>

@@ -27,7 +27,7 @@ public class MainSetting extends Activity {
 	private ViewPager mPager;
 	private List<View> listViews; // Tab List
 	private ImageView cursor;// Animation Image
-	private TextView used_tab, personal_tab, system_tab;// tab title
+	private TextView used_tab, personal_tab;// tab title
 	private int offset = 0;// Animation Image move px
 	private int currIndex = 0;// Animation Image Index
 	private int bmpW;// Animation Image Width
@@ -57,13 +57,12 @@ public class MainSetting extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		((PersonalizedSettings)switcherBean.getPersonalSettings()).resume();
+//		((PersonalizedSettings)switcherBean.getPersonalSettings()).resume();
 		if (!resumeFirst) {
 			switcherBean.getmWifiEnabler().resume();
 			switcherBean.getmBluetoothEnabler().resume();
-			switcherBean.getmDataEnabler().resume();
-			switcherBean.getmProfileEnabler().resume();
-			switcherBean.getmAirplaneEnabler().resume();
+//			switcherBean.getmDataEnabler().resume();
+//			switcherBean.getmProfileEnabler().resume();
 		} else {
 			resumeFirst = false;
 		}
@@ -75,9 +74,8 @@ public class MainSetting extends Activity {
 		if (!pauseFirst) {
 			switcherBean.getmWifiEnabler().pause();
 			switcherBean.getmBluetoothEnabler().pause();
-			switcherBean.getmDataEnabler().pause();
-			switcherBean.getmProfileEnabler().pause();
-			switcherBean.getmAirplaneEnabler().pause();
+//			switcherBean.getmDataEnabler().pause();
+//			switcherBean.getmProfileEnabler().pause();
 		} else {
 			pauseFirst = false;
 		}
@@ -103,11 +101,9 @@ public class MainSetting extends Activity {
 	private void InitTextView() {
 		used_tab = (TextView) findViewById(R.id.used_tab);
 		personal_tab = (TextView) findViewById(R.id.personal_tab);
-		system_tab = (TextView) findViewById(R.id.system_tab);
 
 		used_tab.setOnClickListener(new MyOnClickListener(0));
 		personal_tab.setOnClickListener(new MyOnClickListener(1));
-		system_tab.setOnClickListener(new MyOnClickListener(2));
 	}
 
 	/**
@@ -121,12 +117,9 @@ public class MainSetting extends Activity {
 		listViews.add(localManager.startActivity("UsedSettings",
 				UsedSettingsIntent).getDecorView());
 		Intent PersonalizedSettingsIntent = new Intent(this,
-				PersonalizedSettings.class);
+				Settings.class);
 		listViews.add(localManager.startActivity("PersonalizedSettings",
 				PersonalizedSettingsIntent).getDecorView());
-		Intent SystemSettingsIntent = new Intent(this, SystemSettings.class);
-		listViews.add(localManager.startActivity("SystemSettings",
-				SystemSettingsIntent).getDecorView());
 		mPagerAdapter = new ViewPagerAdapter(listViews);
 		mPager.setAdapter(mPagerAdapter);
 		mPager.setCurrentItem(0);
@@ -146,7 +139,7 @@ public class MainSetting extends Activity {
 		// get screen width
 		int screenW = dm.widthPixels;
 		// get offset move px
-		offset = (screenW / 3 - bmpW) / 2;
+		offset = (screenW / 2 - bmpW) / 2;
 		Matrix matrix = new Matrix();
 		matrix.postTranslate(offset, 0);
 		// init Animation ImageView px
@@ -224,9 +217,9 @@ public class MainSetting extends Activity {
 	public class MyOnPageChangeListener implements OnPageChangeListener {
 
 		// tab1 -> tab2,move px
-		int one = offset * 2 + bmpW;
+		int one = offset + bmpW;
 		// tab1 -> tab3,move px
-		int two = one * 2;
+		int two = one ;
 
 		@Override
 		public void onPageSelected(int arg0) {
@@ -244,13 +237,6 @@ public class MainSetting extends Activity {
 					animation = new TranslateAnimation(offset, one, 0, 0);
 				} else if (currIndex == 2) {
 					animation = new TranslateAnimation(two, one, 0, 0);
-				}
-				break;
-			case 2:
-				if (currIndex == 0) {
-					animation = new TranslateAnimation(offset, two, 0, 0);
-				} else if (currIndex == 1) {
-					animation = new TranslateAnimation(one, two, 0, 0);
 				}
 				break;
 			}
