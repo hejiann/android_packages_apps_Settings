@@ -2601,4 +2601,15 @@
     <string name="limit_list">应用程序访问控制</string>
     <string name="set_limit_password">更改密码</string>
     <string name="launcing">正在启动</string>
+    
+    <string name="volume_setting_call">通话音量</string>
+    <string name="volume_setting_ringtone">来电音量</string>
+    <string name="volume_setting_music">多媒体音量</string>
+    <string name="volume_setting_notification">通知音量</string>
+    <string name="volume_setting_alarm">闹钟音量</string>
+    <string name="volume_setting_system">系统音量</string>
+    <string name="volume_setting_bluetooth">蓝牙音量</string>
+    
+    <string name="gallery_and_camera">相机和图库</string>
+    <string name="call_and_contacts">拨号和联系人</string>
 </resources>

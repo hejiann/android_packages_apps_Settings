@@ -5013,4 +5013,17 @@
     <string name="limit_list">Application Control</string>
     <string name="set_limit_password">Set unban function</string>
     <string name="launcing">Launching</string>
+    
+    <string name="volume_setting_call">Call Volume</string>
+    <string name="volume_setting_ringtone">Rightone Volume</string>
+    <string name="volume_setting_music">Media Volume</string>
+    <string name="volume_setting_notification">Notification Volume</string>
+    <string name="volume_setting_alarm">Alarms Volume</string>
+    <string name="volume_setting_system">System Volume</string>
+    <string name="volume_setting_bluetooth">Bluetooth Volume</string>
+    
+    <string name="gallery_and_camera">Gallery and Camera</string>
+    <string name="call_and_contacts">Call and Contacts</string>
+    
+    
 </resources>
