@@ -51,14 +51,18 @@ import android.preference.PreferenceFragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -170,6 +174,8 @@ public class PersonalizedSettings extends PreferenceActivity implements
 			getActionBar().setDisplayHomeAsUpEnabled(false);
 			getActionBar().setHomeButtonEnabled(false);
 		}
+		getListView().setOnTouchListener(new ListViewOnTouchListener());
+		getListView().setBackgroundResource(R.drawable.settings_under);
 	}
 
 	@Override
@@ -758,7 +764,37 @@ public class PersonalizedSettings extends PreferenceActivity implements
 		mAuthenticatorHelper.onAccountsUpdated(this, accounts);
 		invalidateHeaders();
 	}
+    private class ListViewOnTouchListener implements OnTouchListener {
+        public boolean onTouch(View v, MotionEvent event) {
+            final ListView view = (ListView) v;
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+                    int itemnum = view.pointToPosition(x, y);
 
+                    if (itemnum == AdapterView.INVALID_POSITION)
+                        break;
+                    else {
+                        if (itemnum == 0) {
+                            if (itemnum == (view.getAdapter().getCount() - 1)) {
+                                view.setSelector(R.drawable.select_full);
+                            } else {
+                                view.setSelector(R.drawable.select_top);
+                            }
+                        } else if (itemnum == (view.getAdapter().getCount() - 1))
+                            view.setSelector(R.drawable.select_bottom);
+                        else {
+                            view.setSelector(R.drawable.select_middle);
+                        }
+                    }
+                    break;
+                case MotionEvent.ACTION_UP:
+                    break;
+            }
+            return false;
+        }
+    }
 	/*
 	 * Settings subclasses for launching independently.
 	 */

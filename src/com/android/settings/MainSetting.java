@@ -14,6 +14,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -104,6 +105,9 @@ public class MainSetting extends Activity {
 
 		used_tab.setOnClickListener(new MyOnClickListener(0));
 		personal_tab.setOnClickListener(new MyOnClickListener(1));
+		
+		used_tab.setOnTouchListener(new MyOnTouchListener(0));
+		personal_tab.setOnTouchListener(new MyOnTouchListener(1));
 	}
 
 	/**
@@ -124,6 +128,9 @@ public class MainSetting extends Activity {
 		mPager.setAdapter(mPagerAdapter);
 		mPager.setCurrentItem(0);
 		mPager.setOnPageChangeListener(new MyOnPageChangeListener());
+		mPager.setBackgroundResource(R.drawable.settings_background);
+
+		used_tab.setBackgroundResource(R.drawable.tab_click_left);
 	}
 
 	/**
@@ -194,6 +201,36 @@ public class MainSetting extends Activity {
 		public void startUpdate(View arg0) {
 		}
 	}
+	
+	/**
+	 * Tab touch listener
+	 */
+	public class MyOnTouchListener implements View.OnTouchListener {
+	    private static final int click_left_id = R.drawable.tab_click_left;
+	    private static final int click_right_id = R.drawable.tab_click_right;
+	    private static final int transp_id = android.R.color.transparent;
+	    private int index = 0;
+
+	    public MyOnTouchListener(int index) {
+	        this.index = index;
+	    }
+	    public boolean onTouch(View v, MotionEvent event) {
+	        final int action = event.getAction();
+	        switch (action) {
+	            case MotionEvent.ACTION_MOVE:
+	                if (!v.isPressed()){
+	                    used_tab.setBackgroundResource(currIndex == 0 ? click_left_id : transp_id);
+	                    personal_tab.setBackgroundResource(currIndex == 1 ? click_right_id : transp_id);
+	                    break;
+	                }
+	            case MotionEvent.ACTION_DOWN:
+	                used_tab.setBackgroundResource(index == 0 ? click_left_id : transp_id);
+	                personal_tab.setBackgroundResource(index == 1 ? click_right_id : transp_id);
+	                break;
+	        }
+            return false;
+        }
+	}
 
 	/**
 	 * Tab onclickListener
@@ -216,34 +253,18 @@ public class MainSetting extends Activity {
 	 */
 	public class MyOnPageChangeListener implements OnPageChangeListener {
 
-		// tab1 -> tab2,move px
-		int one = offset + bmpW;
-		// tab1 -> tab3,move px
-		int two = one ;
-
-		@Override
+   @Override
 		public void onPageSelected(int arg0) {
-			Animation animation = null;
 			switch (arg0) {
 			case 0:
-				if (currIndex == 1) {
-					animation = new TranslateAnimation(one, 0, 0, 0);
-				} else if (currIndex == 2) {
-					animation = new TranslateAnimation(two, 0, 0, 0);
-				}
-				break;
+			    used_tab.setBackgroundResource(R.drawable.tab_click_left);
+			    personal_tab.setBackgroundResource(android.R.color.transparent);
+			    break;
 			case 1:
-				if (currIndex == 0) {
-					animation = new TranslateAnimation(offset, one, 0, 0);
-				} else if (currIndex == 2) {
-					animation = new TranslateAnimation(two, one, 0, 0);
-				}
-				break;
+			    used_tab.setBackgroundResource(android.R.color.transparent);
+			    personal_tab.setBackgroundResource(R.drawable.tab_click_right);
 			}
 			currIndex = arg0;
-			animation.setFillAfter(true);// True:Image stop at Animation end
-			animation.setDuration(300);
-			cursor.startAnimation(animation);
 		}
 
 		@Override

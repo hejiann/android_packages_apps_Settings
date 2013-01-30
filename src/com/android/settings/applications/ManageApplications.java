@@ -33,6 +33,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.IPackageManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.NetworkPolicyManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -877,6 +878,12 @@ public class ManageApplications extends Fragment implements
         getActivity().getActionBar().setIcon(R.drawable.ic_settings_applications);
         
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(false);
+        
+        getActivity().getActionBar().setBackgroundDrawable(getActivity().getResources().getDrawable(R.drawable.action_bar_bg));
+        int titleId = Resources.getSystem().getIdentifier(  
+                "action_bar_title", "id", "android");
+        TextView title = (TextView) getActivity().findViewById(titleId);
+        title.setTextColor(getResources().getColor(R.color.text_color));
 
         View rootView = mInflater.inflate(R.layout.manage_applications_content,
                 container, false);

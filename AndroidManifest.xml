@@ -69,7 +69,7 @@
             android:name="MainSetting"
             android:launchMode="singleTask"
             android:taskAffinity="com.android.settings"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.settings.SETTINGS" />

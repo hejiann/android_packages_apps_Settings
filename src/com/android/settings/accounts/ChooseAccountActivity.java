@@ -31,6 +31,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+import android.widget.TextView;
+
 import com.android.internal.util.CharSequences;
 import com.android.settings.R;
 import com.google.android.collect.Maps;
@@ -80,6 +82,11 @@ public class ChooseAccountActivity extends PreferenceActivity {
         super.onCreate(icicle);
         
         getActionBar().setIcon(R.drawable.ic_settings_sync);
+        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+        int titleId = Resources.getSystem().getIdentifier(  
+                "action_bar_title", "id", "android");
+        TextView title = (TextView) findViewById(titleId);
+        title.setTextColor(getResources().getColor(R.color.text_color));
 
         setContentView(R.layout.add_account_screen);
         addPreferencesFromResource(R.xml.add_account_settings);

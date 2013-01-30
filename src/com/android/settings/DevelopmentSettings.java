@@ -34,6 +34,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.NetworkUtils;
 import android.net.wifi.IWifiManager;
 import android.net.wifi.WifiInfo;
@@ -64,6 +65,7 @@ import android.view.IWindowManager;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -198,6 +200,12 @@ public class DevelopmentSettings extends PreferenceFragment
         
         getActivity().getActionBar().setIcon(R.drawable.ic_settings_development);
 
+        getActivity().getActionBar().setBackgroundDrawable(getActivity().getResources().getDrawable(R.drawable.action_bar_bg));
+        int titleId = Resources.getSystem().getIdentifier(  
+                "action_bar_title", "id", "android");
+        TextView title = (TextView) getActivity().findViewById(titleId);
+        title.setTextColor(getResources().getColor(R.color.text_color));
+        
         mEnableAdb = findAndInitCheckboxPref(ENABLE_ADB);
         mAdbOverNetwork = findAndInitCheckboxPref(ADB_TCPIP);
         mAdbNotify = findAndInitCheckboxPref(ADB_NOTIFY);
@@ -1221,6 +1229,12 @@ public class DevelopmentSettings extends PreferenceFragment
         } catch (RemoteException e) {
             throw new RuntimeException("Problem talking with PackageManager", e);
         }
+    }
+
+    @Override
+    public void setPreferenceScreen(PreferenceScreen preferenceScreen) {
+        preferenceScreen.setIsShenDu(true);
+        super.setPreferenceScreen(preferenceScreen);
     }
 
     private static void setPermissionEnforced(

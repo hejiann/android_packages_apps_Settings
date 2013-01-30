@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,12 +36,30 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+import android.preference.PreferenceActivity.Header;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Switch;
+import android.widget.TextView;
+
+import com.android.settings.accounts.AuthenticatorHelper;
+import com.android.settings.accounts.ManageAccountsSettings;
+import com.android.settings.airplane.AirplaneEnabler;
+import com.android.settings.bluetooth.BluetoothEnabler;
+import com.android.settings.profiles.ProfileEnabler;
+import com.android.settings.wifi.WifiEnabler;
+
+import java.util.List;
 
 /**
  * Base class for Settings fragments, with some helper functions and dialog
@@ -74,6 +93,12 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements
 		if (!TextUtils.isEmpty(mHelpUrl)) {
 			setHasOptionsMenu(true);
 		}
+		
+		getActivity().getActionBar().setBackgroundDrawable(getActivity().getResources().getDrawable(R.drawable.action_bar_bg));
+		int titleId = Resources.getSystem().getIdentifier(  
+                "action_bar_title", "id", "android");
+		TextView title = (TextView) getActivity().findViewById(titleId);
+		title.setTextColor(getResources().getColor(R.color.text_color));
 	}
 
 
@@ -319,4 +344,10 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements
 		}
 	}
 
+    @Override
+    public void setPreferenceScreen(PreferenceScreen preferenceScreen) {
+        preferenceScreen.setIsShenDu(true);
+        super.setPreferenceScreen(preferenceScreen);
+    }
+	
 }

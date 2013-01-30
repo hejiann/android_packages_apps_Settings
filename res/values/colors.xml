@@ -37,7 +37,7 @@
     
     <color name="dragndrop_background">#ff9dd0f1</color>
     <color name="application_item_text_color">#ff3c3d3e</color>
-    <color name="viewpager_tab_text_color">#ff353637</color>
+    <color name="viewpager_tab_text_color">#ffb2b2b2</color>
     <color name="mobile_setting_background">#fff5f5f5</color>
     
     <!-- add theme model color value by lys -->
@@ -52,4 +52,6 @@
     <color name="power_widget_divider_color">#14a2ec</color>
     
     <color name="listview_fragment_listitem_line">#d3d4d5</color>
+    
+    <color name="text_color">#ffb2b2b2</color>
 </resources>

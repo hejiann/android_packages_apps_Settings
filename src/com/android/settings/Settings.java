@@ -20,6 +20,7 @@ import com.android.internal.util.ArrayUtils;
 import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.AuthenticatorHelper;
 import com.android.settings.accounts.ManageAccountsSettings;
+import com.android.settings.airplane.AirplaneEnabler;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.deviceinfo.Memory;
@@ -46,18 +47,23 @@ import android.os.UserId;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceActivity.Header;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -169,6 +175,8 @@ public class Settings extends PreferenceActivity
             getActionBar().setDisplayHomeAsUpEnabled(false);
             getActionBar().setHomeButtonEnabled(false);
         }
+        getListView().setOnTouchListener(new ListViewOnTouchListener());
+        //getListView().setBackgroundResource(R.drawable.settings_under);
     }
 
     @Override
@@ -372,7 +380,23 @@ public class Settings extends PreferenceActivity
     public void onBuildHeaders(List<Header> headers) {
         loadHeadersFromResource(R.xml.settings_headers, headers);
 
-        updateHeaderList(headers);
+        try {
+            updateHeaderList(headers);
+        } catch (Exception e) {
+            
+        }
+    }
+
+    private class ListViewOnTouchListener implements OnTouchListener {
+        public boolean onTouch(View v, MotionEvent event) {
+            final ListView view = (ListView) v;
+            view.setSelector(android.R.color.transparent);
+            view.setPadding(v.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
+                    0,
+                    view.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
+                    view.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding));
+            return false;
+        }
     }
 
     private void updateHeaderList(List<Header> target) {
@@ -544,6 +568,8 @@ public class Settings extends PreferenceActivity
         private final WifiEnabler mWifiEnabler;
         private final BluetoothEnabler mBluetoothEnabler;
         private final ProfileEnabler mProfileEnabler;
+        private final AirplaneEnabler mAirEnabler;
+        private final DataEnabler mDataEnabler;
 
         private AuthenticatorHelper mAuthHelper;
 
@@ -557,12 +583,14 @@ public class Settings extends PreferenceActivity
         private LayoutInflater mInflater;
 
         static int getHeaderType(Header header) {
-            if (header.fragment == null && header.intent == null) {
-                return HEADER_TYPE_CATEGORY;
-            } else if (header.id == R.id.wifi_settings
+            if (header.id == R.id.wifi_settings
                     || header.id == R.id.bluetooth_settings
-                    || header.id == R.id.profiles_settings) {
+                    || header.id == R.id.profiles_settings
+                    || header.id == R.id.airplane_mode
+                    || header.id == R.id.data_usage_settings) {
                 return HEADER_TYPE_SWITCH;
+            } else if (header.fragment == null && header.intent == null) {
+                return HEADER_TYPE_CATEGORY;
             } else {
                 return HEADER_TYPE_NORMAL;
             }
@@ -606,6 +634,8 @@ public class Settings extends PreferenceActivity
             mWifiEnabler = new WifiEnabler(context, new Switch(context));
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mProfileEnabler = new ProfileEnabler(context, null, new Switch(context));
+            mAirEnabler = new AirplaneEnabler(context, new Switch(context));
+            mDataEnabler = new DataEnabler(context, new Switch(context));
         }
 
         @Override
@@ -619,8 +649,7 @@ public class Settings extends PreferenceActivity
                 holder = new HeaderViewHolder();
                 switch (headerType) {
                     case HEADER_TYPE_CATEGORY:
-                        view = new TextView(getContext(), null,
-                                android.R.attr.listSeparatorTextViewStyle);
+                        view = mInflater.inflate(R.layout.category, parent, false);
                         holder.title = (TextView) view;
                         break;
 
@@ -634,7 +663,6 @@ public class Settings extends PreferenceActivity
                                 view.findViewById(com.android.internal.R.id.summary);
                         holder.switch_ = (Switch) view.findViewById(R.id.switchWidget);
                         break;
-
                     case HEADER_TYPE_NORMAL:
                         view = mInflater.inflate(
                                 R.layout.preference_header_item, parent,
@@ -644,6 +672,31 @@ public class Settings extends PreferenceActivity
                                 view.findViewById(com.android.internal.R.id.title);
                         holder.summary = (TextView)
                                 view.findViewById(com.android.internal.R.id.summary);
+
+                        //set the background
+                        if (position == 0) {
+                            if (position == (getCount() - 1)) {
+                                view.setBackgroundResource(R.drawable.select_full);
+                            } else {
+                                view.setBackgroundResource(R.drawable.select_top);
+                            }
+                        } else if (position == (getCount() - 1))
+                            view.setBackgroundResource(R.drawable.select_bottom);
+                        else {
+                            Header prevHeader = (Header) getItem(position - 1);
+                            Header nextHeader = (Header) getItem(position + 1);
+
+                            if (HeaderAdapter.getHeaderType(prevHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY
+                                    && HeaderAdapter.getHeaderType(nextHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY) {
+                                view.setBackgroundResource(R.drawable.select_full);
+                            } else if (HeaderAdapter.getHeaderType(prevHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY) {
+                                view.setBackgroundResource(R.drawable.select_top);
+                            } else if (HeaderAdapter.getHeaderType(nextHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY){
+                                view.setBackgroundResource(R.drawable.select_bottom);
+                            } else {
+                                view.setBackgroundResource(R.drawable.select_middle);
+                            }
+                        }
                         break;
                 }
                 view.setTag(holder);
@@ -666,6 +719,10 @@ public class Settings extends PreferenceActivity
                         mBluetoothEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.profiles_settings) {
                         mProfileEnabler.setSwitch(holder.switch_);
+                    }else if (header.id == R.id.airplane_mode){
+                        mAirEnabler.setSwitch(holder.switch_);
+                    }else if (header.id == R.id.data_usage_settings) {
+                        mDataEnabler.setSwitch(holder.switch_);
                     }
                     // No break, fall through on purpose to update common fields
 
@@ -693,6 +750,32 @@ public class Settings extends PreferenceActivity
                     } else {
                         holder.summary.setVisibility(View.GONE);
                     }
+                    
+
+                    //set the background
+                    if (position == 0) {
+                        if (position == (getCount() - 1)) {
+                            view.setBackgroundResource(R.drawable.select_full);
+                        } else {
+                            view.setBackgroundResource(R.drawable.select_top);
+                        }
+                    } else if (position == (getCount() - 1))
+                        view.setBackgroundResource(R.drawable.select_bottom);
+                    else {
+                        Header prevHeader = (Header) getItem(position - 1);
+                        Header nextHeader = (Header) getItem(position + 1);
+
+                        if (HeaderAdapter.getHeaderType(prevHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY
+                                && HeaderAdapter.getHeaderType(nextHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY) {
+                            view.setBackgroundResource(R.drawable.select_full);
+                        } else if (HeaderAdapter.getHeaderType(prevHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY) {
+                            view.setBackgroundResource(R.drawable.select_top);
+                        } else if (HeaderAdapter.getHeaderType(nextHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY){
+                            view.setBackgroundResource(R.drawable.select_bottom);
+                        } else {
+                            view.setBackgroundResource(R.drawable.select_middle);
+                        }
+                    }
                     break;
             }
 
@@ -703,12 +786,16 @@ public class Settings extends PreferenceActivity
             mWifiEnabler.resume();
             mBluetoothEnabler.resume();
             mProfileEnabler.resume();
+            mAirEnabler.resume();
+            mDataEnabler.resume();
         }
 
         public void pause() {
             mWifiEnabler.pause();
             mBluetoothEnabler.pause();
             mProfileEnabler.pause();
+            mAirEnabler.pause();
+            mDataEnabler.pause();
         }
     }
 
