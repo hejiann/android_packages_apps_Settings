@@ -239,6 +239,13 @@ public class UserDictionarySettings extends ListFragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((View)this.getView().getParent()).setBackgroundResource(com.android.internal.R.drawable.shendu_listview_bg);
+        getActivity().getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+    }
+
     private static class MyAdapter extends SimpleCursorAdapter implements SectionIndexer {
 
         private AlphabetIndexer mIndexer;

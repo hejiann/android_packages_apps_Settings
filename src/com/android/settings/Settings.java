@@ -175,8 +175,17 @@ public class Settings extends PreferenceActivity
             getActionBar().setDisplayHomeAsUpEnabled(false);
             getActionBar().setHomeButtonEnabled(false);
         }
-        getListView().setOnTouchListener(new ListViewOnTouchListener());
         //getListView().setBackgroundResource(R.drawable.settings_under);
+        ListView listView = getListView();
+        listView.setOnTouchListener(new ListViewOnTouchListener());
+        listView.setDivider(getResources().getDrawable(com.android.internal.R.drawable.listview_divi_line_dark));
+        listView.setDividerHeight(getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listview_divider_height));
+        listView.setFooterDividersEnabled(false);
+        listView.setOnTouchListener(new ListViewOnTouchListener());
+        listView.setPadding(listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
+                listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding),
+                listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
+                0);
     }
 
     @Override

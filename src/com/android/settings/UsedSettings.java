@@ -174,7 +174,9 @@ public class UsedSettings extends PreferenceActivity implements
         }
 
         ListView listView = getListView();
-        listView.setDivider(getResources().getDrawable(R.drawable.divi_line));
+        listView.setDivider(getResources().getDrawable(com.android.internal.R.drawable.listview_divi_line_dark));
+        listView.setDividerHeight(getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listview_divider_height));
+        listView.setFooterDividersEnabled(false);
         listView.setOnTouchListener(new ListViewOnTouchListener());
         listView.setPadding(listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
                 listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding),

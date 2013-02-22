@@ -35,6 +35,7 @@ import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
@@ -493,5 +494,11 @@ public class Status extends PreferenceActivity {
         int h = (int)((t / 3600));
 
         return h + ":" + pad(m) + ":" + pad(s);
+    }
+
+    @Override
+    public boolean onPreferenceStartFragment(PreferenceFragment caller, Preference pref) {
+        caller.getPreferenceScreen().setIsShenDu(true);
+        return super.onPreferenceStartFragment(caller, pref);
     }
 }

@@ -71,6 +71,8 @@ public class DeviceAdminSettings extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
+        ((View)this.getView().getParent()).setBackgroundResource(com.android.internal.R.drawable.shendu_listview_bg);
+        getActivity().getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
         updateList();
     }
 

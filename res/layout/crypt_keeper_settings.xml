@@ -40,6 +40,7 @@
                 android:layout_marginBottom="16dip"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/crypt_keeper_desc"
+                android:textColor="@*android:color/shendu_adapter_title_text_color"
             />
             <TextView
                 android:id="@+id/warning_low_charge"
@@ -49,6 +50,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold"
                 android:text="@string/crypt_keeper_low_charge_text"
+                android:textColor="@*android:color/shendu_adapter_title_text_color"
                 android:visibility="gone"
             />
             <TextView
@@ -59,6 +61,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold"
                 android:text="@string/crypt_keeper_unplugged_text"
+                android:textColor="@*android:color/shendu_adapter_title_text_color"
                 android:visibility="gone"
             />
         </LinearLayout>
@@ -72,6 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/crypt_keeper_button_text"
+        android:textColor="@*android:color/shendu_adapter_title_text_color"
         android:gravity="center" 
     />
 

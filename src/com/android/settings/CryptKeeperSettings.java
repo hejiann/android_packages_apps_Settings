@@ -113,7 +113,7 @@ public class CryptKeeperSettings extends Fragment {
 
         mPowerWarning = mContentView.findViewById(R.id.warning_unplugged);
         mBatteryWarning = mContentView.findViewById(R.id.warning_low_charge);
-
+        
         return mContentView;
     }
 
@@ -121,6 +121,8 @@ public class CryptKeeperSettings extends Fragment {
     public void onResume() {
         super.onResume();
         getActivity().registerReceiver(mIntentReceiver, mIntentFilter);
+        ((View)this.getView().getParent()).setBackgroundResource(com.android.internal.R.drawable.shendu_listview_bg);
+        getActivity().getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
     }
 
     @Override
