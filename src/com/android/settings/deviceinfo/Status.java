@@ -177,11 +177,12 @@ public class Status extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle icicle) {
+        setIsShenDu(true);
         super.onCreate(icicle);
         Preference removablePref;
         
         getActionBar().setIcon(R.drawable.ic_settings_about);
-        //getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
         //getListView().setBackgroundColor(getResources().getColor(R.color.mobile_setting_background));
         
         mHandler = new MyHandler(this);
@@ -494,11 +495,5 @@ public class Status extends PreferenceActivity {
         int h = (int)((t / 3600));
 
         return h + ":" + pad(m) + ":" + pad(s);
-    }
-
-    @Override
-    public boolean onPreferenceStartFragment(PreferenceFragment caller, Preference pref) {
-        caller.getPreferenceScreen().setIsShenDu(true);
-        return super.onPreferenceStartFragment(caller, pref);
     }
 }

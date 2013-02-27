@@ -95,6 +95,7 @@ Log.i(TAG, "failure; password mismatch?");
 
         mCancel.setOnClickListener(mButtonListener);
         mSet.setOnClickListener(mButtonListener);
+        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
     }
 
     private boolean setBackupPassword(String currentPw, String newPw) {
