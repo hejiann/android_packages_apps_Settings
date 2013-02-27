@@ -139,6 +139,13 @@
         android:icon="@drawable/ic_settings_language"
         android:title="@string/language_settings" />
 
+    <!-- USB Setting -->
+    <header
+        android:id="@+id/usb_connect_settings"
+        android:fragment="com.android.settings.cyanogenmod.UsbConnectSettings"
+        android:icon="@drawable/ic_settings_usbconnect"
+        android:title="@string/usb_connection_category" />
+
     <!-- Backup and reset -->
     <header
         android:fragment="com.android.settings.PrivacySettings"
