@@ -67,6 +67,13 @@ public class OwnerInfoSettings extends Fragment {
         saveToDb();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((View)mView.getParent()).setBackgroundResource(R.drawable.settings_background);
+        getActivity().getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+    }
+
     void saveToDb() {
         ContentResolver res = getActivity().getContentResolver();
         String info = mEditText.getText().toString();

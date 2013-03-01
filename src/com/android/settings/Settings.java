@@ -645,6 +645,12 @@ public class Settings extends PreferenceActivity
             mProfileEnabler = new ProfileEnabler(context, null, new Switch(context));
             mAirEnabler = new AirplaneEnabler(context, new Switch(context));
             mDataEnabler = new DataEnabler(context, new Switch(context));
+            SwitcherBean bean = SwitcherBean.getInstance();
+            bean.setmWifiEnabler2(mWifiEnabler);
+            bean.setmBluetoothEnabler2(mBluetoothEnabler);
+            bean.setmProfileEnabler2(mProfileEnabler);
+            bean.setmAirplaneEnabler2(mAirEnabler);
+            bean.setmDataEnabler2(mDataEnabler);
         }
 
         @Override

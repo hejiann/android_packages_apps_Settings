@@ -53,5 +53,5 @@
     
     <color name="listview_fragment_listitem_line">#d3d4d5</color>
     
-    <color name="text_color">#ffb2b2b2</color>
+    <color name="text_color">@*android:color/shendu_list_item_title_text_color</color>
 </resources>

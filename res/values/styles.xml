@@ -79,10 +79,10 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="Theme.CreateShortCut" parent="android:Theme.Holo.Light.DialogWhenLarge">
+    <style name="Theme.CreateShortCut" parent="android:Theme.Holo.DialogWhenLarge">
     </style>
 
-    <style name="setup_wizard_theme" parent="android:Theme.Holo.Light.NoActionBar">
+    <style name="setup_wizard_theme" parent="android:Theme.Holo.NoActionBar">
         <item name="android:windowSoftInputMode">adjustPan</item>
     </style>
 
@@ -167,7 +167,7 @@
         <item name="android:windowIsFloating">true</item>
     </style>
 
-    <style name="CryptKeeperBlankTheme" parent="@android:style/Theme.Holo.Light.NoActionBar">
+    <style name="CryptKeeperBlankTheme" parent="@android:style/Theme.Holo.NoActionBar">
         <item name="android:background">#ff000000</item>
     </style>
 
@@ -178,7 +178,7 @@
         <item name="android:dividerPadding">8dip</item>
     </style>
 
-    <style name="SecurityPreferenceButton" parent="@*android:style/Widget.Holo.Light.Button.Borderless">
+    <style name="SecurityPreferenceButton" parent="@*android:style/Widget.Holo.Button.Borderless">
         <item name="android:layout_width">0dip</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">wrap_content</item>

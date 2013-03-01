@@ -16,7 +16,10 @@
 
 package com.android.settings;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -26,42 +29,76 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 import android.util.Log;
+
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.SwitcherBean;
 
 public class DataEnabler {
-	private final Context mContext;
-	private Switch mSwitch;
-	private ConnectivityManager mConnService;
-	private static final String TAG_CONFIRM_DATA_DISABLE = "confirmDataDisable";
+    private final Context mContext;
+    private Switch mSwitch;
+    private ConnectivityManager mConnService;
+    private static final String TAG_CONFIRM_DATA_DISABLE = "confirmDataDisable";
+    
+    private StateReceiver mStateReceiver;
+    
+    private class StateReceiver extends BroadcastReceiver {
+        public Context context;
+        
+        public void register() {
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
+            context.registerReceiver(this, filter);
+        }
 
-	public DataEnabler(Context context, Switch switch_) {
-		mContext = context;
-		mSwitch = switch_;
+        public void unregister() {
+            context.unregisterReceiver(this);
+        }
 
-		mConnService = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-	}
+        public StateReceiver(Context mContext) {
+            context = mContext;
+        }
 
-	private OnCheckedChangeListener mDataEnabledListener = new OnCheckedChangeListener() {
-		/** {@inheritDoc} */
-		public void onCheckedChanged(CompoundButton buttonView,
-				boolean isChecked) {
-			mConnService.setMobileDataEnabled(isChecked);
-		}
-	};
-	
-	public void pause(){
-		mSwitch.setOnCheckedChangeListener(null);
-	}
-	
-	public void resume(){
-		mSwitch.setChecked(mConnService.getMobileDataEnabled());
-		mSwitch.setOnCheckedChangeListener(mDataEnabledListener);
-	}
-	
-	public void setSwitch(Switch _switch){
-		mSwitch = _switch;
-		mSwitch.setChecked(mConnService.getMobileDataEnabled());
-		mSwitch.setOnCheckedChangeListener(mDataEnabledListener);
-	}
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            mSwitch.setOnCheckedChangeListener(null);
+            mSwitch.setChecked(mConnService.getMobileDataEnabled());
+            mSwitch.setOnCheckedChangeListener(mDataEnabledListener);
+        }
+        
+    };
 
+
+    public DataEnabler(Context context, Switch switch_) {
+        mContext = context;
+        mSwitch = switch_;
+
+        mStateReceiver = new StateReceiver(context);
+        
+        mConnService = (ConnectivityManager) mContext
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+    }
+
+    private OnCheckedChangeListener mDataEnabledListener = new OnCheckedChangeListener() {
+        /** {@inheritDoc} */
+        public void onCheckedChanged(CompoundButton buttonView,
+                boolean isChecked) {
+            mConnService.setMobileDataEnabled(isChecked);
+        }
+    };
+    public void pause() {
+        mSwitch.setOnCheckedChangeListener(null);
+        mStateReceiver.unregister();
+    }
+
+    public void resume() {
+        mSwitch.setChecked(mConnService.getMobileDataEnabled());
+        mSwitch.setOnCheckedChangeListener(mDataEnabledListener);
+        mStateReceiver.register();
+    }
+
+    public void setSwitch(Switch _switch) {
+        mSwitch = _switch;
+        mSwitch.setChecked(mConnService.getMobileDataEnabled());
+        mSwitch.setOnCheckedChangeListener(mDataEnabledListener);
+    }
 }

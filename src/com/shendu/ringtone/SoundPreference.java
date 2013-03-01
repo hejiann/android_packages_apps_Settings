@@ -20,6 +20,8 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.lang.reflect.Constructor;
@@ -180,7 +182,7 @@ public class SoundPreference extends RingtonePreference  implements
         });
         builder.show();
     }
-    
+
     private void closeDialog(DialogInterface dialog){
         if(dialog!=null){
             dialog.cancel();

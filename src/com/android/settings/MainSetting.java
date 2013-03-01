@@ -60,12 +60,10 @@ public class MainSetting extends Activity {
 		super.onResume();
 //		((PersonalizedSettings)switcherBean.getPersonalSettings()).resume();
 		if (!resumeFirst) {
-			switcherBean.getmWifiEnabler().resume();
-			switcherBean.getmBluetoothEnabler().resume();
-//			switcherBean.getmDataEnabler().resume();
-//			switcherBean.getmProfileEnabler().resume();
+			switcherBean.resumeAll();
 		} else {
 			resumeFirst = false;
+			switcherBean.resumeAll();
 		}
 	}
 
@@ -73,12 +71,10 @@ public class MainSetting extends Activity {
 	public void onPause() {
 		super.onPause();
 		if (!pauseFirst) {
-			switcherBean.getmWifiEnabler().pause();
-			switcherBean.getmBluetoothEnabler().pause();
-//			switcherBean.getmDataEnabler().pause();
-//			switcherBean.getmProfileEnabler().pause();
+			switcherBean.pauseAll();
 		} else {
 			pauseFirst = false;
+			switcherBean.pauseAll();
 		}
 	}
 

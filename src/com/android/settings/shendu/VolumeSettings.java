@@ -20,6 +20,7 @@ public class VolumeSettings extends Fragment {
 	private SeekBar SystemRington_soundValue;
 	private SeekBar Bluetooth_soundValue;
 	private AudioManager mAudioManager;
+	private LinearLayout localLinearLayout;
 
 	private void initView(LinearLayout paramLinearLayout) {
 		VIOCE_CALL_soundValue = (SeekBar) paramLinearLayout.findViewById(R.id.call_volume);
@@ -89,13 +90,20 @@ public class VolumeSettings extends Fragment {
 		getActivity().getActionBar().setIcon(R.drawable.ic_settings_sound);
 		this.mAudioManager = ((AudioManager) getActivity().getSystemService(
 				"audio"));
-		LinearLayout localLinearLayout = (LinearLayout) paramLayoutInflater
+		localLinearLayout = (LinearLayout) paramLayoutInflater
 				.inflate(R.layout.volume_settings, paramViewGroup, false);
 		initView(localLinearLayout);
 		return localLinearLayout;
 	}
 
-	private class SeekBarChangeListener implements
+	@Override
+    public void onResume() {
+        super.onResume();
+        ((View)localLinearLayout.getParent()).setBackgroundResource(R.drawable.settings_background);
+        getActivity().getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+    }
+
+    private class SeekBarChangeListener implements
 			SeekBar.OnSeekBarChangeListener {
 		private int type;
 

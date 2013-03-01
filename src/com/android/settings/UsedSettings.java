@@ -20,6 +20,7 @@ import com.android.internal.util.ArrayUtils;
 import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.AuthenticatorHelper;
 import com.android.settings.accounts.ManageAccountsSettings;
+import com.android.settings.airplane.AirplaneEnabler;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.deviceinfo.Memory;
@@ -44,6 +45,7 @@ import android.os.INetworkManagementService;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserId;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceActivity.Header;
@@ -601,6 +603,7 @@ public class UsedSettings extends PreferenceActivity implements
         private final WifiEnabler mWifiEnabler;
         private final BluetoothEnabler mBluetoothEnabler;
         private final DataEnabler mDataEnabler;
+        private final AirplaneEnabler mAirEnabler;
 
         private SwitcherBean switcherBean;
 
@@ -675,6 +678,8 @@ public class UsedSettings extends PreferenceActivity implements
             switcherBean.setmBluetoothEnabler(mBluetoothEnabler);
             mDataEnabler = new DataEnabler(context, new Switch(context));
             switcherBean.setmDataEnabler(mDataEnabler);
+            mAirEnabler = new AirplaneEnabler(context, new Switch(context));
+            switcherBean.setmAirplaneEnabler(mAirEnabler);
         }
 
         @Override
@@ -775,6 +780,11 @@ public class UsedSettings extends PreferenceActivity implements
                             mDataEnabler.setSwitch(holder.switch_);
                             switcherBean.setIsData(1);
                         }
+                    }else if (header.id == R.id.airplane_mode) {
+                        if (switcherBean.getIsAirplane() == 0) {
+                            mAirEnabler.setSwitch(holder.switch_);
+                            switcherBean.setIsAirplane(1);
+                        }
                     }
                     // No break, fall through on purpose to update common fields
 
@@ -813,11 +823,15 @@ public class UsedSettings extends PreferenceActivity implements
         }
 
         public void resume() {
+            mAirEnabler.resume();
+            mDataEnabler.resume();
             mWifiEnabler.resume();
             mBluetoothEnabler.resume();
         }
 
         public void pause() {
+            mAirEnabler.pause();
+            mDataEnabler.pause();
             mWifiEnabler.pause();
             mBluetoothEnabler.pause();
         }
