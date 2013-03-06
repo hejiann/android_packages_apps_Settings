@@ -303,7 +303,7 @@ public final class CredentialStorage extends Activity {
         private boolean mConfigureConfirmed;
 
         private ConfigureKeyGuardDialog() {
-            AlertDialog dialog = new AlertDialog.Builder(CredentialStorage.this,3)
+            AlertDialog dialog = new AlertDialog.Builder(CredentialStorage.this)
                     .setTitle(android.R.string.dialog_alert_title)
                     .setIconAttribute(android.R.attr.alertDialogIcon)
                     .setMessage(R.string.credentials_configure_lock_screen_hint)
