@@ -61,7 +61,7 @@
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
             android:taskAffinity=""
-            android:theme="@android:style/Theme.Holo"
+            android:theme="@style/Theme.Settings"
             android:uiOptions="splitActionBarWhenNarrow"
             android:hardwareAccelerated="true">
             
@@ -197,7 +197,7 @@
         <activity android:name=".SubSettings"
                 android:taskAffinity="com.android.settings"
                 android:parentActivityName="Settings"
-                android:theme="@android:style/Theme.Holo">
+                >
         </activity>
 
         <activity android:name="CreateShortcut" android:label="@string/settings_shortcut"
@@ -974,7 +974,6 @@
         </activity>
 
         <activity android:name="SetFullBackupPassword"
-                android:theme="@android:style/Theme.Holo"
                 android:exported="false">
         </activity>
 
@@ -1037,7 +1036,7 @@
 
         <activity android:name="IccLockSettings"
                 android:label="@string/sim_lock_settings"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@style/Theme.IccLockSettings"
                 android:process="com.android.phone"
                 android:parentActivityName="Settings$SecuritySettingsActivity">
             <intent-filter>
@@ -1132,7 +1131,6 @@
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.Status"
                 android:label="@string/device_status_activity_title"
-                android:theme="@style/Theme.Settings"
                 android:process="com.android.phone"
                 android:parentActivityName="Settings$DeviceInfoSettingsActivity">
             <intent-filter>

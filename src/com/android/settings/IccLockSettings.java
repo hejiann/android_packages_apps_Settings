@@ -140,6 +140,7 @@ public class IccLockSettings extends PreferenceActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setIsShenDu(true);
 
         if (Utils.isMonkeyRunning()) {
             finish();
@@ -148,7 +149,6 @@ public class IccLockSettings extends PreferenceActivity
         
         getActionBar().setIcon(R.drawable.ic_settings_security);
         getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
-        getListView().setBackgroundColor(getResources().getColor(R.color.mobile_setting_background));
 
         addPreferencesFromResource(R.xml.sim_lock_settings);
 

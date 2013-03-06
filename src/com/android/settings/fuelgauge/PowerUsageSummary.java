@@ -768,12 +768,6 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
         return bs;
     }
 
-    @Override
-    public void setPreferenceScreen(PreferenceScreen preferenceScreen) {
-        preferenceScreen.setIsShenDu(true);
-        super.setPreferenceScreen(preferenceScreen);
-    }
-
     private void load() {
         try {
             byte[] data = mBatteryInfo.getStatistics();

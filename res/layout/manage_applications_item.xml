@@ -48,8 +48,7 @@
             android:textStyle="bold"
             android:singleLine="true"
             android:ellipsize="marquee"
-            android:layout_marginBottom="2dip" 
-            android:textColor="@color/application_item_text_color"/>
+            android:layout_marginBottom="2dip" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
