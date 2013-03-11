@@ -27,4 +27,10 @@ public class SubSettings extends Settings {
         finish();
         return true;
     }
+
+    @Override
+    public void onResume() {
+        getActionBar().setDisplayShowHomeEnabled(false);
+        super.onResume();
+    }
 }

@@ -132,6 +132,13 @@ public class ChooseLockPattern extends PreferenceActivity {
             }
         }
 
+        @Override
+        public void onResume() {
+            super.onResume();
+            getActivity().getActionBar().setDisplayShowHomeEnabled(false);
+            getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         /**
          * The pattern listener that responds according to a user choosing a new
          * lock pattern.

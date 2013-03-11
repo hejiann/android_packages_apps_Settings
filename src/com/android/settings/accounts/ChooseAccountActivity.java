@@ -104,6 +104,13 @@ public class ChooseAccountActivity extends PreferenceActivity {
         updateAuthDescriptions();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getActionBar().setDisplayShowHomeEnabled(false);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
     /**
      * Updates provider icons. Subclasses should call this in onCreate()
      * and update any UI that depends on AuthenticatorDescriptions in onAuthDescriptionsUpdated().

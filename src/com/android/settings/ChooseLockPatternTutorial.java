@@ -59,6 +59,13 @@ public class ChooseLockPatternTutorial extends PreferenceActivity {
         private LockPatternView mPatternView;
 
         @Override
+        public void onResume() {
+            super.onResume();
+            getActivity().getActionBar().setDisplayShowHomeEnabled(false);
+            getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             // Don't show the tutorial if the user has seen it before.

@@ -207,6 +207,8 @@ public class IccLockSettings extends PreferenceActivity
             // Prep for standard click on "Change PIN"
             resetDialogState();
         }
+        getActionBar().setDisplayShowHomeEnabled(false);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

@@ -76,6 +76,13 @@ public class ChooseLockPassword extends PreferenceActivity {
         getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getActionBar().setDisplayShowHomeEnabled(false);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
     public static class ChooseLockPasswordFragment extends Fragment
             implements OnClickListener, OnEditorActionListener,  TextWatcher {
         private static final String KEY_FIRST_PIN = "first_pin";

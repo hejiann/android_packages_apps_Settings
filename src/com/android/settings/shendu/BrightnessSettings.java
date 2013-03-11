@@ -89,6 +89,7 @@ public class BrightnessSettings extends Fragment implements
     public void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
+        getActivity().getActionBar().setDisplayShowHomeEnabled(false);
         getActivity().getContentResolver().registerContentObserver(
                 Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS),
                 true, mBrightnessObserver);

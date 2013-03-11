@@ -124,6 +124,8 @@ public class LightLevelsActivity extends Activity implements OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
+        getActionBar().setDisplayShowHomeEnabled(false);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         mUpdateTask.run();
     }
 

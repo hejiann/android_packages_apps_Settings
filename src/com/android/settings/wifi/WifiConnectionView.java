@@ -209,7 +209,7 @@ public class WifiConnectionView extends Activity implements
 
 		mAccessPoint = mWifiConnectionInfo.getmAccessPoint();
 		mEdit = mWifiConnectionInfo.ismEdit();
-		
+
 		mAccessPointSecurity = (mAccessPoint == null) ? AccessPoint.SECURITY_NONE :
 			mAccessPoint.security;
 

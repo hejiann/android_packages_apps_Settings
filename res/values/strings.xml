@@ -5024,6 +5024,7 @@
     
     <string name="gallery_and_camera">Gallery and Camera</string>
     <string name="call_and_contacts">Call and Contacts</string>
+    <string name="notification_setting">Notification Setting</string>
     
     
 </resources>

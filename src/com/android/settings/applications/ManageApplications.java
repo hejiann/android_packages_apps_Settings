@@ -932,6 +932,8 @@ public class ManageApplications extends Fragment implements
         mActivityResumed = true;
         updateCurrentTab(mViewPager.getCurrentItem());
         updateOptionsMenu();
+        getActivity().getActionBar().setDisplayShowHomeEnabled(false);
+        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

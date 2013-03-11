@@ -46,6 +46,13 @@ public class ChooseLockPatternSize extends PreferenceActivity {
         }
 
         @Override
+        public void onResume() {
+            super.onResume();
+            getActivity().getActionBar().setDisplayShowHomeEnabled(false);
+            getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        @Override
         public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
                 Preference preference) {
             final String key = preference.getKey();

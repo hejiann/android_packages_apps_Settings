@@ -71,6 +71,9 @@ public class PowerWidgetOrderActivity extends ListActivity {
 		// reload our buttons and invalidate the views for redraw
 		mButtonAdapter.reloadButtons();
 		mButtonList.invalidateViews();
+		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setTitle(R.string.notification_setting);
 	}
 
 	private TouchInterceptor.DropListener mDropListener = new TouchInterceptor.DropListener() {

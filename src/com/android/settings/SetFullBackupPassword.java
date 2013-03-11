@@ -98,6 +98,13 @@ Log.i(TAG, "failure; password mismatch?");
         getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getActionBar().setDisplayShowHomeEnabled(false);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
     private boolean setBackupPassword(String currentPw, String newPw) {
         try {
             return mBackupManager.setBackupPassword(currentPw, newPw);

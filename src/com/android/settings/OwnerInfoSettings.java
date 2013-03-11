@@ -70,6 +70,7 @@ public class OwnerInfoSettings extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        getActivity().getActionBar().setDisplayShowHomeEnabled(false);
         ((View)mView.getParent()).setBackgroundResource(R.drawable.settings_background);
         getActivity().getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
     }

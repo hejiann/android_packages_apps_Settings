@@ -93,8 +93,11 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements
 		if (!TextUtils.isEmpty(mHelpUrl)) {
 			setHasOptionsMenu(true);
 		}
-		
-		getActivity().getActionBar().setBackgroundDrawable(getActivity().getResources().getDrawable(R.drawable.action_bar_bg));
+
+                if (getActivity().getActionBar() != null) {	
+                    getActivity().getActionBar().setBackgroundDrawable(getActivity().getResources().getDrawable(R.drawable.action_bar_bg));
+                    getActivity().getActionBar().setDisplayShowHomeEnabled(false);
+                }
 		int titleId = Resources.getSystem().getIdentifier(  
                 "action_bar_title", "id", "android");
 		TextView title = (TextView) getActivity().findViewById(titleId);

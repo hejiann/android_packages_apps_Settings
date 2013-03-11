@@ -144,6 +144,7 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
     @Override
     public void onResume() {
         super.onResume();
+        getActivity().getActionBar().setDisplayShowHomeEnabled(false);
         mAbort = false;
         getActivity().registerReceiver(mBatteryInfoReceiver,
                 new IntentFilter(Intent.ACTION_BATTERY_CHANGED));

@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/setting_top_bg"
+        android:background="@*android:drawable/ab_transparent_dark_holo"
         android:gravity="center"
         android:orientation="horizontal" >
 
