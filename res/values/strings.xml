@@ -4501,6 +4501,11 @@
     <string name="lockscreen_background_color_fill">Color fill</string>
     <string name="lockscreen_background_custom_image">Custom image</string>
     <string name="lockscreen_background_default_wallpaper">Default wallpaper</string>
+    
+    <!-- Lock screen ring head -->
+    <string name="lockscreen_custom_ring_head_title">Head sculpture</string>
+    <string name="lockscreen_ring_head_custom_image">Custom image</string>
+    <string name="lockscreen_ring_head_default_wallpaper">Default contact head sculpture</string>
 
     <!-- Lock screen vibrate settings -->
     <string name="lockscreen_vibrate_enabled_title">Vibrate</string>

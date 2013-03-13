@@ -32,7 +32,15 @@
         android:title="@string/lockscreen_custom_background_title"
         android:entries="@array/lockscreen_background_entries"
         android:entryValues="@array/lockscreen_background_values"/>
-
+     
+     <ListPreference
+        android:key="lockscreen_ring_head"
+        android:persistent="false"
+        android:dialogTitle="@string/lockscreen_custom_ring_head_title"
+        android:title="@string/lockscreen_custom_ring_head_title"
+        android:entries="@array/lockscreen_custom_ring_entries"
+        android:entryValues="@array/lockscreen_custom_ring_values"/>
+<!--  
      <ListPreference
         android:key="lockscreen_clock_align"
         android:persistent="false"
@@ -40,7 +48,7 @@
         android:title="@string/lockscreen_clock_align_title"
         android:entries="@array/lockscreen_clock_align_entries"
         android:entryValues="@array/lockscreen_clock_align_values"/>
-
+          
      <ListPreference
         android:key="lockscreen_battery_status"
         android:persistent="false"
@@ -48,13 +56,13 @@
         android:title="@string/lockscreen_battery_status_title"
         android:entries="@array/lockscreen_battery_status_entries"
         android:entryValues="@array/lockscreen_battery_status_values"/>
-
+-->
      <PreferenceScreen
          android:fragment="com.android.settings.OwnerInfoSettings"
          android:key="owner_info_settings"
          android:title="@string/owner_info_settings_title"
          android:summary="@string/owner_info_settings_summary" />
-
+<!--  
      <Preference
         android:fragment="com.android.settings.cyanogenmod.Weather"
         android:key="lockscreen_weather"
@@ -66,5 +74,5 @@
         android:key="lockscreen_calendar"
         android:summary="@string/lockscreen_calendar_summary"
         android:title="@string/lockscreen_calendar_title" />
-
+-->
 </PreferenceScreen>

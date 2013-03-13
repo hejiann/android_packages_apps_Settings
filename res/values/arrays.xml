@@ -1312,6 +1312,15 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+    <!-- lockscreen ring head image -->
+    <string-array name="lockscreen_custom_ring_entries" translatable="false">
+        <item>@string/lockscreen_ring_head_default_wallpaper</item>
+        <item>@string/lockscreen_ring_head_custom_image</item>
+    </string-array>
+    <string-array name="lockscreen_custom_ring_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 
     <!-- WiFi sleep idle timeout (turn off after this period) -->
     <string-array name="wifi_idle_mn_entries" translatable="false">

@@ -2084,6 +2084,11 @@
     <string name="lockscreen_background_color_fill">颜色填充</string>
     <string name="lockscreen_background_custom_image">自定义图片</string>
     <string name="lockscreen_background_default_wallpaper">默认墙纸</string>
+    
+    <!-- Lock screen ring head -->
+    <string name="lockscreen_custom_ring_head_title">头像</string>
+    <string name="lockscreen_ring_head_custom_image">自定义图片</string>
+    <string name="lockscreen_ring_head_default_wallpaper">默认联系人头像</string>
 
     <!-- Lock screen vibrate settings -->
     <string name="lockscreen_vibrate_enabled_title">振动反馈</string>

@@ -48,24 +48,29 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "LockscreenInterface";
     private static final int LOCKSCREEN_BACKGROUND = 1024;
+    private static final int LOCKSCREEN_HEAD_SCULPTURE = 2048;
     public static final String KEY_WEATHER_PREF = "lockscreen_weather";
     public static final String KEY_CALENDAR_PREF = "lockscreen_calendar";
     public static final String KEY_BACKGROUND_PREF = "lockscreen_background";
+    public static final String KEY_RING_HEAD_PREF = "lockscreen_ring_head";
     private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
     private static final String KEY_CLOCK_ALIGN = "lockscreen_clock_align";
     private static final String KEY_CLOCK_TARGETS = "lockscreen_targets";
     
 
     private ListPreference mCustomBackground;
-    private Preference mWeatherPref;
-    private Preference mCalendarPref;
-    private ListPreference mBatteryStatus;
-    private ListPreference mClockAlign;
+    private ListPreference mCustomRingHead;
+//    private Preference mWeatherPref;
+//    private Preference mCalendarPref;
+//    private ListPreference mBatteryStatus;
+//    private ListPreference mClockAlign;
     private Activity mActivity;
     ContentResolver mResolver;
     
     private File wallpaperImage;
     private File wallpaperTemporary;
+    private File headSculptureImage;
+    private File headSculptureTemporary;
     private boolean mIsScreenLarge;
 
     @Override
@@ -77,19 +82,22 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mActivity.getActionBar().setIcon(R.drawable.ic_settings_lockscreen);
 
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
-        mWeatherPref = (Preference) findPreference(KEY_WEATHER_PREF);
-        mCalendarPref = (Preference) findPreference(KEY_CALENDAR_PREF);
+        //mWeatherPref = (Preference) findPreference(KEY_WEATHER_PREF);
+       //mCalendarPref = (Preference) findPreference(KEY_CALENDAR_PREF);
 
         mCustomBackground = (ListPreference) findPreference(KEY_BACKGROUND_PREF);
         mCustomBackground.setOnPreferenceChangeListener(this);
         wallpaperImage = new File(mActivity.getFilesDir()+"/lockwallpaper");
         wallpaperTemporary = new File(mActivity.getCacheDir()+"/lockwallpaper.tmp");
+        
+        mCustomRingHead = (ListPreference) findPreference(KEY_RING_HEAD_PREF);
+        mCustomRingHead.setOnPreferenceChangeListener(this);
 
-        mBatteryStatus = (ListPreference) findPreference(KEY_ALWAYS_BATTERY_PREF);
-        mBatteryStatus.setOnPreferenceChangeListener(this);
+        //mBatteryStatus = (ListPreference) findPreference(KEY_ALWAYS_BATTERY_PREF);
+        //mBatteryStatus.setOnPreferenceChangeListener(this);
 
-        mClockAlign = (ListPreference) findPreference(KEY_CLOCK_ALIGN);
-        mClockAlign.setOnPreferenceChangeListener(this);
+        //mClockAlign = (ListPreference) findPreference(KEY_CLOCK_ALIGN);
+        //mClockAlign.setOnPreferenceChangeListener(this);
 
         mIsScreenLarge = Utils.isTablet(getActivity());
 
@@ -117,17 +125,16 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
-        updateState();
+       // updateState();
     }
 
     @Override
     public void onPause() {
         super.onPause();
     }
-
+/*
     private void updateState() {
         int resId;
-
         // Set the weather description text
         if (mWeatherPref != null) {
             boolean weatherEnabled = Settings.System.getInt(mResolver,
@@ -170,7 +177,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mClockAlign.setSummary(mClockAlign.getEntries()[clockAlign]);
         }
     }
-
+*/
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == LOCKSCREEN_BACKGROUND) {
@@ -191,6 +198,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 Toast.makeText(mActivity, getResources().getString(R.string.
                         lockscreen_background_result_not_successful), Toast.LENGTH_LONG).show();
             }
+        } else if(requestCode == LOCKSCREEN_HEAD_SCULPTURE){
+        	
         }
     }
 
@@ -275,6 +284,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 } catch (ActivityNotFoundException e) {
                 }
                 return false;
+         	   
             //Sets background color to default
             case 2:
                 Settings.System.putString(getContentResolver(),
@@ -283,7 +293,35 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 break;
             }
             return true;
-        } else if (preference == mBatteryStatus) {
+        } else if(preference == mCustomRingHead) {
+        	int indexOf = mCustomBackground.findIndexOfValue(objValue.toString());
+           switch (indexOf) {
+           case 0:
+        	   
+        	   break;
+           case 1:
+        	   	int radius = 200;
+	           Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
+	           intent.setType("image/*");
+	           intent.putExtra("crop", "true");
+	           intent.putExtra("scale", true);
+	           intent.putExtra("scaleUpIfNeeded", false);
+	           intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
+	           intent.putExtra("aspectX", radius);
+	           intent.putExtra("aspectY", radius);
+	           intent.putExtra("outputX", radius);
+	           intent.putExtra("outputY", radius);
+	           try {
+	           		headSculptureTemporary.createNewFile();
+	           		headSculptureTemporary.setWritable(true, false);
+	               intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(headSculptureTemporary));
+	               intent.putExtra("return-data", false);
+	               mActivity.startActivityFromFragment(this, intent, LOCKSCREEN_HEAD_SCULPTURE);
+	           } catch (IOException e) {
+	           } catch (ActivityNotFoundException e) {}
+            return false;
+            }
+       /* } else if (preference == mBatteryStatus) {
             int value = Integer.valueOf((String) objValue);
             int index = mBatteryStatus.findIndexOfValue((String) objValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
@@ -295,7 +333,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_CLOCK_ALIGN, value);
             mClockAlign.setSummary(mClockAlign.getEntries()[value]);
-            return true;
+            return true;*/
         }
         return false;
     }
