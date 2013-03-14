@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="55.0dip"
+        android:layout_height="48.0dip"
         android:background="@drawable/setting_top_bg" >
 
         <ImageView
