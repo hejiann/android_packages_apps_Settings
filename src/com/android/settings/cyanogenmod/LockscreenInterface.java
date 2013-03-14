@@ -16,6 +16,8 @@
 package com.android.settings.cyanogenmod;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.app.Activity;
@@ -26,7 +28,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BlurMaskFilter;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -48,11 +58,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "LockscreenInterface";
     private static final int LOCKSCREEN_BACKGROUND = 1024;
-    private static final int LOCKSCREEN_HEAD_SCULPTURE = 2048;
+    private static final int LOCKSCREEN_HEAD_SCULPTURE = 1023;
     public static final String KEY_WEATHER_PREF = "lockscreen_weather";
     public static final String KEY_CALENDAR_PREF = "lockscreen_calendar";
     public static final String KEY_BACKGROUND_PREF = "lockscreen_background";
-    public static final String KEY_RING_HEAD_PREF = "lockscreen_ring_head";
+    public static final String KEY_RING_HEAD_PREF = "lockscreen_head_sculpture";
     private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
     private static final String KEY_CLOCK_ALIGN = "lockscreen_clock_align";
     private static final String KEY_CLOCK_TARGETS = "lockscreen_targets";
@@ -72,6 +82,9 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private File headSculptureImage;
     private File headSculptureTemporary;
     private boolean mIsScreenLarge;
+    
+    private int radius = 150;
+    private Bitmap headSculpture=null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,6 +105,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         
         mCustomRingHead = (ListPreference) findPreference(KEY_RING_HEAD_PREF);
         mCustomRingHead.setOnPreferenceChangeListener(this);
+        headSculptureImage = new File(mActivity.getFilesDir()+"/headSculpture");
+        headSculptureTemporary = new File(mActivity.getCacheDir()+"/headSculpture.tmp");
 
         //mBatteryStatus = (ListPreference) findPreference(KEY_ALWAYS_BATTERY_PREF);
         //mBatteryStatus.setOnPreferenceChangeListener(this);
@@ -102,6 +117,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mIsScreenLarge = Utils.isTablet(getActivity());
 
         updateCustomBackgroundSummary();
+        updateCustomHeadSculptureSummary();
         
     }
 
@@ -120,6 +136,20 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mCustomBackground.setValueIndex(0);
         }
         mCustomBackground.setSummary(getResources().getString(resId));
+    }
+    
+    private void updateCustomHeadSculptureSummary() {
+    	int resId ;
+        String value = Settings.System.getString(getContentResolver(),
+                Settings.System.LOCKSCREEN_HEADSCULPTURE);
+        if (value == null|| value.isEmpty()) {
+            resId = R.string.lockscreen_ring_head_default_wallpaper;
+            mCustomRingHead.setValueIndex(0);
+        } else {
+        	resId = R.string.lockscreen_ring_head_custom_image;
+            mCustomRingHead.setValueIndex(1);
+        }
+        mCustomRingHead.setSummary(getResources().getString(resId));
     }
 
     @Override
@@ -198,10 +228,48 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 Toast.makeText(mActivity, getResources().getString(R.string.
                         lockscreen_background_result_not_successful), Toast.LENGTH_LONG).show();
             }
-        } else if(requestCode == LOCKSCREEN_HEAD_SCULPTURE){
-        	
+        } else if(requestCode == LOCKSCREEN_HEAD_SCULPTURE){			// lockscreen head_sculpture
+        	 if (resultCode == Activity.RESULT_OK) {
+                 if (headSculptureTemporary.exists()) {
+                	 headSculpture = BitmapFactory.decodeFile(headSculptureTemporary.getPath());
+                	 new Thread(headSculptureRunnable).start();
+                 Toast.makeText(mActivity, getResources().getString(R.string.
+                		 lockscreen_head_sculpture_result_successful), Toast.LENGTH_LONG).show();
+                 Settings.System.putString(getContentResolver(),
+                         Settings.System.LOCKSCREEN_HEADSCULPTURE,"head_sculpture");
+                 }
+                 updateCustomHeadSculptureSummary();
+             } else {
+                 if (headSculptureTemporary.exists()) {
+                	 	headSculptureTemporary.delete();
+                 }
+                 Toast.makeText(mActivity, getResources().getString(R.string.
+                		 lockscreen_head_sculpture_result_not_successful), Toast.LENGTH_LONG).show();
+             };
         }
     }
+    private Runnable headSculptureRunnable = new Runnable(){
+    	public void run(){
+    		if(headSculpture==null) return;
+    		//headSculpture = toRoundBitmap(headSculpture,radius);
+    		FileOutputStream fos = null;
+    		try{
+    			if(headSculptureImage.exists())
+    				headSculptureImage.delete();
+	    		fos = new FileOutputStream(headSculptureImage);
+	    		headSculpture.compress(Bitmap.CompressFormat.PNG, 100, fos);
+	    		fos.close();
+    		} catch(FileNotFoundException e){
+    			e.printStackTrace();
+    		} catch(IOException e1){
+    			e1.printStackTrace();
+    		}finally{
+	    		headSculptureImage.setReadOnly();
+	    		if (headSculptureTemporary.exists()) 
+	    			headSculptureTemporary.deleteOnExit();
+    		}
+    	}
+    };
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -293,14 +361,15 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 break;
             }
             return true;
-        } else if(preference == mCustomRingHead) {
-        	int indexOf = mCustomBackground.findIndexOfValue(objValue.toString());
+        } else if(preference == mCustomRingHead) {										// lockscreen default head sculpture
+        	int indexOf = mCustomRingHead.findIndexOfValue(objValue.toString());
            switch (indexOf) {
            case 0:
-        	   
+        	   Settings.System.putString(getContentResolver(),
+                       Settings.System.LOCKSCREEN_HEADSCULPTURE,null);
+        	   updateCustomHeadSculptureSummary();
         	   break;
            case 1:
-        	   	int radius = 200;
 	           Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
 	           intent.setType("image/*");
 	           intent.putExtra("crop", "true");
@@ -312,13 +381,14 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 	           intent.putExtra("outputX", radius);
 	           intent.putExtra("outputY", radius);
 	           try {
-	           		headSculptureTemporary.createNewFile();
-	           		headSculptureTemporary.setWritable(true, false);
-	               intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(headSculptureTemporary));
-	               intent.putExtra("return-data", false);
-	               mActivity.startActivityFromFragment(this, intent, LOCKSCREEN_HEAD_SCULPTURE);
-	           } catch (IOException e) {
-	           } catch (ActivityNotFoundException e) {}
+	        	   	headSculptureTemporary.createNewFile();
+	        	   	headSculptureTemporary.setWritable(true, false);
+                 intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(headSculptureTemporary));
+                 intent.putExtra("return-data", false);
+                 mActivity.startActivityFromFragment(this, intent, LOCKSCREEN_HEAD_SCULPTURE);
+               } catch (IOException e) {
+               } catch (ActivityNotFoundException e) {
+               }
             return false;
             }
        /* } else if (preference == mBatteryStatus) {
@@ -336,5 +406,63 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             return true;*/
         }
         return false;
+    }
+    /**
+     * 转换图片成圆形
+     * @param bitmap 传入Bitmap对象
+     * @return
+     */
+	static PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(Mode.SRC_IN);
+	
+    public static Bitmap toRoundBitmap(Bitmap bitmap,float radius) {
+    		if(radius<=0) return null;
+            int width = bitmap.getWidth();
+				int height = bitmap.getHeight();
+				float roundPx;
+				float left,top,right,bottom,dst_left,dst_top,dst_right,dst_bottom;
+				if (width <= height) {
+					roundPx = width / 2;
+					top = 0;
+					bottom = width;
+					left = 0;
+					right = width;
+					height = width;
+					dst_left = 0;
+					dst_top = 0;
+					dst_right = width;
+					dst_bottom = width;
+				} else {
+					roundPx = height / 2;
+					float clip = (width - height) / 2;
+					left = clip;
+					right = width - clip;
+					top = 0;
+					bottom = height;
+					width = height;
+		    		dst_left = 0;
+		    		dst_top = 0;
+		    		dst_right = height;
+		    		dst_bottom = height;
+				}
+				
+				Bitmap output = Bitmap.createBitmap(width,height, Config.ARGB_8888);
+		    	Canvas canvas = new Canvas(output);
+				 final int color = 0xff424242;
+				final Paint paint = new Paint();
+				final Rect src = new Rect((int)left, (int)top, (int)right, (int)bottom);
+				final Rect dst = new Rect((int)dst_left, (int)dst_top, (int)dst_right, (int)dst_bottom);
+				final RectF rectF = new RectF(dst);
+				paint.setAntiAlias(true);
+				paint.setMaskFilter(new BlurMaskFilter(3, BlurMaskFilter.Blur.NORMAL));
+				canvas.drawARGB(0, 0, 0, 0);
+				paint.setColor(color);
+				canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+				paint.setXfermode(porterDuffXfermode);
+				paint.setAntiAlias(true);
+				canvas.drawBitmap(bitmap, src, dst, paint);
+				bitmap.recycle();
+				
+				int w_h = (int)(radius * 2);
+				return Bitmap.createScaledBitmap(output,w_h,w_h,true);
     }
 }
