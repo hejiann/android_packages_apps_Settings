@@ -34,7 +34,7 @@
         android:entryValues="@array/lockscreen_background_values"/>
      
      <ListPreference
-        android:key="lockscreen_ring_head"
+        android:key="lockscreen_head_sculpture"
         android:persistent="false"
         android:dialogTitle="@string/lockscreen_custom_ring_head_title"
         android:title="@string/lockscreen_custom_ring_head_title"
