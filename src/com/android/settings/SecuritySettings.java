@@ -221,7 +221,9 @@ public class SecuritySettings extends SettingsPreferenceFragment implements
 			mUnlockFunction.setSummary(mUnlockFunction.getEntry());
 			mUnlockFunction.setOnPreferenceChangeListener(this);
 			if (unlockStyle == 2) {
-				slidingCategory.removePreference(mLockscreenTargets);
+				if(slidingCategory!=null){
+					slidingCategory.removePreference(mLockscreenTargets);
+				}
 			}
 
 			addPreferencesFromResource(R.xml.security_settings_slide_delay_cyanogenmod);
