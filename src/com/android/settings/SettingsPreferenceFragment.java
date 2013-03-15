@@ -101,7 +101,9 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements
 		int titleId = Resources.getSystem().getIdentifier(  
                 "action_bar_title", "id", "android");
 		TextView title = (TextView) getActivity().findViewById(titleId);
-		title.setTextColor(getResources().getColor(R.color.text_color));
+		if (title != null) {
+		    title.setTextColor(getResources().getColor(R.color.text_color));
+		}
 	}
 
 
