@@ -60,5 +60,8 @@
 
 	<!-- Light settings dialog -->
     <dimen name="dialog_light_settings_width">400dip</dimen>
+    
+    <!-- lockscreen head sculpture radius-->
+    <dimen name="lockscreen_head_sculpture_radius">52dp</dimen>
 
 </resources>

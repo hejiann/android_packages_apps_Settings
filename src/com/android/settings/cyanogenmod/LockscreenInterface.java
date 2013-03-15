@@ -83,7 +83,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private File headSculptureTemporary;
     private boolean mIsScreenLarge;
     
-    private int radius = 150;
+    private float radius = 150;
     private Bitmap headSculpture=null;
 
     @Override
@@ -103,6 +103,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         wallpaperImage = new File(mActivity.getFilesDir()+"/lockwallpaper");
         wallpaperTemporary = new File(mActivity.getCacheDir()+"/lockwallpaper.tmp");
         
+        radius = this.getResources().getDimension(R.dimen.lockscreen_head_sculpture_radius);
         mCustomRingHead = (ListPreference) findPreference(KEY_RING_HEAD_PREF);
         mCustomRingHead.setOnPreferenceChangeListener(this);
         headSculptureImage = new File(mActivity.getFilesDir()+"/headSculpture");
@@ -251,7 +252,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private Runnable headSculptureRunnable = new Runnable(){
     	public void run(){
     		if(headSculpture==null) return;
-    		//headSculpture = toRoundBitmap(headSculpture,radius);
+    		headSculpture = toRoundBitmap(headSculpture,radius);
     		FileOutputStream fos = null;
     		try{
     			if(headSculptureImage.exists())
@@ -376,10 +377,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 	           intent.putExtra("scale", true);
 	           intent.putExtra("scaleUpIfNeeded", false);
 	           intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
-	           intent.putExtra("aspectX", radius);
-	           intent.putExtra("aspectY", radius);
-	           intent.putExtra("outputX", radius);
-	           intent.putExtra("outputY", radius);
+	           int r = (int)(radius *2);
+	           intent.putExtra("aspectX", r);
+	           intent.putExtra("aspectY", r);
+	           intent.putExtra("outputX", r);
+	           intent.putExtra("outputY", r);
 	           try {
 	        	   	headSculptureTemporary.createNewFile();
 	        	   	headSculptureTemporary.setWritable(true, false);
