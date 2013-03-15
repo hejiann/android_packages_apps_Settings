@@ -63,5 +63,6 @@
     
     <!-- lockscreen head sculpture radius-->
     <dimen name="lockscreen_head_sculpture_radius">52dp</dimen>
+    <dimen name="main_top_dimen">48.0dp</dimen>
 
 </resources>

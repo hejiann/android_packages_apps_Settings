@@ -16,4 +16,5 @@
 <resources>
 	<!-- shendu ring config -->
    <dimen name="lockscreen_head_sculpture_radius">57.5dp</dimen>
+   <dimen name="main_top_dimen">55.0dp</dimen>
 </resources>
