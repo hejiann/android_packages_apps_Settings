@@ -222,7 +222,9 @@ public class SecuritySettings extends SettingsPreferenceFragment implements
 			mUnlockFunction.setOnPreferenceChangeListener(this);
 			if (unlockStyle == 2) {
 				if(slidingCategory!=null){
+					if(mLockscreenTargets!=null){
 					slidingCategory.removePreference(mLockscreenTargets);
+					}
 				}
 			}
 
@@ -790,9 +792,13 @@ public class SecuritySettings extends SettingsPreferenceFragment implements
 						unlock_style);
 				mUnlockFunction.setSummary(mUnlockFunction.getEntries()[index]);
 				if(unlock_style == 1){
-					slidingCategory.addPreference(mLockscreenTargets);
+					if(mLockscreenTargets!=null){
+						slidingCategory.addPreference(mLockscreenTargets);
+					}
 				}else if(unlock_style == 2){
-					slidingCategory.removePreference(mLockscreenTargets);
+					if(mLockscreenTargets!=null){
+						slidingCategory.removePreference(mLockscreenTargets);
+					}
 				}
 			}
 		}
