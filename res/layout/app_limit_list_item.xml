@@ -45,7 +45,6 @@
             android:layout_marginLeft="10dp"
             android:layout_toLeftOf="@id/checkbox_layout"
             android:layout_toRightOf="@id/appicon"
-            android:textColor="#4c4c4c"
             android:textSize="18sp" />
     </RelativeLayout>
 

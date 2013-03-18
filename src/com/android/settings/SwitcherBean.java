@@ -20,7 +20,7 @@ public class SwitcherBean {
     private DataEnabler mDataEnabler2 = null;
     private ProfileEnabler mProfileEnabler2 = null;
     private AirplaneEnabler mAirplaneEnabler2 = null;
-    private PreferenceActivity personalSettings;
+    private UsedSettings usedSettings;
     private int isWifi = 0;
     private int isBluetooth = 0;
     private int bluetoothIndex = 0;
@@ -148,12 +148,12 @@ public class SwitcherBean {
         this.isAirplane = isAirplane;
     }
 
-    public PreferenceActivity getPersonalSettings() {
-        return personalSettings;
+    public PreferenceActivity getUsedSettings() {
+        return usedSettings;
     }
 
-    public void setPersonalSettings(PreferenceActivity personalSettings) {
-        this.personalSettings = personalSettings;
+    public void setUsedSettings(UsedSettings usedSettings) {
+        this.usedSettings = usedSettings;
     }
 
     public void resumeAll() {
@@ -177,6 +177,8 @@ public class SwitcherBean {
             this.mProfileEnabler2.resume();
         if (this.mWifiEnabler2 != null)
             this.mWifiEnabler2.resume();
+        if (this.usedSettings != null)
+            this.usedSettings.onResume();
     }
 
     public void pauseAll() {

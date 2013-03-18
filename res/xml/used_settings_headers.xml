@@ -136,4 +136,11 @@
         android:icon="@drawable/ic_settings_about"
         android:title="@string/about_settings" /-->
 
+    <!-- Advanced settings -->
+    <header
+        android:id="@+id/advanced_settings"
+        android:title="@string/advanced_settings_title"
+        android:fragment="com.android.settings.cyanogenmod.AdvancedSettings"
+        android:icon="@drawable/ic_settings_advanced"/>
+
 </preference-headers>

@@ -50,6 +50,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceActivity.Header;
 import android.preference.PreferenceFragment;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -120,6 +121,9 @@ public class UsedSettings extends PreferenceActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SwitcherBean switchBean = SwitcherBean.getInstance();
+        switchBean.setUsedSettings(this);
+
         if (getIntent().getBooleanExtra(EXTRA_CLEAR_UI_OPTIONS, false)) {
             getWindow().setUiOptions(0);
         }
@@ -180,10 +184,6 @@ public class UsedSettings extends PreferenceActivity implements
         listView.setDividerHeight(getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listview_divider_height));
         listView.setFooterDividersEnabled(false);
         listView.setOnTouchListener(new ListViewOnTouchListener());
-        listView.setPadding(listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
-                listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding),
-                listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
-                0);
     }
 
     @Override
@@ -208,6 +208,7 @@ public class UsedSettings extends PreferenceActivity implements
             ((HeaderAdapter) listAdapter).resume();
         }
         invalidateHeaders();
+        onBuildHeaders(getHeaders());
     }
 
     @Override
@@ -398,12 +399,28 @@ public class UsedSettings extends PreferenceActivity implements
     }
 
     private void updateHeaderList(List<Header> target) {
+        final ListView listView = getListView();
         int i = 0;
         while (i < target.size()) {
             Header header = target.get(i);
             // Ids are integers, so downcasting
             int id = (int) header.id;
-            if (id == R.id.dock_settings) {
+            if (id == R.id.advanced_settings) {
+                if (Settings.System.getInt(getContentResolver(),
+                        Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0) {
+                    target.remove(header);
+                    i--;
+                    listView.setPadding(listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
+                            listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding),
+                            listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
+                            0);
+                } else {
+                    listView.setPadding(listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
+                            listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding),
+                            listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
+                            listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding));
+                }
+            } else if (id == R.id.dock_settings) {
                 if (!needsDockSettings())
                     target.remove(header);
             } else if (id == R.id.operator_settings

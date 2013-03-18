@@ -34,6 +34,12 @@
         android:icon="@drawable/ic_settings_notification"
         android:fragment="com.android.settings.cyanogenmod.AdvancedPowerWidget"
         android:title="@string/notification_drawer_title" />
-    
+
+    <!-- Fonts Setting -->
+    <PreferenceScreen
+        android:key="fonts_settings"
+        android:fragment="com.android.settings.cyanogenmod.FontsSettings"
+        android:icon="@drawable/ic_settings_font"
+        android:title="@string/font_options" />
 
 </PreferenceScreen>

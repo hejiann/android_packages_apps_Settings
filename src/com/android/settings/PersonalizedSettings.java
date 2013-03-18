@@ -122,7 +122,6 @@ public class PersonalizedSettings extends PreferenceActivity implements
 		}
 		
 		switcherBean = SwitcherBean.getInstance();
-		switcherBean.setPersonalSettings(this);
 
 		if (android.provider.Settings.Secure.getInt(getContentResolver(),
 				"multiuser_enabled", -1) > 0) {
