@@ -48,6 +48,7 @@ import android.provider.Settings;
 import android.view.Display;
 import android.view.Window;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -83,7 +84,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private File headSculptureTemporary;
     private boolean mIsScreenLarge;
     
-    private float radius = 150;
+    private float radius = 100;
     private Bitmap headSculpture=null;
 
     @Override
@@ -233,7 +234,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         	 if (resultCode == Activity.RESULT_OK) {
                  if (headSculptureTemporary.exists()) {
                 	 headSculpture = BitmapFactory.decodeFile(headSculptureTemporary.getPath());
-                	 new Thread(headSculptureRunnable).start();
+                	 //new Thread(headSculptureRunnable).start();
+                	 headSculptureRunnable();
                  Toast.makeText(mActivity, getResources().getString(R.string.
                 		 lockscreen_head_sculpture_result_successful), Toast.LENGTH_LONG).show();
                  Settings.System.putString(getContentResolver(),
@@ -249,9 +251,13 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
              };
         }
     }
-    private Runnable headSculptureRunnable = new Runnable(){
+ /*   private Runnable headSculptureRunnable = new Runnable(){
     	public void run(){
-    		if(headSculpture==null) return;
+    		if(headSculpture==null) {
+    			Log.e(TAG, "headSculpture ==null!!");
+    			return;
+    		}
+    		Log.d(TAG, "radius="+radius);
     		headSculpture = toRoundBitmap(headSculpture,radius);
     		FileOutputStream fos = null;
     		try{
@@ -270,7 +276,31 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 	    			headSculptureTemporary.deleteOnExit();
     		}
     	}
-    };
+    };*/
+	public void headSculptureRunnable(){
+		if(headSculpture==null) {
+			Log.e(TAG, "headSculpture ==null!!");
+			return;
+		}
+		Log.d(TAG, "radius="+radius);
+		headSculpture = toRoundBitmap(headSculpture,radius);
+		FileOutputStream fos = null;
+		try{
+			if(headSculptureImage.exists())
+				headSculptureImage.delete();
+    		fos = new FileOutputStream(headSculptureImage);
+    		headSculpture.compress(Bitmap.CompressFormat.PNG, 100, fos);
+    		fos.close();
+		} catch(FileNotFoundException e){
+			e.printStackTrace();
+		} catch(IOException e1){
+			e1.printStackTrace();
+		}finally{
+    		headSculptureImage.setReadOnly();
+    		if (headSculptureTemporary.exists()) 
+    			headSculptureTemporary.deleteOnExit();
+		}
+	}
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -417,7 +447,10 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 	static PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(Mode.SRC_IN);
 	
     public static Bitmap toRoundBitmap(Bitmap bitmap,float radius) {
-    		if(radius<=0) return null;
+    		if(radius<=0) {
+    			Log.e(TAG, "radius err:"+radius);
+    			return null;
+    		}
             int width = bitmap.getWidth();
 				int height = bitmap.getHeight();
 				float roundPx;
