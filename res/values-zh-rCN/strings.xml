@@ -1876,7 +1876,8 @@
     <string name="pulse_speed_very_slow">非常慢</string>
 
     <!-- Advanced, Device specific (DeviceParts) settings  -->
-    <string name="advanced_settings_title">高级</string>
+    <string name="advanced_settings_title">高级设置</string>
+    <string name="device_advanced_settings_title">高级</string>
 
     <!-- INTERFACE Settings  -->
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->

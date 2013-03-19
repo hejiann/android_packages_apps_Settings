@@ -740,36 +740,37 @@ public class UsedSettings extends PreferenceActivity implements
                         break;
                 }
                 
-              //set the background
-                if (position == 0) {
-                    if (position == (getCount() - 1)) {
-                        view.setBackgroundResource(R.drawable.select_full);
-                    } else {
-                        view.setBackgroundResource(R.drawable.select_top);
-                    }
-                } else if (position == (getCount() - 1))
-                    view.setBackgroundResource(R.drawable.select_bottom);
-                else {
-                    Header prevHeader = (Header) getItem(position - 1);
-                    Header nextHeader = (Header) getItem(position + 1);
-
-                    if (HeaderAdapter.getHeaderType(prevHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY
-                            && HeaderAdapter.getHeaderType(nextHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY) {
-                        view.setBackgroundResource(R.drawable.select_full);
-                    } else if (HeaderAdapter.getHeaderType(prevHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY) {
-                        view.setBackgroundResource(R.drawable.select_top);
-                    } else if (HeaderAdapter.getHeaderType(nextHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY){
-                        view.setBackgroundResource(R.drawable.select_bottom);
-                    } else {
-                        view.setBackgroundResource(R.drawable.select_middle);
-                    }
-                }
+              
                 view.setTag(holder);
             } else {
                 view = convertView;
                 holder = (HeaderViewHolder) view.getTag();
             }
+          //set the background
+            if (position == 0) {
+                if (position == (getCount() - 1)) {
+                    view.setBackgroundResource(R.drawable.select_full);
+                } else {
+                    view.setBackgroundResource(R.drawable.select_top);
+                }
+            } else if (position == (getCount() - 1))
+                view.setBackgroundResource(R.drawable.select_bottom);
+            else {
+                Header prevHeader = (Header) getItem(position - 1);
+                Header nextHeader = (Header) getItem(position + 1);
 
+                if (HeaderAdapter.getHeaderType(prevHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY
+                        && HeaderAdapter.getHeaderType(nextHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY) {
+                    view.setBackgroundResource(R.drawable.select_full);
+                } else if (HeaderAdapter.getHeaderType(prevHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY) {
+                    view.setBackgroundResource(R.drawable.select_top);
+                } else if (HeaderAdapter.getHeaderType(nextHeader) == HeaderAdapter.HEADER_TYPE_CATEGORY){
+                    view.setBackgroundResource(R.drawable.select_bottom);
+                } else {
+                    view.setBackgroundResource(R.drawable.select_middle);
+                }
+            }
+            
             // All view fields must be updated every time, because the view may
             // be recycled
             switch (headerType) {
