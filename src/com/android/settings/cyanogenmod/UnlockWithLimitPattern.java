@@ -248,9 +248,9 @@ public class UnlockWithLimitPattern extends PreferenceActivity {
                         mHeaderTextView.setText(R.string.lockpattern_need_to_unlock);
                     }
                     if (mFooterText != null) {
-                        //mFooterTextView.setText(mFooterText);
+                        mFooterTextView.setText(mFooterText);
                     } else {
-                        //mFooterTextView.setText(R.string.lockpattern_need_to_unlock_footer);
+                        mFooterTextView.setText(R.string.lockpattern_need_to_unlock_footer);
                     }
 
                     mLockPatternView.setEnabled(true);
