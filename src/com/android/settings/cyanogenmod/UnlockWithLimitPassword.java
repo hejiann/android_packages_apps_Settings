@@ -34,12 +34,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceActivity;
 import android.text.Editable;
 import android.text.InputType;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.DynamicDrawableSpan;
+import android.text.style.ImageSpan;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -136,6 +141,24 @@ public class UnlockWithLimitPassword extends PreferenceActivity {
                     .getKeyguardStoredPasswordQuality();
             View view = inflater.inflate(R.layout.confirm_lock_password, null);
             // Disable IME on our window since we provide our own keyboard
+            
+            //set the Text
+            TextView tvText = (TextView) view.findViewById(R.id.applimit_text);
+            if (tvText != null) {
+                final String key = String.valueOf(getResources().getText(R.string.app_limit_text_keyword));
+                final String text = String.valueOf(getResources().getText(R.string.app_limit_text));
+                DynamicDrawableSpan span = new DynamicDrawableSpan(DynamicDrawableSpan.ALIGN_BOTTOM) {
+                    @Override
+                    public Drawable getDrawable() {
+                        Drawable d = getResources().getDrawable(R.drawable.backhome);
+                        d.setBounds(0, 0, 50, 50);
+                        return d;
+                    }
+               };
+                SpannableString spanStr = new SpannableString(text);
+                spanStr.setSpan(span, text.indexOf(key), text.indexOf(key) + key.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+                tvText.setText(spanStr);
+            }
 
             view.findViewById(R.id.cancel_button).setOnClickListener(this);
             view.findViewById(R.id.cancel_button).setEnabled(false);

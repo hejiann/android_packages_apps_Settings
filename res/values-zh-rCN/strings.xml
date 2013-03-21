@@ -2606,6 +2606,7 @@
     <string name="app_limit_enabled">访客模式开关</string>
     <string name="app_limit_enabled_on">开启</string>
     <string name="app_limit_enabled_off">关闭</string>
+    <string name="app_limit_text">按 $HOME 键退出</string>
     <string name="limit_list">应用程序访问控制</string>
     <string name="set_limit_password">更改密码</string>
     <string name="launcing">正在启动</string>

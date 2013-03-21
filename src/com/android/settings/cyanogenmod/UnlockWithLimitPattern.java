@@ -30,12 +30,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
 import android.widget.TextView;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.DynamicDrawableSpan;
+import android.text.style.ImageSpan;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -180,6 +185,24 @@ public class UnlockWithLimitPattern extends PreferenceActivity {
             mLockPatternView.setLockPatternSize(3);
             mLockPatternView.setOnPatternListener(mConfirmExistingLockPatternListener);
             updateStage(Stage.NeedToUnlock);
+            
+            //set the Text
+              TextView tvText = (TextView) view.findViewById(R.id.footerText);
+              if (tvText != null) {
+                  final String key = String.valueOf(getResources().getText(R.string.app_limit_text_keyword));
+                  final String text = String.valueOf(getResources().getText(R.string.app_limit_text));
+                  DynamicDrawableSpan span = new DynamicDrawableSpan(DynamicDrawableSpan.ALIGN_BOTTOM) {
+                      @Override
+                      public Drawable getDrawable() {
+                          Drawable d = getResources().getDrawable(R.drawable.backhome);
+                          d.setBounds(0, 0, 50, 50);
+                          return d;
+                      }
+                 };
+                  SpannableString spanStr = new SpannableString(text);
+                  spanStr.setSpan(span, text.indexOf(key), text.indexOf(key) + key.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+                  tvText.setText(spanStr);
+              }
 
             return view;
         }
@@ -225,9 +248,9 @@ public class UnlockWithLimitPattern extends PreferenceActivity {
                         mHeaderTextView.setText(R.string.lockpattern_need_to_unlock);
                     }
                     if (mFooterText != null) {
-                        mFooterTextView.setText(mFooterText);
+                        //mFooterTextView.setText(mFooterText);
                     } else {
-                        mFooterTextView.setText(R.string.lockpattern_need_to_unlock_footer);
+                        //mFooterTextView.setText(R.string.lockpattern_need_to_unlock_footer);
                     }
 
                     mLockPatternView.setEnabled(true);
