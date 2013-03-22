@@ -32,6 +32,7 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
@@ -251,32 +252,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
              };
         }
     }
- /*   private Runnable headSculptureRunnable = new Runnable(){
-    	public void run(){
-    		if(headSculpture==null) {
-    			Log.e(TAG, "headSculpture ==null!!");
-    			return;
-    		}
-    		Log.d(TAG, "radius="+radius);
-    		headSculpture = toRoundBitmap(headSculpture,radius);
-    		FileOutputStream fos = null;
-    		try{
-    			if(headSculptureImage.exists())
-    				headSculptureImage.delete();
-	    		fos = new FileOutputStream(headSculptureImage);
-	    		headSculpture.compress(Bitmap.CompressFormat.PNG, 100, fos);
-	    		fos.close();
-    		} catch(FileNotFoundException e){
-    			e.printStackTrace();
-    		} catch(IOException e1){
-    			e1.printStackTrace();
-    		}finally{
-	    		headSculptureImage.setReadOnly();
-	    		if (headSculptureTemporary.exists()) 
-	    			headSculptureTemporary.deleteOnExit();
-    		}
-    	}
-    };*/
 	public void headSculptureRunnable(){
 		if(headSculpture==null) {
 			Log.e(TAG, "headSculpture ==null!!");
@@ -405,7 +380,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 	           intent.setType("image/*");
 	           intent.putExtra("crop", "true");
 	           intent.putExtra("scale", true);
-	           intent.putExtra("scaleUpIfNeeded", false);
+	           intent.putExtra("scaleUpIfNeeded", true);
 	           intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
 	           int r = (int)(radius *2);
 	           intent.putExtra("aspectX", r);
@@ -496,7 +471,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 				paint.setAntiAlias(true);
 				canvas.drawBitmap(bitmap, src, dst, paint);
 				bitmap.recycle();
-				
+				/*
+				float sxy = 2*radius/width;
+				Matrix matrix = new Matrix();
+				matrix.postScale(sxy, sxy);
+				return Bitmap.createBitmap(output, 0, 0,output.getWidth(), output.getHeight(), matrix, true);
+				*/
 				int w_h = (int)(radius * 2);
 				return Bitmap.createScaledBitmap(output,w_h,w_h,true);
     }
