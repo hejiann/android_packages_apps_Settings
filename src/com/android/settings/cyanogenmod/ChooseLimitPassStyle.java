@@ -83,7 +83,7 @@ public class ChooseLimitPassStyle extends SettingsPreferenceFragment {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		Settings.System.putInt(getActivity().getApplicationContext()
-				.getContentResolver(), Settings.System.APP_LIMIT_ENABLE, 1);
+				.getContentResolver(), Settings.System.APP_LIMIT_ENABLE, (resultCode == Activity.RESULT_OK ? 1 : 0));
 		getActivity().finish();
 	}
 }
