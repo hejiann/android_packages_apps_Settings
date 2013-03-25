@@ -27,8 +27,6 @@
         android:layout_weight="1"
         android:textSize="18sp"
         android:drawSelectorOnTop="false"
-        android:fastScrollEnabled="true"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
+        android:fastScrollEnabled="true" />
 
 </LinearLayout>
