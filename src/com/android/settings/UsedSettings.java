@@ -410,16 +410,13 @@ public class UsedSettings extends PreferenceActivity implements
                         Settings.System.ADVANCE_SETTINGS_ENABLED, 0) == 0) {
                     target.remove(header);
                     i--;
-                    listView.setPadding(listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
-                            listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding),
-                            listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
-                            0);
-                } else {
-                    listView.setPadding(listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
+                }
+
+                listView.setPadding(listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
                             listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding),
                             listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.preference_fragment_padding_side),
                             listView.getResources().getDimensionPixelSize(com.android.internal.R.dimen.shendu_listitem_padding));
-                }
+
             } else if (id == R.id.dock_settings) {
                 if (!needsDockSettings())
                     target.remove(header);

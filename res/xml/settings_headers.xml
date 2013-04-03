@@ -116,6 +116,13 @@
         android:icon="@drawable/ic_settings_security"
         android:title="@string/app_limit_list" />
 
+    <!-- Profiles -->
+    <header
+        android:id="@+id/profiles_settings"
+        android:icon="@*android:drawable/ic_lock_profile"
+        android:fragment="com.android.settings.profiles.ProfilesSettings"
+        android:title="@string/profiles_settings_title" /> 
+
     <!--  ACCOUNTS section -->
     <header
             android:id="@+id/account_settings"

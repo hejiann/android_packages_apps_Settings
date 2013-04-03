@@ -136,6 +136,13 @@
         android:icon="@drawable/ic_settings_about"
         android:title="@string/about_settings" /-->
 
+    <!-- Development -->
+    <header
+        android:id="@+id/development_settings"
+        android:fragment="com.android.settings.DevelopmentSettings"
+        android:icon="@drawable/ic_settings_development"
+        android:title="@string/development_settings_title" />
+
     <!-- Advanced settings -->
     <header
         android:id="@+id/advanced_settings"
