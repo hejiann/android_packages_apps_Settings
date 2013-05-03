@@ -64,7 +64,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
 	private static final String KEY_MOD_VERSION = "mod_version";
 	private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
 	private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
-
+	private static final String KEY_DEVICE_AUTHOR = "device_author";
 	long[] mHits = new long[3];
 
 	@Override
@@ -79,6 +79,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
 		findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
 		setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
 		setStringSummary(KEY_DEVICE_MODEL, Build.MODEL + getMsvSuffix());
+		setValueSummary(KEY_DEVICE_AUTHOR, "ro.shendu.author");
 		setValueSummary(KEY_EQUIPMENT_ID, PROPERTY_EQUIPMENT_ID);
 		setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
 		findPreference(KEY_KERNEL_VERSION).setSummary(

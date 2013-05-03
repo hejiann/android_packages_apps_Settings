@@ -2622,4 +2622,5 @@
     <string name="gallery_and_camera">相机和图库</string>
     <string name="call_and_contacts">拨号和联系人</string>
     <string name="notification_setting">通知栏设置</string>
+	<string name="author_name">作者</string>    
 </resources>
