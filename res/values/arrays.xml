@@ -1483,10 +1483,12 @@
     <string-array name="sliding_unlock_func">
         <item>Ring</item>
         <item>Drop Down</item>
+        <item>Orig</item>
     </string-array>
     <string-array name="sliding_unlock_func_value" translatable="false">
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
     <string-array name="staus_bar_transparent_key">
         <item>Opaque</item>
