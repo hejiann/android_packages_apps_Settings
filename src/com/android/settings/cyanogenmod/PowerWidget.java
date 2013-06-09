@@ -193,7 +193,7 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 
             int statusBarNetspd = Settings.System.getInt(getActivity()
                     .getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_NET_SPD, 0);
+                    Settings.System.STATUS_BAR_NET_SPD, 1);
             mStatusBarNetspd.setValue(String.valueOf(statusBarNetspd));
             mStatusBarNetspd.setSummary(mStatusBarNetspd.getEntry());
             mStatusBarNetspd.setOnPreferenceChangeListener(this);
