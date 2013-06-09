@@ -2595,6 +2595,7 @@
     <string name="sliding_down">下拉</string>
     
     <string name="backlight_switch">键盘灯开关</string>
+    <string name="status_bar_network_speed_title">显示网络速度</string>
    
     <string name="turn_on_ums">打开USB存储设备</string>
     <string name="turn_off_ums">关闭USB存储设备</string>

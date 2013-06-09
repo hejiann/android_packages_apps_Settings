@@ -59,6 +59,13 @@
             android:entries="@array/entries_status_bar_signal"
             android:entryValues="@array/values_status_bar_signal" />
 
+        <ListPreference
+            android:key="status_network_speed"
+            android:dialogTitle="@string/status_bar_network_speed_title"
+            android:title="@string/status_bar_network_speed_title"
+            android:entries="@array/entries_status_bar_network_spped"
+            android:entryValues="@array/values_status_bar_network_speed" />
+
         <CheckBoxPreference 
             android:key="status_bar_brightness_control"
             android:title="@string/status_bar_toggle_brightness"

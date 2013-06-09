@@ -74,6 +74,7 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 	private static final String STATUS_BAR_CLOCK = "status_bar_show_clock";
 	private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 	private static final String STATUS_BAR_SIGNAL = "status_bar_signal";
+    private static final String STATUS_BAR_NETSPD = "status_network_speed";
 	private static final String COMBINED_BAR_AUTO_HIDE = "combined_bar_auto_hide";
 	private static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
 	private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
@@ -83,6 +84,7 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 	private ListPreference mStatusBarAmPm;
 	private ListPreference mStatusBarBattery;
 	private ListPreference mStatusBarCmSignal;
+    private ListPreference mStatusBarNetspd;
 	private CheckBoxPreference mStatusBarClock;
 	private CheckBoxPreference mStatusBarBrightnessControl;
 	private CheckBoxPreference mCombinedBarAutoHide;
@@ -130,6 +132,8 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 					.findPreference(COMBINED_BAR_AUTO_HIDE);
 			mStatusBarCmSignal = (ListPreference) prefSet
 					.findPreference(STATUS_BAR_SIGNAL);
+            mStatusBarNetspd = (ListPreference) prefSet
+					.findPreference(STATUS_BAR_NETSPD);
 
 			mStatusBarNotifCount = (CheckBoxPreference) prefSet
 					.findPreference(STATUS_BAR_NOTIF_COUNT);
@@ -187,6 +191,13 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 			mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntry());
 			mStatusBarCmSignal.setOnPreferenceChangeListener(this);
 
+            int statusBarNetspd = Settings.System.getInt(getActivity()
+                    .getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_NET_SPD, 0);
+            mStatusBarNetspd.setValue(String.valueOf(statusBarNetspd));
+            mStatusBarNetspd.setSummary(mStatusBarNetspd.getEntry());
+            mStatusBarNetspd.setOnPreferenceChangeListener(this);
+
 			mCombinedBarAutoHide.setChecked((Settings.System.getInt(
 					getActivity().getApplicationContext().getContentResolver(),
 					Settings.System.COMBINED_BAR_AUTO_HIDE, 0) == 1));
@@ -238,6 +249,14 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 			mStatusBarCmSignal
 					.setSummary(mStatusBarCmSignal.getEntries()[index]);
 			return true;
+        } else if (preference == mStatusBarNetspd) {
+            int statusBarNetspd = Integer.valueOf((String) newValue);
+            int index = mStatusBarNetspd.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext()
+                    .getContentResolver(),
+                    Settings.System.STATUS_BAR_NET_SPD, statusBarNetspd);
+            mStatusBarNetspd.setSummary(mStatusBarNetspd.getEntries()[index]);
+            return true;
 		} 
 		return false;
 	}
