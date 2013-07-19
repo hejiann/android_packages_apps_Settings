@@ -604,17 +604,7 @@ public class WifiSettings extends SettingsPreferenceFragment implements
 		mDlgAccessPoint = accessPoint;
 		mDlgEdit = edit;
 
-		if (mDlgAccessPoint == null) {
-			showDialog(WIFI_DIALOG_ID);
-		} else {
-			mWifiConnectionInfo = WifiConnectionInfo.getInstance();
-
-			mWifiConnectionInfo.setmAccessPoint(mDlgAccessPoint);
-			mWifiConnectionInfo.setmEdit(mDlgEdit);
-			Intent intent = new Intent();
-			intent.setClass(getActivity(), WifiConnectionView.class);
-			startActivity(intent);
-		}
+        showDialog(WIFI_DIALOG_ID);
 
 	}
 
