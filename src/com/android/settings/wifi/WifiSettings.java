@@ -248,7 +248,8 @@ public class WifiSettings extends SettingsPreferenceFragment implements
 		// set it up in
 		// this method.
 
-		getActivity().getActionBar().setIcon(R.drawable.ic_settings_wifi);
+        if (getActivity().getActionBar() != null)
+            getActivity().getActionBar().setIcon(R.drawable.ic_settings_wifi);
 		mP2pSupported = getPackageManager().hasSystemFeature(
 				PackageManager.FEATURE_WIFI_DIRECT);
 		mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
